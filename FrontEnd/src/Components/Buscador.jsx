@@ -5,9 +5,6 @@ import axios from "axios";
 const Buscador = () => {
   const [cliente, setCliente] = useState("");
 
-        
-
- 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
