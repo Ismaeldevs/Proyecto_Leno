@@ -1,14 +1,13 @@
 const express = require("express")
+const {allClients, singleClient, createClient,editClient,eraseClient} = require("../controllers/clientes")
 
-const router = express.Router()// metodo propio de express que tiene el enrutamiento
+const router = express.Router()
 
-const {allClientes, singleCliente,CreateClientes,UpdateClintes,DeleteClientes} = require("../controllers/clientes")
+router.get("/clientes", allClients)
+router.get("/clientes/:id", singleClient)
+router.post("/clientes/create", createClient)
+router.put("/clientes/edit/:id", editClient)
+router.delete("/clientes/delete/:id", eraseClient)
 
-//peticiones http
-router.get("/clientes/",allClientes)//muestra todo 
-router.get("/cliente/:id", singleCliente)//para ver uno
-router.post("/clientes/create",CreateClientes)
-router.put("/clientess/edit/:id",UpdateClintes)
-router.delete("/clientes/delete/:id",DeleteClientes)
 
 module.exports = router
