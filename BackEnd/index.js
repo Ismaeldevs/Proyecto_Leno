@@ -1,12 +1,13 @@
 const express = require('express');
 const {conection} = require('./config/database')
 const usuarios = require("./routes/usuarios")
+const clientes = require("./routes/clientes")
 const cors = require('cors');
 
 const app = express()
 const port = 8000;
 app.use(cors())
-app.use("/", usuarios)
+app.use("/", usuarios, clientes)
 app.use(express.json())
 
 
