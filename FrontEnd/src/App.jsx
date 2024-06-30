@@ -5,10 +5,14 @@ import Select from './Pages/Select'
 import HomeCliente from './Pages/Cliente/HomeCliente'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
+import Header from './Components/Layouts/Header'
+import Footer from './Components/Layouts/Footer'
 
 function App() {
 
   return (
+    <>    
+    <Header/>
     <BrowserRouter>
     <Routes>
       <Route path={HOME} element={<Home />} />
@@ -18,6 +22,8 @@ function App() {
       <Route path={ERROR} element={<Home />} />
     </Routes>
     </BrowserRouter>
+    <Footer/>
+    </>
   )
 }
 

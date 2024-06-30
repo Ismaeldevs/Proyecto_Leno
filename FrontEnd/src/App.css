@@ -1,3 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700&display=swap');
+
 #root {
   background-color: #242424;
 }
+
+/*Estilos Header*/
+.tituloHome {
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+  font-weight: 700; /* 700 corresponde a negrita */
+  font-size: 1.8em ;
+}
+
+.logo{
+  width: 150px;
+}
+
+.navbar{
+  background: #af050c;
+}
+.avatarHeader{
+  width: 80px;
+  border-radius: 50%;
+}
+/*Termina Estilos Header*/
+
+/*Estilos Footer*/
+.FootLeno {
+  background-color: #B02C24;
+  width: 100%;
+}
+
+
+.texto {
+  color: #E59432;
+}
+
+.conteiner {
+  background-color: #B02C24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: #B02C24;
+}
+
+/* for all social containers*/
+.socialContainer {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #B02C24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  transition-duration: .3s;
+
+}
+
+/* instagram*/
+.containerOne:hover {
+  background-color: #d62976;
+  transition-duration: .3s;
+}
+
+/* twitter*/
+.containerTwo:hover {
+  background-color: #00acee;
+  transition-duration: .3s;
+}
+
+/* linkdin*/
+.containerThree:hover {
+  background-color: #0072b1;
+  transition-duration: .3s;
+}
+
+/* Whatsapp*/
+.containerFour:hover {
+  background-color: #128C7E;
+  transition-duration: .3s;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: .3s;
+}
+
+.socialSvg {
+  width: 22px;
+}
+
+.socialSvg path {
+  fill: #E59432;
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.avatar {
+  display: block;
+  left: 180px;
+  position: relative;
+  float: left;
+  height: 120px;
+}
+
+.avatar2 {
+  display: block;
+  right: 250px;
+  position: relative;
+  float: right;
+  height: 120px;
+}
+/*Termina estilos Footer*/
