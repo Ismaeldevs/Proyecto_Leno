@@ -7,8 +7,10 @@ const MainLogin = () => {
 
   const [usuario, setUsuario] = useState([]);
   const [datos,setDatos] = useState("")
-  // const [clave, setClave] = useState([]);
-  // const [rol, setRol] = useState([]);
+
+  let manager = false
+  let empleado = false
+
 
   const navigate = useNavigate()
   
@@ -28,28 +30,26 @@ const MainLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(`enviando datos... ${datos.usuario}`)
+    usuario.forEach((user) => {
 
-   console.log(usuario[0].usuario)
-
-   let bandera = false
-
-   for (let i = 0; i < usuario.length; i++) {
-    
-    console.log(usuario[i].usuario)
-    
-    if(usuario[i].usuario === datos.usuario) {
+      console.log(user)
       
-      bandera = true
-    } 
-    
-  }
-  if(bandera === true) {
-   navigate('/select')
-   
-  } else {
-   alert("datos no correctos!")
-  }
+      if(datos.usuario === user.usuario && datos.clave === user.clave && 1 === user.rol) {
+        manager = true
+        
+      }
+      if(datos.usuario === user.usuario && datos.clave === user.clave && 0 === user.rol) {
+        empleado = true
+        
+      }
+    })
+    if(manager === true) {
+      navigate('/select')
+    } else if (empleado === true) {
+      navigate('/') // ← tiene que ir a ventas
+    } else {
+      alert("datos incorrectos!")
+    }
 }
 
   // console.log(usuario)
@@ -71,7 +71,7 @@ const MainLogin = () => {
             <input placeholder="Usuario" name='usuario' type="text" onChange={verifyData} />
           </div>
           <div className="form-inp">
-            <input placeholder="Contraseña" type="password" />
+            <input placeholder="Contraseña" name='clave' type="password" onChange={verifyData} />
           </div>
         </div>
         <div className="submit-button-cvr">
