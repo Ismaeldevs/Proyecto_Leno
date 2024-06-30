@@ -5,6 +5,7 @@ const allClients = (req, res) => {
     const query = `select * from clientes`
     conection.query(query, (err, results) => {
         if (err) throw err;
+
         res.json(results)
     })
 }
@@ -14,10 +15,12 @@ const singleClient = (req, res) => {
     const id = req.params.id
     const query = `select * from clientes where id_cliente=${id}`
     conection.query(query, (err,results) => {
+
         if(err) throw err
         res.send(results)
     })
 }
+
 
 const createClient = (req, res) => {
     const {nombreCompleto, dni, telefono, direccion, activo} = req.body
@@ -43,6 +46,7 @@ const eraseClient = (req, res) => {
     const id = req.params.id
     const query = `delete from clientes where id_cliente=${id}`
     conection.query(query, (err,results) => {
+
         if(err) throw err
         res.send(results)
     })
