@@ -8,10 +8,15 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import CrearCliente from './Pages/Cliente/CrearCliente'
 import VerCliente from './Pages/Cliente/VerCliente'
+import Header from './Components/Layouts/Header'
+import Footer from './Components/Layouts/Footer'
+
 
 function App() {
 
   return (
+    <>    
+    <Header/>
     <BrowserRouter>
     <Routes>
       <Route path={HOME} element={<Home />} />
@@ -24,6 +29,8 @@ function App() {
       <Route path={ERROR} element={<Home />} />
     </Routes>
     </BrowserRouter>
+    <Footer/>
+    </>
   )
 }
 
