@@ -1,4 +1,4 @@
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL} from './Routes/routes'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
@@ -10,6 +10,10 @@ import CrearCliente from './Pages/Cliente/CrearCliente'
 import VerCliente from './Pages/Cliente/VerCliente'
 import Header from './Components/Layouts/Header'
 import Footer from './Components/Layouts/Footer'
+import CrearSucursal from './Pages/Sucursal/CrearSucursal'
+import HomeSucursal from './Pages/Sucursal/HomeSucursal'
+import VerSucursal from './Pages/Sucursal/VerSucursal'
+import EditarSucursal from './Pages/Sucursal/EditarSucursal'
 
 
 function App() {
@@ -26,6 +30,10 @@ function App() {
       <Route path={CREAR_CLIENTE} element={<CrearCliente />} />
       <Route path={EDITAR_CLIENTE} element={<EditarCliente />} />
       <Route path={VER_CLIENTE} element={<VerCliente />} />
+      <Route path={SUCURSALES} element={<HomeSucursal/>}/>
+      <Route path={CREAR_SUCURSAL} element={<CrearSucursal/>}/>
+      <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />
+      <Route path={VER_SUCURSAL} element={<VerSucursal/>} />
       <Route path={ERROR} element={<Home />} />
     </Routes>
     </BrowserRouter>
