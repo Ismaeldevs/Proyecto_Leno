@@ -6,7 +6,7 @@ const {allEmpleados, singleEmpleado,createEmpleado,editEmpleado,deleteEmpleado} 
 
 //peticiones http
 router.get("/empleados/",allEmpleados)//muestra todo 
-router.get("/empleado/:id", singleEmpleado)//para ver uno
+router.get("/empleados/:id", singleEmpleado)//para ver uno
 router.post("/empleados/create",createEmpleado)
 router.put("/empleados/edit/:id",editEmpleado)
 router.delete("/empleados/delete/:id",deleteEmpleado)
