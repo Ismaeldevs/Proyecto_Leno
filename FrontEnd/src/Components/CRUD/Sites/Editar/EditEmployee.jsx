@@ -64,7 +64,7 @@ const EditEmployee = () => {
 
 
         <div>
-            <h1 className="p-5 text-white text-center">EDITAR CLIENTE</h1>
+            <h2 className="p-5 text-white text-center">EDITAR CLIENTE</h2>
             <br />
             <div className='d-flex justify-content-center p-5'>
                 <br />

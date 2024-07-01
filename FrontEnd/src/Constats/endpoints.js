@@ -21,4 +21,9 @@ export const URL_SUCURSAL_CREAR = 'http://localhost:8000/sucursales/create/'
 export const URL_SUCURSAL_EDITAR = 'http://localhost:8000/sucursales/edit/'
 export const URL_SUCURSAL_ELIMINAR = 'http://localhost:8000/sucursales/delete/'
 
+export const URL_PEDIDO = 'http://localhost:8000/pedidos'
+export const URL_PEDIDO_CREAR = 'http://localhost:8000/pedidos/create/'
+export const URL_PEDIDO_EDITAR = 'http://localhost:8000/pedidos/edit/'
+export const URL_PEDIDO_ELIMINAR = 'http://localhost:8000/pedidos/delete/'
+
 

@@ -1,11 +1,11 @@
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, NOSOTROS} from './Routes/routes'
+import { useState } from 'react'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS} from './Routes/routes'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
 import HomeCliente from './Pages/Cliente/HomeCliente'
 import EditarCliente from './Pages/Cliente/EditarCliente'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import './App.css'
 import CrearCliente from './Pages/Cliente/CrearCliente'
 import VerCliente from './Pages/Cliente/VerCliente'
 import Header from './Components/Layouts/Header'
@@ -24,8 +24,11 @@ import VerSucursal from './Pages/Sucursal/VerSucursal'
 import EditarSucursal from './Pages/Sucursal/EditarSucursal'
 import { useState } from 'react'
 import Nosotros from './Pages/Nosotros'
-
-
+import HomePedido from './Pages/Pedido/HomePedido'
+import CrearPedido from './Pages/Pedido/CrearPedido'
+import EditarPedido from './Pages/Pedido/EditarPedido'
+import VerPedido from './Pages/Pedido/VerPedido'
+import './App.css'
 
 function App() {
   const [isManager, setIsManager] = useState(false);
@@ -37,8 +40,6 @@ function App() {
   };
   return (
     <>    
-    /* This block of code in the `App` component is setting up the routing for different pages in a
-    React application using React Router. Here's a breakdown of what it's doing: */
     <BrowserRouter>
     <Header isManager={isManager} isEmpleado={isEmpleado} setIsEmpleado={setIsEmpleado} setIsManager={setIsManager}/>
     <Routes>
@@ -50,7 +51,7 @@ function App() {
       <Route path={EDITAR_CLIENTE} element={<EditarCliente />} />
       <Route path={VER_CLIENTE} element={<VerCliente />} />
       <Route path={STOCK} element={<HomeStock />} />
-       <Route path={VER_STOCK} element={<VerStock />} /> 
+      <Route path={VER_STOCK} element={<VerStock />} /> 
       <Route path={EDITAR_STOCK} element={<EditarStock />} />
       <Route path={CREAR_STOCK} element={<CrearStock />} /> 
       <Route path={EMPLEADO} element={<HomeEmpleado/>} />
@@ -61,6 +62,11 @@ function App() {
       <Route path={CREAR_SUCURSAL} element={<CrearSucursal/>}/>
       <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />
       <Route path={VER_SUCURSAL} element={<VerSucursal/>} />
+      <Route path={VER_EMPLEADO} element={<VerEmpleado/>} />
+      <Route path={PEDIDO} element={<HomePedido/>} />
+      <Route path={CREAR_PEDIDO} element={<CrearPedido/>} />
+      <Route path={EDITAR_PEDIDO} element={<EditarPedido/>} />
+      <Route path={VER_PEDIDO} element={<VerPedido/>} />
       <Route path={ERROR} element={<Home />} />
       <Route path={NOSOTROS} element={<Nosotros/>} />
     </Routes>
