@@ -8,7 +8,10 @@ export const URL_CLIENTE_ELIMINAR = 'http://localhost:8000/clientes/delete/'
 
 
 
-
+export const URL_USUARIO = 'http://localhost:8000/usuarios'
+export const URL_USUARIO_CREAR = 'http://localhost:8000/usuarios/create/'
+export const URL_USUARIO_EDITAR = 'http://localhost:8000/usuarios/edit/'
+export const URL_USUARIO_ELIMINAR = 'http://localhost:8000/usuarios/delete/'
 
 
 

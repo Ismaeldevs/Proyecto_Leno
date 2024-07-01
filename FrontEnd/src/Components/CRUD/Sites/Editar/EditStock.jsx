@@ -63,7 +63,7 @@ const EditStock = () => {
 
 
     <div>
-      <h1 className="p-5 text-white text-center">EDITAR STOCK</h1>
+      <h2 className="p-5 text-white text-center">EDITAR STOCK</h2>
       <br />
       <div className='d-flex justify-content-center p-5'>
         <br />
@@ -71,7 +71,7 @@ const EditStock = () => {
             <FormGroup>
                 <FormControl type='number' placeholder='Nombre Producto' value={stock.id_producto} onChange={handleChange} name="id_producto"  />
                 <br />
-                <FormControl type='number' placeholder='Sucursal' value={stock.id_sucursal} onChange={handleChange} name="id_sucursal"  />
+                <FormControl type='number' placeholder='Sucursal' value={stock.id_s} onChange={handleChange} name="id_sucursal"  />
                 <br />
                 <FormControl type='text' placeholder='Cantidad Stock' value={stock.cantidadStock} onChange={handleChange} name="cantidadStock" />
                 <br />
