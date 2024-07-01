@@ -22,6 +22,7 @@ const EditClient = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+
             const response = await axios.put(`${URL_CLIENTE_EDITAR}${id}`, {
                 nombreCompleto: client.nombreCompleto,
                 dni: client.dni,

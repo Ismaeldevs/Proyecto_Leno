@@ -27,7 +27,7 @@ const createClient = (req, res) => {
 
     const query = `insert into clientes (nombreCompleto, dni, telefono, direccion, activo) values ('${nombreCompleto}','${dni}','${telefono}','${direccion}',${activo})`
     conection.query(query, (err,results) => {
-        if(err) throw err
+        if(err) throw err 
         res.send(results)
     })
 }
