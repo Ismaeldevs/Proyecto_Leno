@@ -20,7 +20,7 @@ const CreateClient = () => {
     const [client, setClient] = useState(initialState)
 
     const handleSubmit = async (e) => {
-        e.preventDefault
+        e.preventDefault()
         try {
 
             const response = await axios.post(`${URL_CLIENTE_CREAR}`, {

@@ -6,8 +6,8 @@ const router = express.Router()
 //peticiones http
 router.get("/usuarios", allUsers)
 router.get("/usuarios/:id", singleUser)
-router.get("/usuarios/create", CreateUser)
-router.get("/usuarios/update/:id", UpdateUser)
-router.get("/usuarios/delete/:id", DeleteUser)
+router.post("/usuarios/create", CreateUser)
+router.put("/usuarios/edit/:id", UpdateUser)
+router.delete("/usuarios/delete/:id", DeleteUser)
 
 module.exports = router
