@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import '../../CSS/Mains/Login.css'
 
-const MainLogin = () => {
+const MainLogin = ({onRolesUpdate}) => {
 
   const [usuario, setUsuario] = useState([]);
   const [datos,setDatos] = useState("")
@@ -43,10 +43,11 @@ const MainLogin = () => {
         
       }
     })
+    onRolesUpdate(manager, empleado);
     if(manager === true) {
       navigate('/select')
     } else if (empleado === true) {
-      navigate('/') // ← tiene que ir a ventas
+      navigate('/home') // ← tiene que ir a ventas
     } else {
       alert("datos incorrectos!")
     }
