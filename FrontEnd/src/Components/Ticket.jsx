@@ -22,6 +22,7 @@ const Ticket = () => {
     const [productos, setProductos] = useState(initialState)
     const [precio, setPrecio] = useState(0)
     const [total, setTotal] = useState(0)
+    const [cantidad, setCantidad] = useState(1)
 
 
     const getData = async () => {
@@ -34,6 +35,7 @@ const Ticket = () => {
     const handlePlus = () => {
         
         if(total != -1) {
+            setCantidad(cantidad+1)
             setTotal(total + precio)
         } else {
             setTotal(total)
@@ -43,6 +45,7 @@ const Ticket = () => {
 const handleMin = () => {
         
     if(total > precio) {
+        setCantidad(cantidad-1)
         setTotal(total - precio)
     }
 }
@@ -75,7 +78,7 @@ const handleMin = () => {
               <path strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" stroke="#47484b" d="M20 12L4 12"></path>
             </svg>
           </button>
-          <label className='me-2 textprice'>{total}</label>
+          <label className='me-2 textprice'>{cantidad}</label>
           <button onClick={handlePlus} className='buttons'>
             <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" stroke="#47484b" d="M12 4V20M20 12H4"></path>
