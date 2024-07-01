@@ -6,7 +6,7 @@ const SelectCards = ({ nombre, pathD, url }) => {
   return (
     <Col md={3}>
       <br />
-      <Link to={url} className="card">
+      <Link to={url} className="card-categorias text-decoration-none">
         <div className="icon">
           <svg className="svg-icon" viewBox="0 0 20 20">
             <path

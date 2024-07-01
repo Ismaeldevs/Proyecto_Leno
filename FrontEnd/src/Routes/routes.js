@@ -34,13 +34,17 @@ export const EDITAR_PEDIDO = "/pedidos/edit/:id"
 export const EDITAR_PRODUCTO = "/productos/edit/:id"
 
 
+
 // VER
 
 export const VER_CLIENTE = '/clientes/view/:id'
+export const VER_EMPLEADO = '/empleados/:id'
 export const VER_PRODUCTO = '/productos/view/:id'
 export const VER_STOCK = '/stocks/view/:id'
 export const VER_USUARIO = '/usuarios/view/:id'
 export const VER_SUCURSAL= '/sucursales/view/:id'
 export const VER_PEDIDO = "pedidos/view/:id"
 export const VER_EMPLEADO = "empleados/view/:id"
+
+export const TICKET = '/ticket/:id'
 

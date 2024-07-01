@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO,CREAR_PRODUCTO} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, TICKET, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import Login from './Pages/Login'
@@ -37,6 +37,7 @@ import HomePedido from './Pages/Pedido/HomePedido'
 import CrearPedido from './Pages/Pedido/CrearPedido'
 import EditarPedido from './Pages/Pedido/EditarPedido'
 import VerPedido from './Pages/Pedido/VerPedido'
+import HomeTicket from './Pages/HomeTicket'
 import './App.css'
 
 
@@ -70,7 +71,7 @@ function App() {
       <Route path={EDITAR_STOCK} element={<EditarStock />} />
       <Route path={CREAR_STOCK} element={<CrearStock />} /> 
       <Route path={USUARIO} element={<HomeUsuario/>} />
-       <Route path={VER_USUARIO} element={<VerUsuario />} /> 
+      <Route path={VER_USUARIO} element={<VerUsuario />} /> 
       <Route path={EDITAR_USUARIO} element={<EditarUsuario />} />
       <Route path={CREAR_USUARIO} element={<CrearUsuario />} /> 
       <Route path={EMPLEADO} element={<HomeEmpleado/>} />
@@ -81,13 +82,13 @@ function App() {
       <Route path={CREAR_SUCURSAL} element={<CrearSucursal/>}/>
       <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />
       <Route path={VER_SUCURSAL} element={<VerSucursal/>} />
-      <Route path={VER_EMPLEADO} element={<VerEmpleado/>} />
       <Route path={PEDIDO} element={<HomePedido/>} />
       <Route path={CREAR_PEDIDO} element={<CrearPedido/>} />
       <Route path={EDITAR_PEDIDO} element={<EditarPedido/>} />
       <Route path={VER_PEDIDO} element={<VerPedido/>} />
       <Route path={ERROR} element={<Home />} />
       <Route path={NOSOTROS} element={<Nosotros/>} />
+      <Route path={TICKET} element={<HomeTicket />} />
     </Routes>
     </BrowserRouter>
     <Footer/>

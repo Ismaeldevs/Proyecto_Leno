@@ -14,7 +14,7 @@ const singleProductos = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = `SELECT * FROM productos where id_producto = ${id}`
+    const query = `SELECT * FROM productos where id_producto =${id}`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
