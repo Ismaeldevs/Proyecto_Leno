@@ -6,7 +6,7 @@ const {allSucursales,singleSucursales,createSucursales,editSucursales,deleteSucu
 
 //peticiones http
 router.get("/sucursales/",allSucursales)//muestra todo 
-router.get("/sucursal/:id", singleSucursales)//para ver uno
+router.get("/sucursales/:id", singleSucursales)//para ver uno
 router.post("/sucursales/create",createSucursales)
 router.put("/sucursales/edit/:id",editSucursales)
 router.delete("/sucursales/delete/:id",deleteSucursales)

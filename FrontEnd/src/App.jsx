@@ -1,4 +1,4 @@
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK,VER_STOCK,CREAR_STOCK} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL} from './Routes/routes'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
@@ -14,6 +14,15 @@ import HomeStock from './Pages/Stock/HomeStock'
 import CrearStock from './Pages/Stock/CrearStock'
 import EditarStock from './Pages/Stock/EditarStock'
 import VerStock from './Pages/Stock/VerStock'
+import HomeEmpleado from "./Pages/Empleado/HomeEmpleado"
+import CrearEmpleado from "./Pages/Empleado/CrearEmpleado"
+import EditarEmpleado from './Pages/Empleado/EditarEmpleado'
+import VerEmpleado from './Pages/Empleado/VerEmpleado'
+import CrearSucursal from './Pages/Sucursal/CrearSucursal'
+import HomeSucursal from './Pages/Sucursal/HomeSucursal'
+import VerSucursal from './Pages/Sucursal/VerSucursal'
+import EditarSucursal from './Pages/Sucursal/EditarSucursal'
+
 
 
 
@@ -35,6 +44,14 @@ function App() {
        <Route path={VER_STOCK} element={<VerStock />} /> 
       <Route path={EDITAR_STOCK} element={<EditarStock />} />
       <Route path={CREAR_STOCK} element={<CrearStock />} /> 
+      <Route path={EMPLEADO} element={<HomeEmpleado/>} />
+      <Route path={CREAR_EMPLEADO} element={<CrearEmpleado/>} />
+      <Route path={EDITAR_EMPLEADO} element={<EditarEmpleado/>} />
+      <Route path={VER_EMPLEADO} element={<VerEmpleado/>} />    
+      <Route path={SUCURSALES} element={<HomeSucursal/>}/>
+      <Route path={CREAR_SUCURSAL} element={<CrearSucursal/>}/>
+      <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />
+      <Route path={VER_SUCURSAL} element={<VerSucursal/>} />
       <Route path={ERROR} element={<Home />} />
     </Routes>
     </BrowserRouter>

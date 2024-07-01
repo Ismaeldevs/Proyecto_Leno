@@ -19,6 +19,7 @@ const MainCliente = () => {
     const response = await axios.delete(`${URL_CLIENTE_ELIMINAR}${id_cliente}`)
     if(response) {
       alert("Cliente eliminado!")
+      
     }
   }
 
