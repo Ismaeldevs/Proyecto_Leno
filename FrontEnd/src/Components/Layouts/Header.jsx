@@ -30,13 +30,13 @@ const Header = (props) => {
             {isManager? <NavItem as={NavLink} to='/select' className='d-flex align-items-center fs-4 fw-bolder border-2 btn btn-danger text-black '>
               Administrar
             </NavItem> : null}
-            {} {!isEmpleado&&!isManager? <NavItem as={NavLink} to='/' className='d-flex align-items-center fs-4 fw-bolder border-2 btn btn-danger text-black '>
+             {!isEmpleado&&!isManager? <NavItem as={NavLink} to='/' className='d-flex align-items-center fs-4 fw-bolder border-2 btn btn-danger text-black '>
               Login
             </NavItem> : null}
             
-          <NavDropdown title= {<Image src={logo2} className='avatarHeader'/>} id="basic-nav-dropdown">
+            {isEmpleado||isManager? <NavDropdown title= {<Image src={logo2} className='avatarHeader'/>} id="basic-nav-dropdown">          
               <NavDropdown.Item as={NavLink} to="/" onClick={handleClick}><FontAwesomeIcon icon={faRightFromBracket} /> Cerrar Sesion</NavDropdown.Item>
-            </NavDropdown>            
+            </NavDropdown>      : null }             
           </Nav>
         </Navbar.Collapse>
       </Container>
