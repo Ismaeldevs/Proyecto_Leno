@@ -5,7 +5,6 @@ const allClients = (req, res) => {
     const query = `select * from clientes`
     conection.query(query, (err, results) => {
         if (err) throw err;
-
         res.json(results)
     })
 }
@@ -20,12 +19,10 @@ const singleClient = (req, res) => {
         res.send(results)
     })
 }
-
-
 const createClient = (req, res) => {
     const {nombreCompleto, dni, telefono, direccion, activo} = req.body
 
-    const query = `insert into clientes (nombreCompleto, dni, telefono, direccion, activo) values ('${nombreCompleto}','${dni}','${telefono}','${direccion}',${activo})`
+    const query = `insert into clientes (nombreCompleto, dni, telefono, direccion, activo) values("${nombreCompleto}","${dni}","${telefono}","${direccion}",${activo})`
     conection.query(query, (err,results) => {
         if(err) throw err
         res.send(results)
@@ -35,7 +32,7 @@ const createClient = (req, res) => {
 const editClient = (req, res) => {
     const id = req.params.id
     const {nombreCompleto, dni, telefono, direccion, activo} = req.body
-    const query = `update clientes set nombreCompleto='${nombreCompleto}',dni='${dni}',telefono='${telefono}',direccion='${direccion}',activo=${activo} where id_cliente=${id}`
+    const query = `update clientes set nombreCompleto="${nombreCompleto}",dni="${dni}",telefono="${telefono}",direccion="${direccion}",activo=${activo} where id_cliente=${id}`
     conection.query(query, (err,results) => {
         if(err) throw err
         res.send(results)

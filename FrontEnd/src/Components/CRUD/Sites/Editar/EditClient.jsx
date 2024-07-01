@@ -21,10 +21,10 @@ const EditClient = () => {
     const [client, setClient] = useState(initialState)
 
     const handleSubmit = async (e) => {
-        e.preventDefault
+        e.preventDefault()
         try {
 
-            const response = await axios.get(`${URL_CLIENTE_EDITAR}${id}`, {
+            const response = await axios.put(`${URL_CLIENTE_EDITAR}${id}`, {
                 nombreCompleto: client.nombreCompleto,
                 dni: client.dni,
                 telefono: client.telefono,
@@ -63,7 +63,7 @@ const EditClient = () => {
 
 
     <div>
-      <h1 className="p-5 text-white text-center">EDITAR CLIENTE</h1>
+      <h2 className="p-5 text-white text-center">EDITAR CLIENTE</h2>
       <br />
       <div className='d-flex justify-content-center p-5'>
         <br />

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {Button, Form, FormControl, FormGroup} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import { URL_CLIENTE_CREAR } from '../../../../Constats/endpoints'
+// import { URL_CLIENTE_CREAR } from '../../../../Constats/endpoints'
 
 const CreateClient = () => {
 
@@ -15,21 +15,25 @@ const CreateClient = () => {
         direccion: "",
         activo: 0
     }
+    const handleChange = (e) => {
+        setClient({...client, [e.target.name] : e.target.value})
+    }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
     const [client, setClient] = useState(initialState)
 
     const handleSubmit = async (e) => {
-        e.preventDefault
+        e.preventDefault()
         try {
 
-            const response = await axios.post(`${URL_CLIENTE_CREAR}`, {
+            let response = await axios.post("http://localhost:8000/clientes/create", {
                 nombreCompleto: client.nombreCompleto,
                 dni: client.dni,
                 telefono: client.telefono,
                 direccion: client.direccion,
                 activo: client.activo
             })
+
             if(response.status === 200) {
                 alert("Cliente Creado!")
                 navigate('/clientes')
@@ -40,11 +44,7 @@ const CreateClient = () => {
         
     }
 
-    const handleChange = (e) => {
-        setClient({
-            ...client, [e.target.name] : e.target.value
-        })
-    }
+    
 
   return (
     <div>
@@ -68,6 +68,8 @@ const CreateClient = () => {
             <Button type='submit'>Crear Cliente</Button>
         </Form>
 </div>
+
+
     </div>
   )
 }

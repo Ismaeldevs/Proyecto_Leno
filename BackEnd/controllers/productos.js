@@ -36,7 +36,7 @@ const {nombre,descripcion,tipo,precio,imagenProductos,disponibilidad} = req.body
 const editProductos = (req,res) =>{
     const {nombre,descripcion,tipo,precio,imagenProductos,disponibilidad} = req.body
     const id = req.params.id
-    const query = `update productos set nombre="${nombre}",descripcion="${descripcion}",tipo="${tipo}",precio=${precio},imagenProducto="${imagenProductos}",disponibilidad=${disponibilidad} where id_producto=${id}`
+    const query = `update productos set nombre="${nombre}",descripcion="${descripcion}",tipo="${tipo}",precio=${precio},imagenProductos="${imagenProductos}",disponibilidad=${disponibilidad} where id_producto=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -45,7 +45,7 @@ const editProductos = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteProductos = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM productos where id_producto= ${id}`
+const query=`DELETE FROM productos where id_producto = ${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

@@ -6,7 +6,7 @@ const {allProductos,singleProductos,createProductos,editProductos,deleteProducto
 
 //peticiones http
 router.get("/productos/",allProductos)//muestra todo 
-router.get("/producto/:id", singleProductos)//para ver uno
+router.get("/productos/:id", singleProductos)//para ver uno
 router.post("/productos/create",createProductos)
 router.put("/productos/edit/:id",editProductos)
 router.delete("/productos/delete/:id",deleteProductos)
