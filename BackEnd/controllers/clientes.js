@@ -24,13 +24,14 @@ const createClient = (req, res) => {
 
     const query = `insert into clientes (nombreCompleto, dni, telefono, direccion, activo) values("${nombreCompleto}","${dni}","${telefono}","${direccion}",${activo})`
     conection.query(query, (err,results) => {
-        if(err) throw err
+        if(err) throw err 
         res.send(results)
     })
 }
 
 const editClient = (req, res) => {
     const id = req.params.id
+    console.log(req.body);
     const {nombreCompleto, dni, telefono, direccion, activo} = req.body
     const query = `update clientes set nombreCompleto="${nombreCompleto}",dni="${dni}",telefono="${telefono}",direccion="${direccion}",activo=${activo} where id_cliente=${id}`
     conection.query(query, (err,results) => {

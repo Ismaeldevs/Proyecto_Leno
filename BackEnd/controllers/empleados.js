@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allEmpleados = (req,res) =>{
-    const query = "SELECT * FROM empleados"
+    const query = "select E.id_empleado, S.nombre as NombreSucursal, E.nombreCompleto, E.cuil, E.telefono, E.mail, E.direccion from empleados E join sucursales S on E.id_sucursal = S.id_sucursal"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -14,7 +14,7 @@ const singleEmpleado = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = "SELECT * FROM empleados where id_empleado = ${id}"
+    const query = `SELECT * FROM empleados where id_empleado=${id}`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
@@ -34,9 +34,9 @@ const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion} = req.body
 
     // funcion para editar un empleado de la tabla
 const editEmpleado = (req,res) =>{
-    const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion,rolAdmin} = req.body
+    const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion} = req.body
     const id = req.params.id
-    const query = `update empleados set id_sucursal=${id_sucursal},nombreCompleto="${nombreCompleto}",cuil="${cuil}",telefono="${telefono}",mail="${mail}",direccion="${direccion}",rolAdmin=${rolAdmin} where id_empleado=${id}`
+    const query = `update empleados set id_sucursal="${id_sucursal}", nombreCompleto="${nombreCompleto}",cuil="${cuil}",telefono="${telefono}",mail="${mail}",direccion="${direccion}" where id_empleado=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

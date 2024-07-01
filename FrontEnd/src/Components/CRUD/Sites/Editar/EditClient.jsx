@@ -14,10 +14,9 @@ const EditClient = () => {
         dni: "",
         telefono: "",
         direccion: "",
-        activo: 0
+        activo: null
     }
 
-    // const [nombreCompleto, setNombreCompleto] = useState("")
     const [client, setClient] = useState(initialState)
 
     const handleSubmit = async (e) => {
@@ -43,7 +42,7 @@ const EditClient = () => {
 
     const getData = async () => {
         const response = await axios.get(`${URL_CLIENTES}/${id}`)
-        console.log(response.data)
+       console.log(response.data)
         setClient(response.data[0])
         
         

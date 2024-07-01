@@ -8,7 +8,6 @@ const clientes = require("./routes/clientes")
 const productos = require("./routes/productos")
 const ventas = require("./routes/ventas")
 const detallePedidos = require("./routes/detallePedidos")
-
 const cors = require('cors');
 
 const app = express()
@@ -16,7 +15,6 @@ const port = 8000;
 app.use(cors())
 app.use(express.json())
 app.use("/", usuarios,empleados,ventas,productos,clientes,detallePedidos,stocks,sucursales)
-
 
 
 
