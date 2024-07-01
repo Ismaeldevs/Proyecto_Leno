@@ -29,7 +29,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h1 className="text-center text-white p-5">MODIFICA EL STOCK</h1>
+      <h2 className="text-center text-white p-5">MODIFICA EL STOCK</h2>
 
 
       

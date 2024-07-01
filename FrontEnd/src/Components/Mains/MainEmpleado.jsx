@@ -29,7 +29,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h1 className="text-center text-white p-5">MODIFICA TUS EMPLEADOS</h1>
+      <h2 className="text-center text-white p-5">MODIFICA TUS EMPLEADOS</h2>
       <Link to={`/empleados/create`} className='btn text-white bg-success m-5'>CREAR EMPLEADO</Link>
       <Table striped bordered hover variant="dark">
       <thead>

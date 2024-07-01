@@ -54,7 +54,7 @@ const Footer = () =>{
               <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
                 <h6 className="texto text-uppercase fw-bold mb-4 ">
                   <MDBIcon color="secondary" icon="gem" className="me-3" />
-                  Company name
+                  LENO
                 </h6>
                 <p className="texto">
                   Leno comenzó como una iniciativa para ofrecer hamburguesas
@@ -99,8 +99,8 @@ const Footer = () =>{
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="texto">
-                    Ajustes
+                  <a href="/nosotros" className="texto">
+                    Sobre Nosotros
                   </a>
                 </p>
                 <p>

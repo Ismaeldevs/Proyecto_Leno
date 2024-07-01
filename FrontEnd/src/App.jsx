@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
@@ -22,13 +22,12 @@ import CrearSucursal from './Pages/Sucursal/CrearSucursal'
 import HomeSucursal from './Pages/Sucursal/HomeSucursal'
 import VerSucursal from './Pages/Sucursal/VerSucursal'
 import EditarSucursal from './Pages/Sucursal/EditarSucursal'
+import Nosotros from './Pages/Nosotros'
 import HomePedido from './Pages/Pedido/HomePedido'
 import CrearPedido from './Pages/Pedido/CrearPedido'
 import EditarPedido from './Pages/Pedido/EditarPedido'
 import VerPedido from './Pages/Pedido/VerPedido'
 import './App.css'
-
-
 
 function App() {
   const [isManager, setIsManager] = useState(false);
@@ -68,6 +67,7 @@ function App() {
       <Route path={EDITAR_PEDIDO} element={<EditarPedido/>} />
       <Route path={VER_PEDIDO} element={<VerPedido/>} />
       <Route path={ERROR} element={<Home />} />
+      <Route path={NOSOTROS} element={<Nosotros/>} />
     </Routes>
     </BrowserRouter>
     <Footer/>

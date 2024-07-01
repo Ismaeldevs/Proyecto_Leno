@@ -8,7 +8,9 @@ export const STOCK = '/stocks'
 export const SUCURSALES =  '/sucursales'
 
 export const EMPLEADO = "/empleados"
+export const NOSOTROS = "/nosotros"
 export const PEDIDO = "/pedidos"
+
 
 
 // CRUD PAGES
