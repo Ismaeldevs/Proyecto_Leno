@@ -8,7 +8,7 @@ const MainLogin = ({onRolesUpdate}) => {
   const [usuario, setUsuario] = useState([]);
   const [datos,setDatos] = useState("")
 
-  let manager = true
+  let manager = false
   let empleado = false
 
 
