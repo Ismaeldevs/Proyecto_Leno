@@ -59,7 +59,7 @@ const MainSelect = () => {
     <div>
       <div className="title-container">
         <div className="title">
-          <h4>SELECCIONA UNA CATEGORIA</h4>
+          <h4 className="h4">SELECCIONA UNA CATEGORIA</h4>
         </div>
       </div>
       <div>
