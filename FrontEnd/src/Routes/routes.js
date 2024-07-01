@@ -2,15 +2,15 @@ export const HOME = '/home';
 export const LOGIN = '/'
 export const SELECT = '/select'
 export const CLIENTES = '/clientes'
+export const ERROR = '*';
 
 export const STOCK = '/stocks'
 export const SUCURSALES =  '/sucursales'
-export const ERROR = '*';
 
 export const EMPLEADO = "/empleados"
 export const NOSOTROS = "/nosotros"
 export const PEDIDO = "/pedidos"
-export const ERROR = '*';
+
 
 
 // CRUD PAGES
