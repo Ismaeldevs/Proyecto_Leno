@@ -1,4 +1,4 @@
-import {LOGIN, SELECT, ERROR, CLIENTES,PRODUCTOS, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE,VER_PRODUCTO, EDITAR_PRODUCTO} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES,PRODUCTOS, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE,VER_PRODUCTO, CREAR_PRODUCTO,EDITAR_PRODUCTO} from './Routes/routes'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
@@ -8,6 +8,7 @@ import EditarCliente from './Pages/Cliente/EditarCliente'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import CrearCliente from './Pages/Cliente/CrearCliente'
+import CrearProducto from './Pages/Producto/CrearProducto'
 import VerCliente from './Pages/Cliente/VerCliente'
 import VerProducto from './Pages/Producto/VerProducto'
 import Header from './Components/Layouts/Header'
@@ -28,6 +29,7 @@ function App() {
       <Route path={CLIENTES} element={<HomeCliente />} />
       <Route path={PRODUCTOS} element={<HomeProducto/>} />
       <Route path={CREAR_CLIENTE} element={<CrearCliente />} />
+      <Route path={CREAR_PRODUCTO} element={<CrearProducto />} />
       <Route path={EDITAR_CLIENTE} element={<EditarCliente />} />
       <Route path={EDITAR_PRODUCTO} element={<EditarProducto />} />
       <Route path={VER_CLIENTE} element={<VerCliente />} />
