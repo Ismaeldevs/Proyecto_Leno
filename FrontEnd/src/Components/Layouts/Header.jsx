@@ -9,7 +9,7 @@ const Header = () => {
     return (
 <Navbar expand="lg" className="navbar">
       <Container className='text-center'>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Image className='logo' src={logo}></Image>
         </Navbar.Brand>
 
