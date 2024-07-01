@@ -1,10 +1,10 @@
 import MainLogin from '../Components/Mains/MainLogin'
 
-const Login = () => {
+const Login = ({onRolesUpdate}) => {
 
   return (
     <>
-     <MainLogin /> 
+     <MainLogin onRolesUpdate={onRolesUpdate}/> 
     </>
   )
 }

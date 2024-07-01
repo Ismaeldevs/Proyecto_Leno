@@ -47,7 +47,7 @@ const ViewStock = () => {
         </Card.Text>
       
       </Card.Body>
-      <Link to={'/clientes'} className="btn btn-info">Volver al inicio</Link>
+      <Link to={'/stocks'} className="btn btn-info">Volver al inicio</Link>
     </Card>
     
     </div>

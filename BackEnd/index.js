@@ -8,7 +8,6 @@ const clientes = require("./routes/clientes")
 const productos = require("./routes/productos")
 const ventas = require("./routes/ventas")
 const detallePedidos = require("./routes/detallePedidos")
-
 const cors = require('cors');
 
 const app = express()
