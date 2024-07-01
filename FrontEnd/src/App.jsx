@@ -1,16 +1,18 @@
-
 import { useState } from 'react'
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
 import HomeCliente from './Pages/Cliente/HomeCliente'
+import HomeProducto from './Pages/Producto/HomeProducto'
 import EditarCliente from './Pages/Cliente/EditarCliente'
 import CrearCliente from './Pages/Cliente/CrearCliente'
 import VerCliente from './Pages/Cliente/VerCliente'
+import VerProducto from './Pages/Producto/VerProducto'
 import Header from './Components/Layouts/Header'
 import Footer from './Components/Layouts/Footer'
+import EditarProducto from './Pages/Producto/EditarProducto'
 import HomeStock from './Pages/Stock/HomeStock'
 import CrearStock from './Pages/Stock/CrearStock'
 import EditarStock from './Pages/Stock/EditarStock'
@@ -35,6 +37,7 @@ import VerPedido from './Pages/Pedido/VerPedido'
 import './App.css'
 
 
+
 function App() {
   const [isManager, setIsManager] = useState(false);
   const [isEmpleado, setIsEmpleado] = useState(false);
@@ -52,9 +55,12 @@ function App() {
       <Route path={LOGIN} element={<Login onRolesUpdate={handleUserRoles}/>} />
       <Route path={SELECT} element={<Select />} />
       <Route path={CLIENTES} element={<HomeCliente />} />
+      <Route path={PRODUCTOS} element={<HomeProducto/>} />
       <Route path={CREAR_CLIENTE} element={<CrearCliente />} />
       <Route path={EDITAR_CLIENTE} element={<EditarCliente />} />
+      <Route path={EDITAR_PRODUCTO} element={<EditarProducto />} />
       <Route path={VER_CLIENTE} element={<VerCliente />} />
+      <Route path={VER_PRODUCTO} element={<VerProducto />} />        
       <Route path={STOCK} element={<HomeStock />} />
       <Route path={VER_STOCK} element={<VerStock />} /> 
       <Route path={EDITAR_STOCK} element={<EditarStock />} />

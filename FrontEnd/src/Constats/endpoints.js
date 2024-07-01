@@ -3,7 +3,10 @@ export const URL_CLIENTE_CREAR = 'http://localhost:8000/clientes/create/'
 export const URL_CLIENTE_EDITAR = 'http://localhost:8000/clientes/edit/'
 export const URL_CLIENTE_ELIMINAR = 'http://localhost:8000/clientes/delete/'
 
-
+export const URL_PRODUCTO_CREAR = 'http://localhost:8000/productos/create/'
+export const URL_PRODUCTO_EDITAR = 'http://localhost:8000/productos/edit/'
+export const URL_PRODUCTOS = 'http://localhost:8000/productos'
+export const URL_PRODUCTO_ELIMINAR = 'http://localhost:8000/productos/delete/'
 
 
 export const URL_STOCK = 'http://localhost:8000/stocks'
@@ -31,6 +34,5 @@ export const URL_PEDIDO = 'http://localhost:8000/pedidos'
 export const URL_PEDIDO_CREAR = 'http://localhost:8000/pedidos/create/'
 export const URL_PEDIDO_EDITAR = 'http://localhost:8000/pedidos/edit/'
 export const URL_PEDIDO_ELIMINAR = 'http://localhost:8000/pedidos/delete/'
-
 
 
