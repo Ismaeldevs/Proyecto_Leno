@@ -22,19 +22,25 @@ import CrearSucursal from './Pages/Sucursal/CrearSucursal'
 import HomeSucursal from './Pages/Sucursal/HomeSucursal'
 import VerSucursal from './Pages/Sucursal/VerSucursal'
 import EditarSucursal from './Pages/Sucursal/EditarSucursal'
-
+import { useState } from 'react'
 
 
 
 function App() {
+  const [isManager, setIsManager] = useState(false);
+  const [isEmpleado, setIsEmpleado] = useState(false);
 
+  const handleUserRoles = (manager, empleado) => {
+    setIsManager(manager);
+    setIsEmpleado(empleado);
+  };
   return (
     <>    
-    <Header/>
     <BrowserRouter>
+    <Header isManager={isManager} isEmpleado={isEmpleado} setIsEmpleado={setIsEmpleado} setIsManager={setIsManager}/>
     <Routes>
       <Route path={HOME} element={<Home />} />
-      <Route path={LOGIN} element={<Login/>} />
+      <Route path={LOGIN} element={<Login onRolesUpdate={handleUserRoles}/>} />
       <Route path={SELECT} element={<Select />} />
       <Route path={CLIENTES} element={<HomeCliente />} />
       <Route path={CREAR_CLIENTE} element={<CrearCliente />} />
