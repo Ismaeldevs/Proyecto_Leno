@@ -44,6 +44,7 @@ export const VER_STOCK = '/stocks/view/:id'
 export const VER_USUARIO = '/usuarios/view/:id'
 export const VER_SUCURSAL= '/sucursales/view/:id'
 export const VER_PEDIDO = "pedidos/view/:id"
+export const VER_EMPLEADO = "empleados/view/:id"
 
 export const TICKET = '/ticket/:id'
 
