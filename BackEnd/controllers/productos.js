@@ -26,7 +26,7 @@ const singleProductos = (req,res) => {
 const createProductos = (req,res) =>{
 const {nombre,descripcion,tipo,precio,imagenProductos,disponibilidad} = req.body
 
-    const query = `INSERT INTO empleados (nombre,descripcion,tipo,precio,imagenProductos,disponibilidad) values ("${nombre}","${descripcion}","${tipo}",${precio},"${imagenProductos}",${disponibilidad})`
+    const query = `INSERT INTO productos (nombre,descripcion,tipo,precio,imagenProductos,disponibilidad) values ("${nombre}","${descripcion}","${tipo}",${precio},"${imagenProductos}",${disponibilidad})`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
