@@ -1,4 +1,4 @@
-import { Col, Card, CardFooter, CardImg } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../CSS/Cards/SelectCards.css";
 
