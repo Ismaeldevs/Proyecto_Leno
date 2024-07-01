@@ -27,7 +27,7 @@ const MainSucursal = () => {
   
     return (
       <div>
-        <h1 className="text-center text-white p-5">MODIFICA TUS SUCURSALES</h1>
+        <h2 className="text-center text-white p-5">MODIFICA TUS SUCURSALES</h2>
         <Link to={`/sucursales/create`} className='btn text-white bg-success m-5'>CREAR SUCURSAL</Link>
         <Table striped bordered hover variant="dark">
         <thead>

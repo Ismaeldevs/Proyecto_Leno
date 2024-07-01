@@ -1,4 +1,4 @@
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, NOSOTROS} from './Routes/routes'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Select from './Pages/Select'
@@ -23,6 +23,7 @@ import HomeSucursal from './Pages/Sucursal/HomeSucursal'
 import VerSucursal from './Pages/Sucursal/VerSucursal'
 import EditarSucursal from './Pages/Sucursal/EditarSucursal'
 import { useState } from 'react'
+import Nosotros from './Pages/Nosotros'
 
 
 
@@ -36,6 +37,8 @@ function App() {
   };
   return (
     <>    
+    /* This block of code in the `App` component is setting up the routing for different pages in a
+    React application using React Router. Here's a breakdown of what it's doing: */
     <BrowserRouter>
     <Header isManager={isManager} isEmpleado={isEmpleado} setIsEmpleado={setIsEmpleado} setIsManager={setIsManager}/>
     <Routes>
@@ -59,6 +62,7 @@ function App() {
       <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />
       <Route path={VER_SUCURSAL} element={<VerSucursal/>} />
       <Route path={ERROR} element={<Home />} />
+      <Route path={NOSOTROS} element={<Nosotros/>} />
     </Routes>
     </BrowserRouter>
     <Footer/>

@@ -6,6 +6,7 @@ export const STOCK = '/stocks'
 export const SUCURSALES =  '/sucursales'
 export const ERROR = '*';
 export const EMPLEADO = "/empleados"
+export const NOSOTROS = "/nosotros"
 
 // CRUD PAGES
 
