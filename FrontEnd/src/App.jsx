@@ -1,5 +1,6 @@
+
 import { useState } from 'react'
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
@@ -14,6 +15,10 @@ import HomeStock from './Pages/Stock/HomeStock'
 import CrearStock from './Pages/Stock/CrearStock'
 import EditarStock from './Pages/Stock/EditarStock'
 import VerStock from './Pages/Stock/VerStock'
+import HomeUsuario from './Pages/Usuarios/HomeUsuario'
+import VerUsuario from './Pages/Usuarios/VerUsuario'
+import EditarUsuario from './Pages/Usuarios/EditarUsuario'
+import CrearUsuario from './Pages/Usuarios/CrearUsuario'
 import HomeEmpleado from "./Pages/Empleado/HomeEmpleado"
 import CrearEmpleado from "./Pages/Empleado/CrearEmpleado"
 import EditarEmpleado from './Pages/Empleado/EditarEmpleado'
@@ -28,6 +33,7 @@ import CrearPedido from './Pages/Pedido/CrearPedido'
 import EditarPedido from './Pages/Pedido/EditarPedido'
 import VerPedido from './Pages/Pedido/VerPedido'
 import './App.css'
+
 
 function App() {
   const [isManager, setIsManager] = useState(false);
@@ -53,6 +59,10 @@ function App() {
       <Route path={VER_STOCK} element={<VerStock />} /> 
       <Route path={EDITAR_STOCK} element={<EditarStock />} />
       <Route path={CREAR_STOCK} element={<CrearStock />} /> 
+      <Route path={USUARIO} element={<HomeUsuario/>} />
+       <Route path={VER_USUARIO} element={<VerUsuario />} /> 
+      <Route path={EDITAR_USUARIO} element={<EditarUsuario />} />
+      <Route path={CREAR_USUARIO} element={<CrearUsuario />} /> 
       <Route path={EMPLEADO} element={<HomeEmpleado/>} />
       <Route path={CREAR_EMPLEADO} element={<CrearEmpleado/>} />
       <Route path={EDITAR_EMPLEADO} element={<EditarEmpleado/>} />

@@ -16,6 +16,12 @@ export const URL_EMPLEADO_CREAR = 'http://localhost:8000/empleados/create/'
 export const URL_EMPLEADO_EDITAR = 'http://localhost:8000/empleados/edit/'
 export const URL_EMPLEADO_ELIMINAR = 'http://localhost:8000/empleados/delete/'
 
+
+export const URL_USUARIO = 'http://localhost:8000/usuarios'
+export const URL_USUARIO_CREAR = 'http://localhost:8000/usuarios/create/'
+export const URL_USUARIO_EDITAR = 'http://localhost:8000/usuarios/edit/'
+export const URL_USUARIO_ELIMINAR = 'http://localhost:8000/usuarios/delete/'
+
 export const URL_SUCURSALES = 'http://localhost:8000/sucursales'
 export const URL_SUCURSAL_CREAR = 'http://localhost:8000/sucursales/create/'
 export const URL_SUCURSAL_EDITAR = 'http://localhost:8000/sucursales/edit/'
@@ -25,5 +31,6 @@ export const URL_PEDIDO = 'http://localhost:8000/pedidos'
 export const URL_PEDIDO_CREAR = 'http://localhost:8000/pedidos/create/'
 export const URL_PEDIDO_EDITAR = 'http://localhost:8000/pedidos/edit/'
 export const URL_PEDIDO_ELIMINAR = 'http://localhost:8000/pedidos/delete/'
+
 
 
