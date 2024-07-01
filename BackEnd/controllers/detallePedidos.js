@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allDetallePedido = (req,res) =>{
-    const query = "SELECT * FROM detallePedidos"
+    const query = "select id_detallePedido, P.nombre as NombreProducto, C.nombreCompleto as NombreCliente, S.nombre as NombreSucursal, E.nombreCompleto as NombreEmpleado, D.fecha from detallePedidos D join productos P on D.id_producto = P.id_producto join clientes C on C.id_cliente = D.id_cliente join sucursales S on S.id_sucursal = D.id_sucursal join empleados E on E.id_empleado = D.id_empleado;"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -14,7 +14,8 @@ const singleDetallePedido = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = "SELECT * FROM detallePedidos where id_detallePedido = ${id}"
+    const query = `select id_detallePedido, P.nombre as NombreProducto, C.nombreCompleto as NombreCliente, S.nombre as NombreSucursal, E.nombreCompleto as NombreEmpleado, D.fecha from detallePedidos D join productos P on D.id_producto = P.id_producto join clientes C on C.id_cliente = D.id_cliente join sucursales S on S.id_sucursal = D.id_sucursal join empleados E on E.id_empleado = D.id_empleado;
+`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
@@ -26,7 +27,7 @@ const singleDetallePedido = (req,res) => {
 const createDetallePedido = (req,res) =>{
 const {id_producto,id_cliente,id_sucursal,id_empleado,fecha} = req.body
 
-    const query = `INSERT INTO detallePedidos (id_producto,id_cliente,id_sucursal,id_empleado,fecha) values (${id_producto},${id_cliente},${id_cliente},${id_sucursal},${id_empleado},${fecha})`
+    const query = `INSERT INTO detallePedidos (id_producto,id_cliente,id_sucursal,id_empleado,fecha) values (${id_producto},${id_cliente},${id_sucursal},${id_empleado},"${fecha}")`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -36,7 +37,7 @@ const {id_producto,id_cliente,id_sucursal,id_empleado,fecha} = req.body
 const editDetallePedido = (req,res) =>{
     const {id_producto,id_cliente,id_sucursal,id_empleado,fecha} = req.body
     const id = req.params.id
-    const query = `update detallePedidos set id_producto=${id_producto},id_cliente=${id_cliente},id_cliente=${id_cliente},id_sucursal=${id_sucursal},id_empleado=${id_empleado},fecha=${fecha} where id_detallePedido=${id}`
+    const query = `update detallePedidos set id_producto=${id_producto},id_cliente=${id_cliente},id_sucursal=${id_sucursal},id_empleado=${id_empleado},fecha="${fecha} where id_detallePedido=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
