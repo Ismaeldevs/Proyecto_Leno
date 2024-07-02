@@ -14,13 +14,19 @@ const MainCliente = () => {
   setData(response.data)
   }
 
-  const handleChange = async (id_cliente) => {
+  const handleChange = async (id) => {
 
-    const response = await axios.delete(`${URL_CLIENTE_ELIMINAR}${id_cliente}`)
-    if(response) {
-      alert("Cliente eliminado!")
-      
+    try {
+
+      const response = await axios.put(`${URL_CLIENTE_ELIMINAR}${id}`)
+      if(response) {
+        alert("Cliente eliminado!")
+        
+      }
+    } catch (error) {
+      console.log(error)
     }
+
   }
 
 useEffect(() => {
@@ -51,7 +57,7 @@ useEffect(() => {
                 <td>{client.dniCliente}</td>
                 <td>{client.telefonoCliente}</td>
                 <td>{client.direccionCliente}</td>
-                <td>{client.activo}</td>
+                <td>{client.activoCliente == 1 ? "Si":"No"}</td>
                 <td>
                   {<Link to={`/clientes/view/${client.id_Cliente}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
                   {<Link to={`/clientes/edit/${client.id_Cliente}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}

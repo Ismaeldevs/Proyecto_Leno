@@ -9,6 +9,6 @@ router.get("/empleados/",allEmpleados)//muestra todo
 router.get("/empleados/:id", singleEmpleado)//para ver uno
 router.post("/empleados/create",createEmpleado)
 router.put("/empleados/edit/:id",editEmpleado)
-router.delete("/empleados/delete/:id",deleteEmpleado)
+router.put("/empleados/delete/:id",deleteEmpleado)
 
 module.exports = router

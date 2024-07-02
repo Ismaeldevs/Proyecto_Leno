@@ -14,11 +14,17 @@ const MainStock = () => {
    setData(response.data)
   }
 
-  const handleChange = async (id_stock) => {
+  const handleChange = async (id) => {
 
-    const response = await axios.delete(`${URL_STOCK_ELIMINAR}${id_stock}`)
-    if(response) {
-      alert("Stock Eliminado!")
+    try {
+
+      const response = await axios.put(`${URL_STOCK_ELIMINAR}${id}`)
+      if(response) {
+        alert("Stock eliminado!")
+        
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 

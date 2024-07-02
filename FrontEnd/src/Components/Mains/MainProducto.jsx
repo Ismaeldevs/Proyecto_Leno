@@ -16,11 +16,17 @@ const MainProducto = () => {
     setData(response.data)
     }
   
-    const handleChange= async (id_producto) => {
-     let response = await axios.delete(`${URL_PRODUCTO_ELIMINAR}${id_producto}`)
-      if(response) {
-        alert("Producto eliminado!")
-      } 
+    const handleChange= async (id) => {
+      try {
+
+        const response = await axios.put(`${URL_PRODUCTO_ELIMINAR}${id}`)
+        if(response) {
+          alert("Producto eliminado!")
+          
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   
  useEffect(()=>{getData()},[])

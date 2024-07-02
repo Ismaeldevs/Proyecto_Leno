@@ -14,7 +14,7 @@ const ViewClient = () => {
         dniCliente: "",
         telefonoCliente: "",
         direccionCliente: "",
-        activo: null
+        activoCliente: null
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -48,7 +48,7 @@ const ViewClient = () => {
         DIRECCION: {client.direccionCliente}
         </Card.Text>
         <Card.Text>
-         ACTIVO: {client.activo ? "Si" : "No"}
+         ACTIVO: {client.activoCliente ? "Si" : "No"}
         </Card.Text>
       </Card.Body>
       <Link to={'/clientes'} className="btn btn-info">Volver al inicio</Link>

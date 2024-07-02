@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos stock de la tabla stocks
 const allStock = (req,res) =>{
-    const query = "select id_Stock, P.nombreProducto as NombreProducto, S.cantidadStock,S.fechaRegistroStock, SU.nombreSucursal as nombreSucursal from Productos P join Stocks S on P.id_Producto = S.id_Producto join Sucursales SU on SU.id_Sucursal = S.id_Sucursal;"
+    const query = "select id_Stock, P.nombreProducto as NombreProducto, S.cantidadStock,S.fechaRegistroStock, SU.nombreSucursal as nombreSucursal from Productos P join Stocks S on P.id_Producto = S.id_Producto join Sucursales SU on SU.id_Sucursal = S.id_Sucursal where activoStock=1;"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -28,7 +28,7 @@ const singleStock = (req,res) => {
 // funcion para crear un nuevo stock
 const createStock = (req,res) =>{
 const {id_Producto,id_Sucursal,fechaRegistroStock,cantidadStock, descripcionStock} = req.body
-    const query = `INSERT INTO Stocks (id_Producto,id_Sucursal,fechaRegistroStock,cantidadStock,descripcionStock) values (${id_Producto},${id_Sucursal},'${fechaRegistroStock}',${cantidadStock}, "${descripcionStock}")`
+    const query = `INSERT INTO Stocks (id_Producto,id_Sucursal,fechaRegistroStock,cantidadStock,descripcionStock,activoStock) values (${id_Producto},${id_Sucursal},'${fechaRegistroStock}',${cantidadStock}, "${descripcionStock}", 1)`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -39,7 +39,7 @@ const {id_Producto,id_Sucursal,fechaRegistroStock,cantidadStock, descripcionStoc
 const editStock = (req,res) =>{
     const {id_Producto,id_Sucursal,fechaRegistroStock,cantidadStock} = req.body
     const id = req.params.id
-    const query = `update Stocks set id_Producto=${id_producto}, id_Sucursal=${id_Sucursal}, cantidadStock=${cantidadStock},fechaRegistroStock="${fechaRegistroStock}" where id_Stock=${id}`
+    const query = `update Stocks set id_Producto=${id_producto}, id_Sucursal=${id_Sucursal}, cantidadStock=${cantidadStock},fechaRegistroStock="${fechaRegistroStock}",activoStock=1 where id_Stock=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -48,7 +48,7 @@ const editStock = (req,res) =>{
 // funcion para eleminar un stock
 const deleteStock = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM Stocks where id_Stock = ${id}`
+const query=`update Stocks set activoStock=0 where id_Stock=${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

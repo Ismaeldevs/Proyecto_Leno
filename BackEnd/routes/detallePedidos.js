@@ -9,6 +9,6 @@ router.get("/pedidos/",allDetallePedido)//muestra todo
 router.get("/pedidos/:id", singleDetallePedido)//para ver uno
 router.post("/pedidos/create",createDetallePedido)
 router.put("/pedidos/edit/:id",editDetallePedido)
-router.delete("/pedidos/delete/:id",deleteDetallePedido)
+router.put("/pedidos/delete/:id",deleteDetallePedido)
 
 module.exports = router

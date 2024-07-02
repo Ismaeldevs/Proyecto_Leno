@@ -15,7 +15,6 @@ const EditClient = () => {
         dniCliente: "",
         telefonoCliente: "",
         direccionCliente: "",
-        activo: null
     }
 
     const [client, setClient] = useState(initialState)
@@ -30,7 +29,6 @@ const EditClient = () => {
                 dniCliente: client.dniCliente,
                 telefonoCliente: client.telefonoCliente,
                 direccionCliente: client.direccionCliente,
-                activo: client.activo == "Si" ? 1 : 0
             })
             if(response.status === 200) {
                 alert("Contacto Actualizado!")
@@ -79,8 +77,6 @@ const EditClient = () => {
                 <FormControl type='text' placeholder='Telefono' value={client.telefonoCliente} onChange={handleChange}  name="telefonoCliente" />
                 <br />
                 <FormControl type='text' placeholder='Direccion' value={client.direccionCliente} onChange={handleChange} name="direccionCliente" />
-                <br />
-                <FormControl type='text' placeholder='Activo ó No' value={client.activo == 1 ? "Si":"No"} onChange={handleChange} name="activo" />
                 <br />
             </FormGroup>
             <Button type='submit'>Actualizar Cliente</Button>
