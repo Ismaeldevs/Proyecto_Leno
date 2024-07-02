@@ -46,17 +46,17 @@ useEffect(() => {
       </thead>
       <tbody>
       {data.map((pedido) =>
-                <tr key={pedido.id_detallePedido}>
-                <td>{pedido.id_detallePedido}</td>
+                <tr key={pedido.id_DetallePedido}>
+                <td>{pedido.id_DetallePedido}</td>
                 <td>{pedido.NombreProducto}</td>
-                <td>{pedido.NombreCliente}</td>
+                <td>{pedido.NombreCompletoCliente}</td>
                 <td>{pedido.NombreSucursal}</td>
-                <td>{pedido.NombreEmpleado}</td>
-                <td>{pedido.fecha}</td>
+                <td>{pedido.NombreCompletoEmpleado}</td>
+                <td>{pedido.fechaDetallePedido}</td>
                 <td>
-                  {<Link to={`/pedidos/view/${pedido.id_detallePedido}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
-                  {<Link to={`/pedidos/edit/${pedido.id_detallePedido}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
-                  {<button onClick={() => handleChange(pedido.id_detallePedido)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                  {<Link to={`/pedidos/view/${pedido.id_DetallePedido}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
+                  {<Link to={`/pedidos/edit/${pedido.id_DetallePedido}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
+                  {<button onClick={() => handleChange(pedido.id_DetallePedido)}><i className="text-danger fa-solid fa-trash"></i></button>}
                 </td>
               </tr>
       )}

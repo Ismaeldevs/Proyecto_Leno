@@ -35,8 +35,8 @@ useEffect(() => {
       <thead>
         <tr>
           <th>#</th>
-          <th>SUCURSAL</th>
           <th>NOMBRE COMPLETO</th>
+          <th>SUCURSAL</th>
           <th>CUIL</th>
           <th>TELEFONO</th>
           <th>MAIL</th>
@@ -47,18 +47,18 @@ useEffect(() => {
       </thead>
       <tbody>
       {data.map((empleado) =>
-                <tr key={empleado.id_empleado}>
-                <td>{empleado.id_empleado}</td>
+                <tr key={empleado.id_Empleado}>
+                <td>{empleado.id_Empleado}</td>
+                <td>{empleado.nombreEmpleado} {empleado.apellidoEmpleado}</td>
                 <td>{empleado.NombreSucursal}</td>
-                <td>{empleado.nombreCompleto}</td>
-                <td>{empleado.cuil}</td>
-                <td>{empleado.telefono}</td>
-                <td>{empleado.mail}</td>
-                <td>{empleado.direccion}</td>
+                <td>{empleado.cuilEmpleado}</td>
+                <td>{empleado.telefonoEmpleado}</td>
+                <td>{empleado.mailEmpleado}</td>
+                <td>{empleado.direccionEmpleado}</td>
                 <td>
-                  {<Link to={`/empleados/view/${empleado.id_empleado}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
-                  {<Link to={`/empleados/edit/${empleado.id_empleado}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
-                  {<button onClick={() => handleChange(empleado.id_empleado)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                  {<Link to={`/empleados/view/${empleado.id_Empleado}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
+                  {<Link to={`/empleados/edit/${empleado.id_Empleado}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
+                  {<button onClick={() => handleChange(empleado.id_Empleado)}><i className="text-danger fa-solid fa-trash"></i></button>}
                 </td>
               </tr>
       )}

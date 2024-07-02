@@ -10,11 +10,11 @@ const EditPedido = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_producto: "",
-        id_cliente: "",
-        id_sucursal: "",
-        id_empleado: "",
-        fecha: ""
+        id_Producto: "",
+        id_Cliente: "",
+        id_Sucursal: "",
+        id_Empleado: "",
+        fechaDetallePedido: ""
     }
 
     const [pedido, setPedido] = useState(initialState)
@@ -23,11 +23,11 @@ const EditPedido = () => {
         e.preventDefault()
         try {
             let response = await axios.put(`${URL_PEDIDO_EDITAR}${id}`, {
-                id_producto: pedido.id_producto,
-                id_cliente: pedido.id_cliente,
-                id_sucursal: pedido.id_sucursal,
-                id_empleado: pedido.id_empleado,
-                fecha: pedido.fecha
+                id_Producto: pedido.id_Producto,
+                id_Cliente: pedido.id_Cliente,
+                id_Sucursal: pedido.id_Sucursal,
+                id_Empleado: pedido.id_Empleado,
+                fechaDetallePedido: pedido.fechaDetallePedido
             })
             if (response.status === 200) {
                 alert("Pedido Actualizado!")
@@ -67,15 +67,15 @@ const EditPedido = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <FormControl type='number' placeholder='Numero Producto' value={pedido.id_producto} onChange={handleChange} name="id_producto" />
+                        <FormControl type='text' placeholder='Numero Producto' value={pedido.NombreProducto} onChange={handleChange} name="id_Producto" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Cliente' value={pedido.id_cliente} onChange={handleChange} name="id_cliente" />
+                        <FormControl type='text' placeholder='Numero Cliente' value={pedido.NombreCompletoCliente} onChange={handleChange} name="id_Cliente" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Sucursal' value={pedido.id_sucursal} onChange={handleChange} name="id_sucursal" />
+                        <FormControl type='text' placeholder='Numero Sucursal' value={pedido.NombreSucursal} onChange={handleChange} name="id_Sucursal" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Empleado' value={pedido.id_empleado} onChange={handleChange} name="id_empleado" />
+                        <FormControl type='text' placeholder='Numero Empleado' value={pedido.NombreCompletoEmpleado} onChange={handleChange} name="id_Empleado" />
                         <br />
-                        <FormControl type='text' placeholder='Fecha' value={pedido.fecha} onChange={handleChange} name="fecha" />
+                        <FormControl type='text' placeholder='Fecha' value={pedido.fechaDetallePedido} onChange={handleChange} name="fechaDetallePedido" />
                         <br />
                       
                     </FormGroup>

@@ -9,11 +9,12 @@ const ViewClient = () => {
     const {id} = useParams()
 
     const initialState = {
-        nombreCompleto: "",
-        dni: "",
-        telefono: "",
-        direccion: "",
-        activo: 0
+        nombreCliente: "",
+        apellidoCliente: "",
+        dniCliente: "",
+        telefonoCliente: "",
+        direccionCliente: "",
+        activo: null
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -36,15 +37,15 @@ const ViewClient = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-light' style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{client.nombreCompleto}</Card.Title>
+        <Card.Title>{client.nombreCliente} {client.apellidoCliente}</Card.Title>
         <Card.Text>
-          DNI: {client.dni}
+          DNI: {client.dniCliente}
         </Card.Text>
         <Card.Text>
-          TEL: {client.telefono}
+          TEL: {client.telefonoCliente}
         </Card.Text>
         <Card.Text>
-        DIRECCION: {client.direccion}
+        DIRECCION: {client.direccionCliente}
         </Card.Text>
         <Card.Text>
          ACTIVO: {client.activo ? "Si" : "No"}

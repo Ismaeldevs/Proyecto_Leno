@@ -75,9 +75,9 @@ function App() {
       <Route path={EDITAR_USUARIO} element={<EditarUsuario />} />
       <Route path={CREAR_USUARIO} element={<CrearUsuario />} /> 
       <Route path={EMPLEADO} element={<HomeEmpleado/>} />
+      <Route path={VER_EMPLEADO} element={<VerEmpleado />} />
       <Route path={CREAR_EMPLEADO} element={<CrearEmpleado/>} />
       <Route path={EDITAR_EMPLEADO} element={<EditarEmpleado/>} />
-      <Route path={VER_EMPLEADO} element={<VerEmpleado/>} />    
       <Route path={SUCURSALES} element={<HomeSucursal/>}/>
       <Route path={CREAR_SUCURSAL} element={<CrearSucursal/>}/>
       <Route path={EDITAR_SUCURSAL} element={<EditarSucursal/>} />

@@ -10,12 +10,12 @@ const EditProducto = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombre: "",
-        descripcion: "",
-        tipo: "",
-        precio: "",
-        imagenProductos:"",
-        // disponibilidad: 0
+        nombreProducto: "",
+        descripcionProducto: "",
+        tipoProducto: "",
+        precioProducto: "",
+        imagenProducto:"",
+        disponibilidadProducto: 0
     }
 
 
@@ -26,12 +26,12 @@ const EditProducto = () => {
         try {
 
             let response = await axios.put(`${URL_PRODUCTO_EDITAR}${id}`, {
-                nombre: productos.nombre,
-                descripcion: productos.descripcion,
-                tipo: productos.tipo,
-                precio: productos.precio,
-                imagenProductos:productos.imagenProductos,
-                disponibilidad: productos.disponibilidad
+                nombreProducto: productos.nombreProducto,
+                descripcionProducto: productos.descripcionProducto,
+                tipoProducto: productos.tipoProducto,
+                precioProducto: productos.precioProducto,
+                imagenProducto:productos.imagenProducto,
+                disponibilidadProducto: productos.disponibilidadProducto == "Si" ? 1 : 0
             })
             if(response.status === 200) {
                 alert("Producto Actualizado!")
@@ -60,17 +60,17 @@ const EditProducto = () => {
       <br />
       <Form onSubmit={handleSubmit}>
           <FormGroup>
-              <FormControl type='text' placeholder='Nombre Producto' value={productos.nombre} onChange={handleChange} name="nombre" />
+              <FormControl type='text' placeholder='Nombre Producto' value={productos.nombreProducto} onChange={handleChange} name="nombreProducto" />
               <br />
-              <FormControl type='text' placeholder='Descripcion' value={productos.descripcion} onChange={handleChange} name="descripcion" />
+              <FormControl type='text' placeholder='Descripcion' value={productos.descripcionProducto} onChange={handleChange} name="descripcionProducto" />
               <br />
-              <FormControl type='text' placeholder='Tipo' value={productos.tipo} onChange={handleChange}  name="tipo" />
+              <FormControl type='text' placeholder='Tipo' value={productos.tipoProducto} onChange={handleChange}  name="tipoProducto" />
               <br />
-              <FormControl type='text' placeholder='Precio' value={productos.precio} onChange={handleChange} name="precio" />
+              <FormControl type='text' placeholder='Precio' value={productos.precioProducto} onChange={handleChange} name="precioProducto" />
               <br />
-              <FormControl type='text' placeholder='Url imagen' value={productos.imagenProductos} onChange={handleChange} name="imagenProductos" />
+              <FormControl type='text' placeholder='Url imagen' value={productos.imagenProducto} onChange={handleChange} name="imagenProducto" />
               <br />
-              <FormControl type='number' placeholder='Disponible ó No (0 / 1)' value={productos.disponibilidad}  onChange={handleChange} name="disponiblidad" />
+              <FormControl type='text' placeholder='Disponible ó No' value={productos.disponibilidadProducto == 1 ? "Si" : "No"}  onChange={handleChange} name="disponiblidadProducto" />
               <br />
           </FormGroup>
           <Button type='submit'>Actualizar Productos</Button>

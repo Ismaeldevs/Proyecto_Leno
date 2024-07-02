@@ -10,25 +10,26 @@ const EditStock = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_producto: "",
-        id_sucursal: "",
+        id_Producto: "",
+        id_Sucursal: "",
         cantidadStock: "",
-        fechaRegistro: "",
+        fechaRegistroStock: ""
         
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
     const [stock, setStock] = useState(initialState)
+    const [date, setDate] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
 
             const response = await axios.put(`${URL_STOCK_EDITAR}${id}`, {
-                id_producto: stock.id_producto,
-                id_sucursal: stock.id_sucursal,
+                id_Producto: stock.id_Producto,
+                id_Sucursal: stock.id_Sucursal,
                 cantidadStock: stock.cantidadStock,
-                fechaRegistro: stock.fechaRegistro,
+                fechaRegistroStock: date,
                
             })
             if(response.status === 200) {
@@ -45,6 +46,8 @@ const EditStock = () => {
         const response = await axios.get(`${URL_STOCK}/${id}`)
         console.log(response.data)
         setStock(response.data[0])
+        const date = new Date(response.data[0].fechaRegistroStock).toJSON().slice(0, 10)
+        setDate(date)
         
         
     }
@@ -52,6 +55,9 @@ const EditStock = () => {
     const handleChange = (e) => {
         setStock({
             ...stock, [e.target.name] : e.target.value
+        })
+        setDate({
+            ...date, [e.target.name] : e.target.value
         })
     }
 
@@ -69,13 +75,13 @@ const EditStock = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <FormControl type='number' placeholder='Nombre Producto' value={stock.id_producto} onChange={handleChange} name="id_producto"  />
+                <FormControl type='text' placeholder='Producto' value={stock.NombreProducto} onChange={handleChange} name="id_Producto"  />
                 <br />
-                <FormControl type='number' placeholder='Sucursal' value={stock.id_s} onChange={handleChange} name="id_sucursal"  />
+                <FormControl type='text' placeholder='Sucursal' value={stock.nombreSucursal} onChange={handleChange} name="id_Sucursal"  />
                 <br />
                 <FormControl type='text' placeholder='Cantidad Stock' value={stock.cantidadStock} onChange={handleChange} name="cantidadStock" />
                 <br />
-                <FormControl type='text' placeholder='FechaRegistro' value={stock.fechaRegistro} onChange={handleChange}  name="fechaRegistro" />
+                <FormControl type='text' placeholder='FechaRegistro' value={date} onChange={handleChange} name="fechaRegistroStock" />
                 <br />
                 
             </FormGroup>

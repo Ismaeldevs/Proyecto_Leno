@@ -44,18 +44,18 @@ const MainSucursal = () => {
         </thead>
         <tbody>
         {data.map((sucursal) =>
-                  <tr key={sucursal.id_sucursal}>
-                  <td>{sucursal.id_sucursal}</td>
-                  <td>{sucursal.nombre}</td>
+                  <tr key={sucursal.id_Sucursal}>
+                  <td>{sucursal.id_Sucursal}</td>
+                  <td>{sucursal.nombreSucursal}</td>
                   <td>{sucursal.numeroSucursal}</td>
-                  <td>{sucursal.direccion}</td>
+                  <td>{sucursal.direccionSucursal}</td>
                   <td>{sucursal.zonaAlcance}</td>
-                  <td>{sucursal.imagenSucursales}</td>
-                  <td>{sucursal.telefono}</td>
+                  <td>{sucursal.imagenSucursal}</td>
+                  <td>{sucursal.telefonoSucursal}</td>
                   <td>
-                    {<Link to={`/sucursales/view/${sucursal.id_sucursal}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
-                    {<Link to={`/sucursales/edit/${sucursal.id_sucursal}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
-                    {<button onClick={() => handleChange(sucursal.id_sucursal)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                    {<Link to={`/sucursales/view/${sucursal.id_Sucursal}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
+                    {<Link to={`/sucursales/edit/${sucursal.id_Sucursal}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
+                    {<button onClick={() => handleChange(sucursal.id_Sucursal)}><i className="text-danger fa-solid fa-trash"></i></button>}
                   </td>
                 </tr>
         )}

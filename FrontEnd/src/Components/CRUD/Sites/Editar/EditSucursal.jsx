@@ -9,12 +9,12 @@ const EditSucursal = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombre: "",
+        nombreSucursal: "",
         numeroSucursal: 0,
-        direccion: "",
+        direccionSucursal: "",
         zonaAlcance: "",
-        imagenSucursales: "",
-        telefono: ""
+        imagenSucursal: "",
+        telefonoSucursal: ""
     }
 
     const [sucursal, setSucursal] = useState(initialState)
@@ -24,12 +24,12 @@ const EditSucursal = () => {
         try {
 
             const response = await axios.put(`${URL_SUCURSAL_EDITAR}${id}`, {
-                nombre: sucursal.nombre,
+                nombreSucursal: sucursal.nombreSurcursal,
                 numeroSucursal: sucursal.numeroSucursal,
-                direccion: sucursal.direccion,
+                direccionSucursal: sucursal.direccion,
                 zonaAlcance: sucursal.zonaAlcance,
-                imagenSucursales: sucursal.imagenSucursales,
-                telefono: sucursal.telefono
+                imagenSucursal: sucursal.imagenSucursal,
+                telefonoSucursal: sucursal.telefonoSucursal
             })
             if(response.status === 200) {
                 alert("Sucursal Actualizada!")
@@ -69,17 +69,17 @@ const EditSucursal = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-            <FormControl type='text' placeholder='Nombre Sucursal' value={sucursal.nombre} onChange={handleChange} name="nombre" />
+            <FormControl type='text' placeholder='Nombre Sucursal' value={sucursal.nombreSucursal} onChange={handleChange} name="nombreSucursal" />
                 <br />
                 <FormControl type='number' placeholder='Numero Sucursal' value={sucursal.numeroSucursal} onChange={handleChange} name="numeroSucursal" />
                 <br />
-                <FormControl type='text' placeholder='Direccion' value={sucursal.direccion} onChange={handleChange} name="direccion" />
+                <FormControl type='text' placeholder='Direccion' value={sucursal.direccionSucursal} onChange={handleChange} name="direccionSucursal" />
                 <br />
                 <FormControl type='text' placeholder='Zona de alcance' value={sucursal.zonaAlcance} onChange={handleChange}  name="zonaAlcance" />
                 <br />
-                <FormControl type='text' placeholder='URL imagen' value={sucursal.imagenSucursales} onChange={handleChange} name="imagenSucursales" />
+                <FormControl type='text' placeholder='URL imagen' value={sucursal.imagenSucursal} onChange={handleChange} name="imagenSucursal" />
                 <br />
-                <FormControl type='text' placeholder='Telefono' value={sucursal.telefono} onChange={handleChange}  name="telefono" />
+                <FormControl type='text' placeholder='Telefono' value={sucursal.telefonoSucursal} onChange={handleChange}  name="telefonoSucursal" />
                 <br />
             </FormGroup>
             <Button type='submit'>Actualizar Sucursal</Button>

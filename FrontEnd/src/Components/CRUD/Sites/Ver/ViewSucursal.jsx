@@ -33,18 +33,18 @@ const ViewSucursal = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-light' style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{sucursal.nombre}</Card.Title>
+        <Card.Title>{sucursal.nombreSucursal}</Card.Title>
         <Card.Text>
           Numero Sucursal: {sucursal.numeroSucursal}
         </Card.Text>
         <Card.Text>
-        DIRECCION: {sucursal.direccion}
+        DIRECCION: {sucursal.direccionSucursal}
         </Card.Text>
         <Card.Text>
          ZONA DE ALCANCE: {sucursal.zonaAlcance}
         </Card.Text>
         <Card.Text>
-         TELEFONO: {sucursal.telefono}
+         TELEFONO: {sucursal.telefonoSucursal}
         </Card.Text>
       </Card.Body>
       <Link to={'/sucursales'} className="btn btn-info">Volver al inicio</Link>

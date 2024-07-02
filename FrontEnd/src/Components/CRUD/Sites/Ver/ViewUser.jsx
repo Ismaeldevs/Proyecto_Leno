@@ -34,12 +34,12 @@ const ViewUser = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-dark' style={{ width: '20rem' }}>
       <Card.Body>
-        <Card.Title>{usuario.usuario}</Card.Title>
+        <Card.Title className='text-white'>{usuario.usuario}</Card.Title>
         <Card.Text className='text-white'>
           Clave: {usuario.clave}
         </Card.Text>
         <Card.Text className='text-white'>
-          Rol: {usuario.rol}
+          Rol: {usuario.rol == 1 ? "Admin" : "Empleado"}
         </Card.Text>
         
       
