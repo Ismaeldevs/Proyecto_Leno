@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allSucursales = (req,res) =>{
-    const query = "SELECT * FROM sucursales"
+    const query = "SELECT * FROM Sucursales"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -14,7 +14,7 @@ const singleSucursales = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = `SELECT * FROM sucursales where id_sucursal = ${id}`
+    const query = `SELECT * FROM Sucursales where id_Sucursal = ${id}`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
@@ -24,9 +24,9 @@ const singleSucursales = (req,res) => {
 }
 // funcion para crear un empleado
 const createSucursales = (req,res) =>{
-const {nombre,numeroSucursal,direccion,zonaAlcance,imagenSucursales,telefono} = req.body
+const {nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursale,telefonoSucursal} = req.body
 
-    const query = `INSERT INTO sucursales (nombre,numeroSucursal,direccion,zonaAlcance,imagenSucursales,telefono) values ("${nombre}",${numeroSucursal},"${direccion}","${zonaAlcance}","${imagenSucursales}","${telefono}")`
+    const query = `INSERT INTO Sucursales (nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursale,telefonoSucursal) values ("${nombreSucursal}",${numeroSucursal},"${direccionSucursal}","${zonaAlcance}","${imagenSucursale}","${telefonoSucursal}")`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -34,9 +34,9 @@ const {nombre,numeroSucursal,direccion,zonaAlcance,imagenSucursales,telefono} = 
 
     // funcion para editar un empleado de la tabla
 const editSucursales = (req,res) =>{
-    const {nombre,numeroSucursal,direccion,zonaAlcance,imagenSucursales,telefono} = req.body
+    const {nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursale,telefonoSucursal} = req.body
     const id = req.params.id
-    const query = `update sucursales set nombre="${nombre}",numeroSucursal=${numeroSucursal},direccion="${direccion}",zonaAlcance="${zonaAlcance}",imagenSucursales="${imagenSucursales}",telefono="${telefono}" where id_sucursal=${id}`
+    const query = `update Sucursales set nombreSucursal="${nombreSucursal}",numeroSucursal=${numeroSucursal},direccionSucursal="${direccionSucursal}",zonaAlcance="${zonaAlcance}",imagenSucursale="${imagenSucursale}",telefonoSucursal="${telefonoSucursal}" where id_Sucursal=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -45,7 +45,7 @@ const editSucursales = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteSucursales = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM sucursales where id_sucursal= ${id}`
+const query=`DELETE FROM Sucursales where id_Sucursal= ${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

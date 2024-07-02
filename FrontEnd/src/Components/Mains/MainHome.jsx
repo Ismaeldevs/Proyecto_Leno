@@ -49,7 +49,7 @@ const MainHome = () => {
               </div>
             </div>
             <div className='card__img'>
-              <img className="card__img" src={item.imagenProducto} alt="" />
+              <img className="card__img" src={item.imagenProductos} alt="" />
             </div>
             <div className="card__title">{item.nombre}</div>
             <div className="card__subtitle">{item.descripcion}</div>

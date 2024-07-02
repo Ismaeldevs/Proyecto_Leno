@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allEmpleados = (req,res) =>{
-    const query = "select E.id_empleado, S.nombre as NombreSucursal, E.nombreCompleto, E.cuil, E.telefono, E.mail, E.direccion from empleados E join sucursales S on E.id_sucursal = S.id_sucursal"
+    const query = `select E.id_Empleado, S.nombreSucursal as NombreSucursal, concat(E.nombreEmpleado, " " , E.apellidoEmpleado),  E.cuilEmpleado, E.telefonoEmpleado, E.mailEmpleado, E.direccionEmpleado from Empleados E join Sucursales S on E.id_sucursal = S.id_Sucursal`
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -14,7 +14,7 @@ const singleEmpleado = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = `SELECT * FROM empleados where id_empleado=${id}`
+    const query = `SELECT * FROM Empleados where id_Empleado=${id}`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
@@ -24,9 +24,9 @@ const singleEmpleado = (req,res) => {
 }
 // funcion para crear un empleado
 const createEmpleado = (req,res) =>{
-const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion} = req.body
+const {id_Sucursal,nombreEmpleado, apellidoEmpleado,cuilEmpleado,telefonoEmpleado,mailEmpleado,direccionEmpleado} = req.body
 
-    const query = `INSERT INTO empleados (id_sucursal,nombreCompleto,cuil,telefono,mail,direccion) values (${id_sucursal},"${nombreCompleto}","${cuil}","${telefono}","${mail}","${direccion}")`
+    const query = `INSERT INTO Empleados (id_Sucursal,nombreEmpleado,cuilEmpleado,telefonoEmpleado,mailEmpleado,direccionEmpleado) values (${id_Sucursal},"${nombreEmpleado}","${apellidoEmpleado}","${cuilEmpleado}","${telefonoEmpleado}","${mailEmpleado}","${direccionEmpleado}")`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -34,9 +34,9 @@ const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion} = req.body
 
     // funcion para editar un empleado de la tabla
 const editEmpleado = (req,res) =>{
-    const {id_sucursal,nombreCompleto,cuil,telefono,mail,direccion} = req.body
+    const {id_Sucursal,nombreEmpleado, apellidoEmpleado,cuilEmpleado,telefonoEmpleado,mailEmpleado,direccionEmpleado} = req.body
     const id = req.params.id
-    const query = `update empleados set id_sucursal="${id_sucursal}", nombreCompleto="${nombreCompleto}",cuil="${cuil}",telefono="${telefono}",mail="${mail}",direccion="${direccion}" where id_empleado=${id}`
+    const query = `update Empleados set id_Sucursal="${id_Sucursal}", nombreEmpleado="${nombreEmpleado}",apellidoEmpleado="${apellidoEmpleado}",cuilEmpleado="${cuilEmpleado}",telefonoEmpleado="${telefonoEmpleado}",mailEmpleado="${mailEmpleado}",direccionEmpleado="${direccionEmpleado}" where id_Empleado=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -45,7 +45,7 @@ const editEmpleado = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteEmpleado = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM empleados where id_empleado = ${id}`
+const query=`DELETE FROM Empleados where id_Empleado = ${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
