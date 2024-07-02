@@ -27,6 +27,7 @@ const Ticket = () => {
 
     const getData = async () => {
         let response = await axios.get(`${URL_PRODUCTOS}/${id}`)
+        console.log(response.data[0].precio);
         setProductos(response.data[0])
         setPrecio(response.data[0].precio)
         setTotal(response.data[0].precio)

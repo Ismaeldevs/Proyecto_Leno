@@ -2,7 +2,7 @@ const {conection} = require("../config/database")
 
 
 const allClients = (req, res) => {
-    const query = `select * from clientes`
+    const query = `select * from Clientes`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results)
@@ -12,7 +12,7 @@ const allClients = (req, res) => {
 const singleClient = (req, res) => {
     console.log(req.params.id)
     const id = req.params.id
-    const query = `select * from clientes where id_cliente=${id}`
+    const query = `select * from Clientes where id_Cliente=${id}`
     conection.query(query, (err,results) => {
 
         if(err) throw err
@@ -20,9 +20,9 @@ const singleClient = (req, res) => {
     })
 }
 const createClient = (req, res) => {
-    const {nombreCompleto, dni, telefono, direccion, activo} = req.body
+    const {nombreCliente,apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activo} = req.body
 
-    const query = `insert into clientes (nombreCompleto, dni, telefono, direccion, activo) values("${nombreCompleto}","${dni}","${telefono}","${direccion}",${activo})`
+    const query = `insert into Clientes (nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activo) values("${nombreCliente}","${apellidoCliente}","${dniCliente}","${telefonoCliente}","${direccionCliente}",${activo})`
     conection.query(query, (err,results) => {
         if(err) throw err 
         res.send(results)
@@ -32,8 +32,8 @@ const createClient = (req, res) => {
 const editClient = (req, res) => {
     const id = req.params.id
     console.log(req.body);
-    const {nombreCompleto, dni, telefono, direccion, activo} = req.body
-    const query = `update clientes set nombreCompleto="${nombreCompleto}",dni="${dni}",telefono="${telefono}",direccion="${direccion}",activo=${activo} where id_cliente=${id}`
+    const {nombreCliente,apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activo} = req.body
+    const query = `update Clientes set nombreCliente="${nombreCliente}",apellidoCliente="${apellidoCliente}", dniCliente="${dniCliente}",telefonoCliente="${telefonoCliente}",direccionCliente="${direccionCliente}",activo=${activo} where id_Cliente=${id}`
     conection.query(query, (err,results) => {
         if(err) throw err
         res.send(results)
@@ -42,7 +42,7 @@ const editClient = (req, res) => {
 
 const eraseClient = (req, res) => {
     const id = req.params.id
-    const query = `delete from clientes where id_cliente=${id}`
+    const query = `delete from Clientes where id_Cliente=${id}`
     conection.query(query, (err,results) => {
 
         if(err) throw err

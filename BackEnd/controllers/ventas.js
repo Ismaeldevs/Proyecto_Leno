@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allVentas = (req,res) =>{
-    const query = "SELECT * FROM ventas"
+    const query = "SELECT * FROM Ventas"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -14,7 +14,7 @@ const singleVentas = (req,res) => {
 
     const id = req.params.id
 // creacion de la consulta(query) en una constante
-    const query = `SELECT * FROM ventas where id_venta = ${id}`
+    const query = `SELECT * FROM Ventas where id_Venta = ${id}`
     // realizo la conexion por medio de la query 
     conection.query(query,(err,results)=>{
         if(err) throw err //verifico si existe algun error 
@@ -24,9 +24,9 @@ const singleVentas = (req,res) => {
 }
 // funcion para crear un empleado
 const createVentas = (req,res) =>{
-const {id_producto,id_cliente,id_detallePedido,fecha,cantidad,descuento,tipoPago,total} = req.body
+const {id_Producto,id_Cliente,id_DetallePedido,fechaVenta,cantidadVenta,descuentoVenta,tipoPagoVenta,totalVenta} = req.body
 
-    const query = `INSERT INTO ventas (id_producto,id_cliente,id_detallePedido,fecha,cantidad,descuento,tipoPago,total) values (${id_producto},${id_cliente},${id_detallePedido},${fecha},${cantidad},${descuento},"${tipoPago}",${total})`
+    const query = `INSERT INTO Ventas (id_Producto,id_Cliente,id_DetallePedido,fechaVenta,cantidadVenta,descuentoVenta,tipoPagoVenta,totalVenta) values (${id_Producto},${id_Cliente},${id_DetallePedido},${fechaVenta},${cantidadVenta},${descuentoVenta},"${tipoPagoVenta}",${totalVenta})`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -34,9 +34,9 @@ const {id_producto,id_cliente,id_detallePedido,fecha,cantidad,descuento,tipoPago
 
     // funcion para editar un empleado de la tabla
 const editVentas = (req,res) =>{
-    const {id_producto,id_cliente,id_detallePedido,fecha,cantidad,descuento,tipoPago,total} = req.body
+    const {id_Producto,id_Cliente,id_DetallePedido,fechaVenta,cantidadVenta,descuentoVenta,tipoPagoVenta,totalVenta} = req.body
     const id = req.params.id
-    const query = `update ventas set id_producto=${id_producto},id_cliente=${id_cliente},id_detallePedido=${id_detallePedido},fecha=${fecha},cantidad=${cantidad},descuento=${descuento},tipoPago="${tipoPago}",total=${total} where id_venta=${id}`
+    const query = `update Ventas set id_Producto=${id_Producto},id_Cliente=${id_Cliente},id_DetallePedido=${id_DetallePedido},fechaVenta=${fechaVenta},cantidadVenta=${cantidadVenta},descuentoVenta=${descuentoVenta},tipoPagoVenta="${tipoPagoVenta}",totalVenta=${totalVenta} where id_Venta=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -45,7 +45,7 @@ const editVentas = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteVentas = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM ventas where id_venta= ${id}`
+const query=`DELETE FROM Ventas where id_Venta= ${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

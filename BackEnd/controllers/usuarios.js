@@ -2,7 +2,7 @@ const {conection} = require("../config/database")
 
 
 const allUsers = (req, res) => {
-    const query = `select * from usuarios`
+    const query = `select * from Usuarios`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results)
@@ -12,7 +12,7 @@ const allUsers = (req, res) => {
 const singleUser = (req, res) => {
     // console.log(req.params.id)
     const id = req.params.id
-    const query = `select * from usuarios where id_usuario=${id}`
+    const query = `select * from Usuarios where id_Usuario=${id}`
     conection.query(query, (err,results) => {
         if(err) throw err
         res.send(results)
@@ -21,7 +21,7 @@ const singleUser = (req, res) => {
 
 const CreateUser = (req,res)=>{
 const {usuario,clave,rol} = req.body
-const query =`insert into usuarios (usuario,clave,rol) values ("${usuario}","${clave}",${rol})`
+const query =`insert into Usuarios (usuario,clave,rol) values ("${usuario}","${clave}",${rol})`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -31,7 +31,7 @@ conection.query(query,(err,results)=>{
 const UpdateUser = (req,res)=>{
 const {usuario,clave,rol} = req.body
 const id = req.params.id
-const query=`update usuarios set usuario = "${usuario}",clave = "${clave}",rol = ${rol} where id_usuario=${id}`
+const query=`update Usuarios set usuario = "${usuario}",clave = "${clave}",rol = ${rol} where id_Usuario=${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -40,7 +40,7 @@ conection.query(query,(err,results)=>{
 
 const DeleteUser = (req,res) =>{
 const id = req.params.id
-const query=`delete from usuarios where id_usuario=${id}`
+const query=`delete from Usuarios where id_Usuario=${id}`
 conection.query(query,(err,results)=>{
 if(err) throw err
 res.send(results)
