@@ -10,12 +10,13 @@ const EditEmployee = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_sucursal: "",
-        nombreCompleto: "",
-        cuil: "",
-        telefono: "",
-        mail: "",
-        direccion: ""
+        id_Sucursal: "",
+        nombreEmpledo: "",
+        apellidoEmpleado: "",
+        cuilEmpleado: "",
+        telefonoEmpleado: "",
+        mailEmpleado: "",
+        direccionEmpleado: ""
     }
 
     const [employee, setEmployee] = useState(initialState)
@@ -23,14 +24,14 @@ const EditEmployee = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            console.log(employee.nombreCompleto, employee.cuil, employee.telefono, employee.mail, employee.direccion);
             let response = await axios.put(`${URL_EMPLEADO_EDITAR}${id}`, {
-                id_sucursal: employee.id_sucursal,
-                nombreCompleto: employee.nombreCompleto,
-                cuil: employee.cuil,
-                telefono: employee.telefono,
-                mail: employee.mail,
-                direccion: employee.direccion
+                id_sucursal: employee.id_Sucursal,
+                nombreCompleto: employee.nombreEmpleado,
+                apellidoEmpleado: employee.apellidoEmpleado,
+                cuil: employee.cuilEmpleado,
+                telefono: employee.telefonoEmpleado,
+                mail: employee.mailEmpleado,
+                direccion: employee.direccionEmpleado
             })
             if (response.status === 200) {
                 alert("Empleado Actualizado!")
@@ -70,17 +71,19 @@ const EditEmployee = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <FormControl type='number' placeholder='Numero Sucursal' value={employee.id_sucursal} onChange={handleChange} name="id_sucursal" />
+                        <FormControl type='number' placeholder='Numero Sucursal' value={employee.id_Sucursal} onChange={handleChange} name="id_Sucursal" />
                         <br />
-                        <FormControl type='text' placeholder='Nombre Completo' value={employee.nombreCompleto} onChange={handleChange} name="nombreCompleto" />
+                        <FormControl type='text' placeholder='Nombre Completo' value={employee.nombreEmpleado} onChange={handleChange} name="nombreEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='CUIL' value={employee.cuil} onChange={handleChange} name="cuil" />
+                        <FormControl type='text' placeholder='Nombre Completo' value={employee.apellidoEmpleado} onChange={handleChange} name="apellidoEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='Telefono' value={employee.telefono} onChange={handleChange} name="telefono" />
+                        <FormControl type='text' placeholder='CUIL' value={employee.cuilEmpleado} onChange={handleChange} name="cuilEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='Mail' value={employee.mail} onChange={handleChange} name="mail" />
+                        <FormControl type='text' placeholder='Telefono' value={employee.telefonoEmpleado} onChange={handleChange} name="telefonoEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='Direccion' value={employee.direccion} onChange={handleChange} name="direccion" />
+                        <FormControl type='text' placeholder='Mail' value={employee.mailEmpleado} onChange={handleChange} name="mailEmpleado" />
+                        <br />
+                        <FormControl type='text' placeholder='Direccion' value={employee.direccionEmpleado} onChange={handleChange} name="direccionEmpleado" />
                         <br />
                     </FormGroup>
                     <Button type='submit'>Actualizar Empleado</Button>

@@ -12,7 +12,7 @@ const EditUser = () => {
     const initialState = {
         usuario: "",
         clave: "",
-        rol: 0,   
+        rol: null,   
     }
 
     
@@ -25,7 +25,7 @@ const EditUser = () => {
             const response = await axios.put(`${URL_USUARIO_EDITAR}${id}`, {
               usuario: usuario.usuario,
               clave: usuario.clave,
-                rol: usuario.rol,
+                rol: usuario.rol == "Admin" ? 1 : 0,
             })
             if(response.status === 200) {
                 alert("Usuario Actualizado!")
@@ -69,7 +69,7 @@ const EditUser = () => {
                 <br />
                 <FormControl type='text' placeholder='Clave' value={usuario.clave} onChange={handleChange} name="clave"  />
                 <br />
-                <FormControl type='number' placeholder='Rol' value={usuario.rol} onChange={handleChange} name="rol" />
+                <FormControl type='text' placeholder='Rol' value={usuario.rol == 1 ? "Admin" : "Empleado"} onChange={handleChange} name="rol" />
                 <br />
                
                 

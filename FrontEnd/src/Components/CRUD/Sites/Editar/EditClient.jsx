@@ -10,10 +10,11 @@ const EditClient = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombreCompleto: "",
-        dni: "",
-        telefono: "",
-        direccion: "",
+        nombreCliente: "",
+        apellidoCliente: "",
+        dniCliente: "",
+        telefonoCliente: "",
+        direccionCliente: "",
         activo: null
     }
 
@@ -24,11 +25,12 @@ const EditClient = () => {
         try {
 
             const response = await axios.put(`${URL_CLIENTE_EDITAR}${id}`, {
-                nombreCompleto: client.nombreCompleto,
-                dni: client.dni,
-                telefono: client.telefono,
-                direccion: client.direccion,
-                activo: client.activo
+                nombreCliente: client.nombreCliente,
+                apellidoCliente: client.apellidoCliente,
+                dniCliente: client.dniCliente,
+                telefonoCliente: client.telefonoCliente,
+                direccionCliente: client.direccionCliente,
+                activo: client.activo == "Si" ? 1 : 0
             })
             if(response.status === 200) {
                 alert("Contacto Actualizado!")
@@ -68,15 +70,17 @@ const EditClient = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <FormControl type='text' placeholder='Nombre Completo' value={client.nombreCompleto} onChange={handleChange} name="nombreCompleto" />
+                <FormControl type='text' placeholder='Nombre Cliente' value={client.nombreCliente} onChange={handleChange} name="nombreCliente" />
                 <br />
-                <FormControl type='text' placeholder='DNI' value={client.dni} onChange={handleChange} name="dni" />
+                <FormControl type='text' placeholder='Apellido Cliente' value={client.apellidoCliente} onChange={handleChange} name="apellidoCliente" />
                 <br />
-                <FormControl type='text' placeholder='Telefono' value={client.telefono} onChange={handleChange}  name="telefono" />
+                <FormControl type='text' placeholder='DNI' value={client.dniCliente} onChange={handleChange} name="dniCliente" />
                 <br />
-                <FormControl type='text' placeholder='Direccion' value={client.direccion} onChange={handleChange} name="direccion" />
+                <FormControl type='text' placeholder='Telefono' value={client.telefonoCliente} onChange={handleChange}  name="telefonoCliente" />
                 <br />
-                <FormControl type='number' placeholder='Activo ó No (0 / 1)' value={client.activo} onChange={handleChange} name="activo" />
+                <FormControl type='text' placeholder='Direccion' value={client.direccionCliente} onChange={handleChange} name="direccionCliente" />
+                <br />
+                <FormControl type='text' placeholder='Activo ó No' value={client.activo == 1 ? "Si":"No"} onChange={handleChange} name="activo" />
                 <br />
             </FormGroup>
             <Button type='submit'>Actualizar Cliente</Button>

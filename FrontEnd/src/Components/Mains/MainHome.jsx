@@ -35,7 +35,7 @@ const MainHome = () => {
         <br />
         <Row className="m-5">
         {productos.map((item) => (
-          <div className="card-burger m-5" key={item.id_producto}>
+          <div className="card-burger m-5" key={item.id_Producto}>
             <div className="card__wrapper">
               <div className="card__back">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 24" height="24" width="14">

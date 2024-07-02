@@ -14,9 +14,9 @@ const MainUsuario = () => {
   setData(response.data)
   }
 
-  const handleChange = async (id_usuario) => {
+  const handleChange = async (id_Usuario) => {
 
-    const response = await axios.delete(`${URL_USUARIO_ELIMINAR}${id_usuario}`)
+    const response = await axios.delete(`${URL_USUARIO_ELIMINAR}${id_Usuario}`)
     if(response) {
       alert("Usuario Eliminado!")
     }
@@ -39,28 +39,28 @@ useEffect(() => {
         <tr>
           <th>#</th>
           <th>Usuario</th>
-          <th>Clave</th>
-          <th>Rol</th>
+          <th>Contraseña</th>
+          <th>Administrador</th>
           <th>Acciones</th>
          
         </tr>
       </thead>
       <tbody>
       {data.map((usuario) =>
-                <tr key={usuario.id_usuario}>
-                <td>{usuario.id_usuario}</td>
+                <tr key={usuario.id_Usuario}>
+                <td>{usuario.id_Usuario}</td>
                 <td>{usuario.usuario}</td>
                 <td>{usuario.clave}</td>
-                <td>{usuario.rol}</td>
+                <td>{usuario.rol == 1 ? "Si" : "No"}</td>
                
                 
                 <td>
-                  {<Link to={`/usuarios/view/${usuario.id_usuario}`}>
+                  {<Link to={`/usuarios/view/${usuario.id_Usuario}`}>
                   <i className="me-3 text-primary fa-solid fa-eye">
                     </i>
                     </Link>}
 
-                  {<Link to={`/usuarios/edit/${usuario.id_usuario}`}>
+                  {<Link to={`/usuarios/edit/${usuario.id_Usuario}`}>
 
                  
                   <i className="me-3 text-warning fa-solid fa-pen-to-square">
@@ -70,7 +70,7 @@ useEffect(() => {
                   </Link>}
 
 
-                  {<button onClick={() => handleChange(usuario.id_usuario)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                  {<button onClick={() => handleChange(usuario.id_Usuario)}><i className="text-danger fa-solid fa-trash"></i></button>}
                 </td>
               </tr>
       )}

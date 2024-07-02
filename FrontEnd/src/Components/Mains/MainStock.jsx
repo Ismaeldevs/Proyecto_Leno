@@ -11,7 +11,7 @@ const MainStock = () => {
   const getData = async () => {
    const response = await axios.get(URL_STOCK)
    console.log(response.data)
-  setData(response.data)
+   setData(response.data)
   }
 
   const handleChange = async (id_stock) => {
@@ -47,20 +47,20 @@ useEffect(() => {
       </thead>
       <tbody>
       {data.map((stock) =>
-                <tr key={stock.id_stock}>
-                <td>{stock.id_stock}</td>
+                <tr key={stock.id_Stock}>
+                <td>{stock.id_Stock}</td>
                 <td>{stock.NombreProducto}</td>
                 <td>{stock.cantidadStock}</td>
-                <td>{stock.fechaRegistro}</td>
+                <td>{new Date(stock.fechaRegistroStock).toJSON().slice(0, 10)}</td>
                 <td>{stock.nombreSucursal}</td>
                 
                 <td>
-                  {<Link to={`/stocks/view/${stock.id_stock}`}>
+                  {<Link to={`/stocks/view/${stock.id_Stock}`}>
                   <i className="me-3 text-primary fa-solid fa-eye">
                     </i>
                     </Link>}
 
-                  {<Link to={`/stocks/edit/${stock.id_stock}`}>
+                  {<Link to={`/stocks/edit/${stock.id_Stock}`}>
 
                  
                   <i className="me-3 text-warning fa-solid fa-pen-to-square">
@@ -70,7 +70,7 @@ useEffect(() => {
                   </Link>}
 
 
-                  {<button onClick={() => handleChange(stock.id_stock)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                  {<button onClick={() => handleChange(stock.id_Stock)}><i className="text-danger fa-solid fa-trash"></i></button>}
                 </td>
               </tr>
       )}

@@ -46,18 +46,18 @@ const MainProducto = () => {
     {data.map((producto) =>
 
     
-              <tr key={producto.id_producto}>
-              <td>{producto.id_producto}</td>
-              <td>{producto.nombre}</td>
-              <td>{producto.descripcion}</td>
-              <td>{producto.tipo}</td>
-              <td>{producto.precio}</td>
-              <td><img className='image' src={producto.imagenProductos} width={200} alt="" /></td>
-              <td>{producto.disponibilidad == 1 ? "Disponible":"No Disponible"}</td>
+              <tr key={producto.id_Producto}>
+              <td>{producto.id_Producto}</td>
+              <td>{producto.nombreProducto}</td>
+              <td>{producto.descripcionProducto}</td>
+              <td>{producto.tipoProducto}</td>
+              <td>{producto.precioProducto}</td>
+              <td><img className='image' src={producto.imagenProducto} width={200} alt="" /></td>
+              <td>{producto.disponibilidadProducto == 1 ? "Disponible":"No Disponible"}</td>
               <td>
-                {<Link to={`/productos/view/${producto.id_producto}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
-                {<Link to={`/productos/edit/${producto.id_producto}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
-                {<button onClick={() => handleChange(producto.id_producto)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                {<Link to={`/productos/view/${producto.id_Producto}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
+                {<Link to={`/productos/edit/${producto.id_Producto}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
+                {<button onClick={() => handleChange(producto.id_Producto)}><i className="text-danger fa-solid fa-trash"></i></button>}
               </td>
             </tr>
     )}

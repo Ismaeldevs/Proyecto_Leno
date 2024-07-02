@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allEmpleados = (req,res) =>{
-    const query = `select E.id_Empleado, S.nombreSucursal as NombreSucursal, concat(E.nombreEmpleado, " " , E.apellidoEmpleado),  E.cuilEmpleado, E.telefonoEmpleado, E.mailEmpleado, E.direccionEmpleado from Empleados E join Sucursales S on E.id_sucursal = S.id_Sucursal`
+    const query = `select E.id_Empleado, S.nombreSucursal as NombreSucursal, E.nombreEmpleado,E.apellidoEmpleado,  E.cuilEmpleado, E.telefonoEmpleado, E.mailEmpleado, E.direccionEmpleado from Empleados E join Sucursales S on E.id_sucursal = S.id_Sucursal`
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)

@@ -36,18 +36,18 @@ const ViewPedido = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-dark' style={{ width: '20rem' }}>
       <Card.Body>
-        <Card.Title>PRODUCTO: {pedido.NombreProducto}</Card.Title>
+        <Card.Title className='text-white'>PRODUCTO: {pedido.NombreProducto}</Card.Title>
         <Card.Text className=' text-white'>
-          CLIENTE: {pedido.NombreCliente}
+          CLIENTE: {pedido.NombreCompletoCliente}
         </Card.Text>
         <Card.Text className=' text-white'>
           SUCURSAL: {pedido.NombreSucursal}
         </Card.Text>
         <Card.Text className=' text-white'>
-          EMPLEADO: {pedido.NombreEmpleado}
+          EMPLEADO: {pedido.NombreCompletoEmpleado}
         </Card.Text>
         <Card.Text className=' text-white'>
-        FECHA: {pedido.fecha}
+        FECHA: {pedido.fechaDetallePedido}
         </Card.Text>
       </Card.Body>
       <Link to={'/pedidos'} className="btn btn-info">Volver a pedidos</Link>

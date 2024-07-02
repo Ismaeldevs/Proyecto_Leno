@@ -9,12 +9,12 @@ const ViewEmployee = () => {
     const {id} = useParams()
 
     const initialState = {
-        nombreCompleto: "",
-        NombreSucursal: "",
-        dni: "",
-        telefono: "",
-        direccion: "",
-        activo: 0
+        nombreEmpleado: "",
+        apellidoEmpleado: "",
+        id_Sucursal: "",
+        cuilEmpleado: "",
+        telefonoEmpleado: "",
+        direccionEmpleado: ""
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -37,21 +37,21 @@ const ViewEmployee = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-light' style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>NOMBRE: {employee.nombreCompleto}</Card.Title>
+        <Card.Title>NOMBRE: {employee.nombreEmpleado} {employee.apellidoEmpleado}</Card.Title>
         <Card.Text>
-          SUCURSAL: {employee.NombreSucursal}
+          SUCURSAL: {employee.id_Sucursal}
         </Card.Text>
         <Card.Text>
-          CUIL: {employee.cuil}
+          CUIL: {employee.cuilEmpleado}
         </Card.Text>
         <Card.Text>
-          TEL: {employee.telefono}
+          TEL: {employee.telefonoEmpleado}
         </Card.Text>
         <Card.Text>
-        MAIL: {employee.mail}
+        MAIL: {employee.mailEmpleado}
         </Card.Text>
         <Card.Text>
-         DIRECCION: {employee.direccion}
+         DIRECCION: {employee.direccionEmpleado}
         </Card.Text>
       </Card.Body>
       <Link to={'/empleados'} className="btn btn-info">Volver a empleados</Link>

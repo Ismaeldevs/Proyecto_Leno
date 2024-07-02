@@ -45,17 +45,17 @@ useEffect(() => {
       </thead>
       <tbody>
       {data.map((client) =>
-                <tr key={client.id_cliente}>
-                <td>{client.id_cliente}</td>
-                <td>{client.nombreCompleto}</td>
-                <td>{client.dni}</td>
-                <td>{client.telefono}</td>
-                <td>{client.direccion}</td>
+                <tr key={client.id_Cliente}>
+                <td>{client.id_Cliente}</td>
+                <td>{client.nombreCliente} {client.apellidoCliente}</td>
+                <td>{client.dniCliente}</td>
+                <td>{client.telefonoCliente}</td>
+                <td>{client.direccionCliente}</td>
                 <td>{client.activo}</td>
                 <td>
-                  {<Link to={`/clientes/view/${client.id_cliente}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
-                  {<Link to={`/clientes/edit/${client.id_cliente}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
-                  {<button onClick={() => handleChange(client.id_cliente)}><i className="text-danger fa-solid fa-trash"></i></button>}
+                  {<Link to={`/clientes/view/${client.id_Cliente}`}><i className="me-3 text-primary fa-solid fa-eye"></i></Link>}
+                  {<Link to={`/clientes/edit/${client.id_Cliente}`}><i className="me-3 text-warning fa-solid fa-pen-to-square"></i></Link>}
+                  {<button onClick={() => handleChange(client.id_Cliente)}><i className="text-danger fa-solid fa-trash"></i></button>}
                 </td>
               </tr>
       )}

@@ -8,6 +8,8 @@ const ViewStock = () => {
 
     const {id} = useParams()
 
+    const [date, setDate] = useState("")
+
     const initialState = {
       NombreProducto: "",
       cantidadStock: "",
@@ -23,6 +25,7 @@ const ViewStock = () => {
         const response = await axios.get(`${URL_STOCK}/${id}`)
         console.log(response.data)
         setStock(response.data[0])
+        setDate(new Date(response.data[0].fechaRegistroStock).toJSON().slice(0, 10))
         
         
     }
@@ -35,12 +38,12 @@ const ViewStock = () => {
     <div className='d-flex justify-content-center p-5'>
           <Card className='bg-dark' style={{ width: '20rem' }}>
       <Card.Body>
-        <Card.Title>{stock.NombreProducto}</Card.Title>
+        <Card.Title className='text-white'>{stock.NombreProducto}</Card.Title>
         <Card.Text className='text-white'>
           Cantidad: {stock.cantidadStock}
         </Card.Text>
         <Card.Text className='text-white'>
-          Fecha: {stock.fechaRegistro}
+          Fecha: {date}
         </Card.Text>
         <Card.Text className='text-white'>
         Sucursal: {stock.nombreSucursal}
