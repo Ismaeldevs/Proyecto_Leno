@@ -49,14 +49,14 @@ const MainHome = () => {
               </div>
             </div>
             <div className='card__img'>
-              <img className="card__img" src={item.imagenProductos} alt="" />
+              <img className="card__img" src={item.imagenProducto} alt="" />
             </div>
-            <div className="card__title">{item.nombre}</div>
-            <div className="card__subtitle">{item.descripcion}</div>
+            <div className="card__title">{item.nombreProducto}</div>
+            <div className="card__subtitle">{item.descripcionProducto}</div>
             <div className="card__wrapper">
-              <div className="card__price">${item.precio}</div>
+              <div className="card__price">${item.precioProducto}</div>
               <div className="card__counter">
-                <Link to={`/ticket/${item.id_producto}`} className="card__counter-score text-decoration-none text-white btn-dark">Agregar Producto</Link>
+                <Link to={`/ticket/${item.id_Producto}`} className="card__counter-score text-decoration-none text-white btn-dark">Agregar Producto</Link>
               </div>
             </div>
           </div>

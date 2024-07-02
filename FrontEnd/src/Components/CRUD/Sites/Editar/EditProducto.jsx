@@ -15,7 +15,6 @@ const EditProducto = () => {
         tipoProducto: "",
         precioProducto: "",
         imagenProducto:"",
-        disponibilidadProducto: 0
     }
 
 
@@ -31,7 +30,6 @@ const EditProducto = () => {
                 tipoProducto: productos.tipoProducto,
                 precioProducto: productos.precioProducto,
                 imagenProducto:productos.imagenProducto,
-                disponibilidadProducto: productos.disponibilidadProducto == "Si" ? 1 : 0
             })
             if(response.status === 200) {
                 alert("Producto Actualizado!")
@@ -69,8 +67,6 @@ const EditProducto = () => {
               <FormControl type='text' placeholder='Precio' value={productos.precioProducto} onChange={handleChange} name="precioProducto" />
               <br />
               <FormControl type='text' placeholder='Url imagen' value={productos.imagenProducto} onChange={handleChange} name="imagenProducto" />
-              <br />
-              <FormControl type='text' placeholder='Disponible ó No' value={productos.disponibilidadProducto == 1 ? "Si" : "No"}  onChange={handleChange} name="disponiblidadProducto" />
               <br />
           </FormGroup>
           <Button type='submit'>Actualizar Productos</Button>

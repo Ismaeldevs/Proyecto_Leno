@@ -14,13 +14,19 @@ const MainEmpleado = () => {
   setData(response.data)
   }
 
-  const handleChange = async (id_empleado) => {
+  const handleChange = async (id) => {
 
-    const response = await axios.delete(`${URL_EMPLEADO_ELIMINAR}${id_empleado}`)
-    if(response) {
-      alert("Empleado eliminado!")
-      
+    try {
+
+      const response = await axios.put(`${URL_EMPLEADO_ELIMINAR}${id}`)
+      if(response) {
+        alert("Empleado eliminado!")
+        
+      }
+    } catch (error) {
+      console.log(error)
     }
+
   }
 
 useEffect(() => {

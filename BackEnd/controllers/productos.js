@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allProductos = (req,res) =>{
-    const query = "SELECT * FROM Productos"
+    const query = "SELECT * FROM Productos where disponibilidadProducto=1"
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -24,9 +24,9 @@ const singleProductos = (req,res) => {
 }
 // funcion para crear un empleado
 const createProductos = (req,res) =>{
-const {nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto,disponibilidadProducto} = req.body
+const {nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto} = req.body
 
-    const query = `INSERT INTO Productos (nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto,disponibilidadProducto) values ("${nombreProducto}","${descripcionProducto}","${tipoProducto}",${precioProducto},"${imagenProducto}",${disponibilidadProducto})`
+    const query = `INSERT INTO Productos (nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto,disponibilidadProducto) values ("${nombreProducto}","${descripcionProducto}","${tipoProducto}",${precioProducto},"${imagenProducto}",1)`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -34,9 +34,9 @@ const {nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProd
 
     // funcion para editar un empleado de la tabla
 const editProductos = (req,res) =>{
-    const {nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto,disponibilidadProducto} = req.body
+    const {nombreProducto,descripcionProducto,tipoProducto,precioProducto,imagenProducto} = req.body
     const id = req.params.id
-    const query = `update Productos set nombreProducto="${nombreProducto}",descripcionProducto="${descripcionProducto}",tipoProducto="${tipoProducto}",precioProducto=${precioProducto},imagenProducto="${imagenProducto}",disponibilidadProducto=${disponibilidadProducto} where id_Producto=${id}`
+    const query = `update Productos set nombreProducto="${nombreProducto}",descripcionProducto="${descripcionProducto}",tipoProducto="${tipoProducto}",precioProducto=${precioProducto},imagenProducto="${imagenProducto}",disponibilidadProducto=1 where id_Producto=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -45,7 +45,7 @@ const editProductos = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteProductos = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM Productos where id_Producto = ${id}`
+const query=`update Productos set disponibilidadProducto=0 where id_Producto=${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

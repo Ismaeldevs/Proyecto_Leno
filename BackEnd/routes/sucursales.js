@@ -9,6 +9,6 @@ router.get("/sucursales/",allSucursales)//muestra todo
 router.get("/sucursales/:id", singleSucursales)//para ver uno
 router.post("/sucursales/create",createSucursales)
 router.put("/sucursales/edit/:id",editSucursales)
-router.delete("/sucursales/delete/:id",deleteSucursales)
+router.put("/sucursales/delete/:id",deleteSucursales)
 
 module.exports = router

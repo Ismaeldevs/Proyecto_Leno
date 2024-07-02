@@ -3,7 +3,7 @@ const {conection} = require("../config/database")
 // estas funciones traen datos de la base de datos
 // funcion para mostrar todos los empleados de la tabla empleado
 const allDetallePedido = (req,res) =>{
-    const query = `select id_DetallePedido, P.nombreProducto as NombreProducto, concat(C.nombreCliente, " " , C.apellidoCliente) as NombreCompletoCliente, S.nombreSucursal as NombreSucursal, concat(E.nombreEmpleado, " ", E.apellidoEmpleado) as NombreCompletoEmpleado, D.fechaDetallePedido from DetallePedidos D join Productos P on D.id_Producto = P.id_Producto join Clientes C on C.id_Cliente = D.id_Cliente join Sucursales S on S.id_Sucursal = D.id_Sucursal join Empleados E on E.id_Empleado = D.id_Empleado;`
+    const query = `select id_DetallePedido, P.nombreProducto as NombreProducto, concat(C.nombreCliente, " " , C.apellidoCliente) as NombreCompletoCliente, S.nombreSucursal as NombreSucursal, concat(E.nombreEmpleado, " ", E.apellidoEmpleado) as NombreCompletoEmpleado, D.fechaDetallePedido from DetallePedidos D join Productos P on D.id_Producto = P.id_Producto join Clientes C on C.id_Cliente = D.id_Cliente join Sucursales S on S.id_Sucursal = D.id_Sucursal join Empleados E on E.id_Empleado = D.id_Empleado where activoDetallePedido=1;`
     conection.query(query,(err,results)=>{
         if(err) throw err;
         res.json(results)
@@ -27,7 +27,7 @@ const singleDetallePedido = (req,res) => {
 const createDetallePedido = (req,res) =>{
 const {id_Producto,id_Cliente,id_Sucursal,id_Empleado,fechaDetallePedido} = req.body
 
-    const query = `INSERT INTO DetallePedidos (id_Producto,id_Cliente,id_Sucursal,id_Empleado,fechaDetallePedido) values (${id_Producto},${id_Cliente},${id_Sucursal},${id_Empleado},"${fechaDetallePedido}")`
+    const query = `INSERT INTO DetallePedidos (id_Producto,id_Cliente,id_Sucursal,id_Empleado,fechaDetallePedido,activoDetallePedido) values (${id_Producto},${id_Cliente},${id_Sucursal},${id_Empleado},"${fechaDetallePedido}",1)`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)
@@ -37,7 +37,7 @@ const {id_Producto,id_Cliente,id_Sucursal,id_Empleado,fechaDetallePedido} = req.
 const editDetallePedido = (req,res) =>{
     const {id_Producto,id_Cliente,id_Sucursal,id_Empleado,fechaDetallePedido} = req.body
     const id = req.params.id
-    const query = `update DetallePedidos set id_Producto=${id_Producto},id_Cliente=${id_Cliente},id_Sucursal=${id_Sucursal},id_Empleado=${id_Empleado},fechaDetallePedido="${fechaDetallePedido} where id_DetallePedido=${id}`
+    const query = `update DetallePedidos set id_Producto=${id_Producto},id_Cliente=${id_Cliente},id_Sucursal=${id_Sucursal},id_Empleado=${id_Empleado},fechaDetallePedido="${fechaDetallePedido},activoDetallePedido=1 where id_DetallePedido=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)
@@ -46,7 +46,7 @@ const editDetallePedido = (req,res) =>{
 // funcion para eleminar un empleado
 const deleteDetallePedido = (req,res) =>{
 const id = req.params.id
-const query=`DELETE FROM DetallePedidos where id_DetallePedido= ${id}`
+const query=`update DetallePedidos set activoDetallePedido=0 where id_DetallePedido=${id}`
 conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

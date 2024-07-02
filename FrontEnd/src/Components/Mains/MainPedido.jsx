@@ -14,13 +14,17 @@ const MainPedido = () => {
   setData(response.data)
   }
 
-  const handleChange = async (id_detallePedido) => {
+  const handleChange = async (id) => {
 
-    const response = await axios.delete(`${URL_PEDIDO_ELIMINAR}${id_detallePedido}`)
-    if(response) {
-      alert("Pedido eliminado!")
-      getData()
-      
+    try {
+
+      const response = await axios.put(`${URL_PEDIDO_ELIMINAR}${id}`)
+      if(response) {
+        alert("Pedido eliminado!")
+        
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 

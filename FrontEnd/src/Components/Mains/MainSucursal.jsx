@@ -13,11 +13,17 @@ const MainSucursal = () => {
     setData(response.data)
     }
   
-    const handleChange = async (id_sucursal) => {
+    const handleChange = async (id) => {
   
-      const response = await axios.delete(`${URL_SUCURSAL_ELIMINAR}${id_sucursal}`)
-      if(response) {
-        alert("Sucursal eliminada!")
+      try {
+
+        const response = await axios.put(`${URL_SUCURSAL_ELIMINAR}${id}`)
+        if(response) {
+          alert("Sucursal eliminado!")
+          
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
   
