@@ -3,16 +3,29 @@ import axios from 'axios'
 import {Table} from 'react-bootstrap'
 import {URL_SUCURSALES, URL_SUCURSAL_ELIMINAR} from '../../Constats/endpoints'
 import {Link} from 'react-router-dom'
+import Buscador from '../Layouts/Buscador'
 
 const MainSucursal = () => {
     const [data,setData] = useState([])
+    const [dataFiltrada, setDataFiltrada] = useState([]);
 
     const getData = async () => {
      const response = await axios.get(URL_SUCURSALES)
      console.log(response.data)
     setData(response.data)
+    setDataFiltrada(response.data);
     }
   
+    const filtrarDatos = (terminoBusqueda) => {
+      const busqueda = data.filter(
+        (datum) =>
+          datum.nombreSucursal.toLowerCase().trim().includes(terminoBusqueda) ||
+          datum.numeroSucursal.toString().toLowerCase().trim().includes(terminoBusqueda) ||
+          datum.direccionSucursal.toLowerCase().trim().includes(terminoBusqueda)
+      );
+      setDataFiltrada(busqueda);
+    };
+
     const handleChange = async (id) => {
   
       try {
@@ -34,6 +47,7 @@ const MainSucursal = () => {
     return (
       <div>
         <h2 className="text-center text-white p-5">MODIFICA TUS SUCURSALES</h2>
+        <Buscador filtrarDatos={filtrarDatos} />
         <Link to={`/sucursales/create`} className='btn text-white bg-success m-5'>CREAR SUCURSAL</Link>
         <Table striped bordered hover variant="dark">
         <thead>
@@ -49,7 +63,7 @@ const MainSucursal = () => {
           </tr>
         </thead>
         <tbody>
-        {data.map((sucursal) =>
+        {dataFiltrada.map((sucursal) =>
                   <tr key={sucursal.id_Sucursal}>
                   <td>{sucursal.id_Sucursal}</td>
                   <td>{sucursal.nombreSucursal}</td>

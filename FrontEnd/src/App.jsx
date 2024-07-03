@@ -55,7 +55,7 @@ function App() {
     <BrowserRouter>
     <Header isManager={isManager} isEmpleado={isEmpleado} setIsEmpleado={setIsEmpleado} setIsManager={setIsManager}/>
     <Routes>
-      <Route path={HOME} element={<Home />} />
+      <Route path={HOME} element={<Home />} />      
       <Route path={LOGIN} element={<Login onRolesUpdate={handleUserRoles}/>} />
       <Route path={SELECT} element={<Select />} />
       <Route path={CLIENTES} element={<HomeCliente />} />
