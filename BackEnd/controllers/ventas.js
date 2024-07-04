@@ -34,9 +34,9 @@ const {id_Producto,id_Cliente,id_Empleado,fechaVenta,tipoPagoVenta,totalVenta} =
 
     // funcion para editar un empleado de la tabla
 const editVentas = (req,res) =>{
-    const {id_Producto,id_Cliente,id_DetallePedido,fechaVenta,cantidadVenta,descuentoVenta,tipoPagoVenta,totalVenta} = req.body
+    const {id_Producto,id_Cliente,id_Empleado,fechaVenta,tipoPagoVenta,totalVenta} = req.body
     const id = req.params.id
-    const query = `update Ventas set id_Producto=${id_Producto},id_Cliente=${id_Cliente},id_DetallePedido=${id_DetallePedido},fechaVenta=${fechaVenta},cantidadVenta=${cantidadVenta},descuentoVenta=${descuentoVenta},tipoPagoVenta="${tipoPagoVenta}",totalVenta=${totalVenta} where id_Venta=${id}`
+    const query = `update Ventas set id_Producto=${id_Producto},id_Cliente=${id_Cliente},id_Empleado=${id_Empleado},fechaVenta="${fechaVenta}",cantidadVenta=1,descuentoVenta=0,tipoPagoVenta="${tipoPagoVenta}",totalVenta=${totalVenta} where id_Venta=${id}`
  conection.query(query,(err,results)=>{
     if(err) throw err
     res.send(results)

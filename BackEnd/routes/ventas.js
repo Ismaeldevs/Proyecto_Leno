@@ -6,7 +6,7 @@ const {allVentas,singleVentas,createVentas,editVentas,deleteVentas} = require(".
 
 //peticiones http
 router.get("/ventas",allVentas)//muestra todo 
-router.get("/venta/:id", singleVentas)//para ver uno
+router.get("/ventas/:id", singleVentas)//para ver uno
 router.post("/ventas/create",createVentas)
 router.put("/ventas/edit/:id",editVentas)
 router.put("/ventas/delete/:id",deleteVentas)
