@@ -23,6 +23,8 @@
 .avatarHeader{
   width: 80px;
   border-radius: 50%;
+  border: 2px solid black;
+  background: #E59432;
 }
 /*Termina Estilos Header*/
 

@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK,CREAR_PRODUCTO, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO, VENTAS, CREAR_VENTA, EDITAR_VENTAS, VER_VENTAS} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
@@ -46,13 +46,26 @@ import VerVenta from './Pages/Ventas/VerVenta'
 
 
 function App() {
-  const [isManager, setIsManager] = useState(false);
-  const [isEmpleado, setIsEmpleado] = useState(false);
+  const [isManager, setIsManager] = useState(() => {
+    const savedIsManager = localStorage.getItem('isManager'); //recupero del localstorage el valor de isManager
+    return savedIsManager ? JSON.parse(savedIsManager) : false;//si existe isManager en el localstorage inicializo con su valor, de lo contrario en falso
+  });
+  const [isEmpleado, setIsEmpleado] = useState(() => {
+    const savedIsEmpleado = localStorage.getItem('isEmpleado');
+    return savedIsEmpleado ? JSON.parse(savedIsEmpleado) : false;
+  });
 
   const handleUserRoles = (manager, empleado) => {
     setIsManager(manager);
     setIsEmpleado(empleado);
   };
+
+  useEffect(() => {
+    localStorage.setItem('isManager', JSON.stringify(isManager));//guardo en el localStorage el valor del estado isManager
+    localStorage.setItem('isEmpleado', JSON.stringify(isEmpleado));
+  }, [isManager,isEmpleado]);  
+
+
   return (
     <>    
     <BrowserRouter>

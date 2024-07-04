@@ -150,7 +150,7 @@ const EditSale = () => {
             />
             <br />
             </FormGroup>
-            <Button type='submit'>Actualizar Cliente</Button>
+            <Button type='submit'>Actualizar Venta</Button>
         </Form>
 </div>
     </div>
