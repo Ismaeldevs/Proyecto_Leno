@@ -35,8 +35,9 @@ export const URL_PEDIDO_CREAR = 'http://localhost:8000/pedidos/create/'
 export const URL_PEDIDO_EDITAR = 'http://localhost:8000/pedidos/edit/'
 export const URL_PEDIDO_ELIMINAR = 'http://localhost:8000/pedidos/delete/'
 
-export const URL_VENTAS_CREAR = 'http://localhost:8000/ventas/create/'
 export const URL_VENTAS = 'http://localhost:8000/ventas'
-export const URL_VENTAS_ELIMINAR = 'http://localhost:8000/pedidos/delete/'
+export const URL_VENTAS_CREAR = 'http://localhost:8000/ventas/create/'
+export const URL_VENTAS_EDITAR = 'http://localhost:8000/ventas/edit/'
+export const URL_VENTAS_ELIMINAR = 'http://localhost:8000/ventas/delete/'
 
 

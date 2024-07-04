@@ -15,8 +15,9 @@ const MainVenta = () => {
   }
 
   const handleChange = async (id_Venta) => {
+    console.log(id_Venta)
 
-    const response = await axios.delete(`${URL_VENTAS_ELIMINAR}${id_Venta}`)
+    const response = await axios.put(`${URL_VENTAS_ELIMINAR}${id_Venta}`)
     if(response) {
       alert("Usuario Eliminado!")
     }

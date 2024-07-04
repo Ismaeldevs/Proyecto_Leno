@@ -34,6 +34,7 @@ export const EDITAR_EMPLEADO = "/empleados/edit/:id"
 export const EDITAR_SUCURSAL = '/sucursales/edit/:id'
 export const EDITAR_PEDIDO = "/pedidos/edit/:id"
 export const EDITAR_PRODUCTO = "/productos/edit/:id"
+export const EDITAR_VENTAS = '/ventas/edit/:id'
 
 
 
@@ -45,7 +46,8 @@ export const VER_PRODUCTO = '/productos/view/:id'
 export const VER_STOCK = '/stocks/view/:id'
 export const VER_USUARIO = '/usuarios/view/:id'
 export const VER_SUCURSAL= '/sucursales/view/:id'
-export const VER_PEDIDO = "pedidos/view/:id"
+export const VER_PEDIDO = "/pedidos/view/:id"
+export const VER_VENTAS = "/ventas/view/:id"
 
 
 

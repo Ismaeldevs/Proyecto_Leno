@@ -44,8 +44,8 @@ const MainHome = () => {
 					className='container-cart-icon'
 				>
 					<div className='count-products'>
-            <Link to={'/ventas/create'}>
-						<span id='contador-productos'>{count}</span>
+            <Link className="text-decoration-none text-white" to={'/ventas/create'}>
+						<span id='contador-productos'>Realiza tu venta aquí</span>
             </Link>
 					</div>
 				</div>
@@ -62,7 +62,7 @@ const MainHome = () => {
           <div className="info-product">
             <h2>{producto.nombreProducto}</h2>
             <p className="price">{producto.precioProducto}</p>
-          <button className="btn-add-cart" onClick={() => getProducts(producto)}>Añadir al carrito</button>
+          <button className="btn-add-cart" disabled onClick={() => getProducts(producto)}>No Disponible / Sin Stock</button>
           </div>
         </div>
         ))}
