@@ -16,14 +16,12 @@ const CreateSale = () => {
     id_Producto: "",
     id_Cliente: "",
     id_Empleado: "",
-    fecha: "",
-    tipodepago: "",
-    totalfacturado: "",
+    fechaVenta: "",
+    tipoPagoVenta: "",
+    totalVenta: "",
   };
 
   // const [nombreCompleto, setNombreCompleto] = useState("")
-
-  const [test,setTest] = useState("")
 
   const [sale, setSale] = useState(initialState);
   const [products, setProducts] = useState([]);
@@ -50,21 +48,20 @@ const CreateSale = () => {
 
   const handleChange = (e) => {
     setSale({ ...sale, [e.target.name]: e.target.value });
-    setTest(sale)
-    console.log(test)
   };
+  console.log(sale)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(sale.id_Cliente);
+    console.log(sale)
     try {
       let response = await axios.post(`${URL_VENTAS_CREAR}`, {
         id_Producto: sale.id_Producto,
         id_Cliente: sale.id_Cliente,
         id_Empleado: sale.id_Empleado,
-        fecha: sale.fecha,
-        tipodepago: sale.tipodepago,
-        totalfacturado: sale.totalfacturado,
+        fechaVenta: sale.fechaVenta,
+        tipoPagoVenta: sale.tipoPagoVenta,
+        totalVenta: sale.totalVenta,
       });
       
       if (response.status === 200) {
@@ -90,10 +87,10 @@ const CreateSale = () => {
         <br />
         <Form onSubmit={handleSubmit}>
           <FormGroup>
-            <Form.Control as="select" onChange={handleChange}>
+            <Form.Control as="select" name="id_Producto" onChange={handleChange}>
               {
                 products.map((product) => (
-                  <option key={product.id_Producto} value={product.id_Producto}>{product.nombreProducto}</option>
+                  <option key={product.id_Producto} name="id_Producto" value={product.id_Producto}>{product.nombreProducto}</option>
                 ))
               }
             </Form.Control>
@@ -101,38 +98,38 @@ const CreateSale = () => {
             <Form.Control as="select" onChange={handleChange} name="id_Cliente">
               {
                 clients.map((client) => (
-                  <option key={client.id_Cliente} value="cliente">{client.nombreCliente} {client.apellidoCliente}</option>
+                  <option key={client.id_Cliente} name="id_Cliente" value={client.id_Cliente}>{client.nombreCliente} {client.apellidoCliente}</option>
                 ))
               }
             </Form.Control>
             <br />
-            <Form.Control as="select" onChange={handleChange}>
+            <Form.Control as="select" name="id_Empleado" onChange={handleChange}>
               {
                 employees.map((employee) => (
-                  <option key={employee.id_Empleado} value={employee.id_Empleado}>{employee.nombreEmpleado} {employee.apellidoEmpleado}</option>
+                  <option key={employee.id_Empleado} name="id_Empleado" value={employee.id_Empleado}>{employee.nombreEmpleado} {employee.apellidoEmpleado}</option>
                 ))
               }
             </Form.Control>
             <br />
             <FormControl
-              type="text"
+              type="date"
               placeholder="Fecha de Hoy"
               onChange={handleChange}
-              name="fecha"
+              name="fechaVenta"
             />
             <br />
             <FormControl
               type="text"
               placeholder="Tipo de Pago"
               onChange={handleChange}
-              name="tipodepago"
+              name="tipoPagoVenta"
             />
             <br />
             <FormControl
-              type="text"
+              type="number"
               placeholder="Total Facturado"
               onChange={handleChange}
-              name="totalfacturado"
+              name="totalVenta"
             />
             <br />
           </FormGroup>
