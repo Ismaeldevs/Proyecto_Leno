@@ -62,8 +62,6 @@ const CreateClient = () => {
                 <br />
                 <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccion" />
                 <br />
-                <FormControl type='number' placeholder='Activo ó No (0 / 1)' onChange={handleChange} name="activo" />
-                <br />
             </FormGroup>
             <Button type='submit'>Crear Cliente</Button>
         </Form>

@@ -10,6 +10,7 @@ export const SUCURSALES =  '/sucursales'
 export const EMPLEADO = "/empleados"
 export const NOSOTROS = "/nosotros"
 export const PEDIDO = "/pedidos"
+export const VENTAS = "/ventas"
 
 
 
@@ -23,6 +24,7 @@ export const CREAR_USUARIO = '/usuarios/create'
 export const CREAR_EMPLEADO = "/empleados/create"
 export const CREAR_SUCURSAL = '/sucursales/create'
 export const CREAR_PEDIDO = "/pedidos/create"
+export const CREAR_VENTA = '/ventas/create'
 
 // EDITAR
 export const EDITAR_CLIENTE = '/clientes/edit/:id'
@@ -46,5 +48,4 @@ export const VER_SUCURSAL= '/sucursales/view/:id'
 export const VER_PEDIDO = "pedidos/view/:id"
 
 
-export const TICKET = '/ticket/:id'
 
