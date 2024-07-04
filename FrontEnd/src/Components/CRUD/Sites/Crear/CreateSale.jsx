@@ -13,12 +13,12 @@ const CreateSale = () => {
   const navigate = useNavigate();
 
   const initialState = {
-    id_Producto: "",
-    id_Cliente: "",
-    id_Empleado: "",
+    id_Producto: 1,
+    id_Cliente: 1,
+    id_Empleado: 1,
     fechaVenta: "",
     tipoPagoVenta: "",
-    totalVenta: "",
+    totalVenta: 0,
   };
 
   // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -49,11 +49,9 @@ const CreateSale = () => {
   const handleChange = (e) => {
     setSale({ ...sale, [e.target.name]: e.target.value });
   };
-  console.log(sale)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(sale)
+    e.preventDefault();  
     try {
       let response = await axios.post(`${URL_VENTAS_CREAR}`, {
         id_Producto: sale.id_Producto,
