@@ -54,7 +54,7 @@ const MainHome = () => {
         {data.map((producto) => (
         <div className="item" key={producto.id_Producto}>
           <figure>
-            <img className="image"
+            <img className="imageHome"
               src={producto.imagenProducto}
               alt={producto.nombreProducto}
             />

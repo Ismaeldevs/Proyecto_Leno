@@ -19,6 +19,7 @@
   gap: 24px;
   padding: 34px;
   border-radius: 22px;
+  width: 100%;
   color: white;
   overflow: hidden;
   background: #292929;
@@ -81,4 +82,12 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.image {
+
+  object-fit: contain;
+  text-align: center;
+
+
 }
