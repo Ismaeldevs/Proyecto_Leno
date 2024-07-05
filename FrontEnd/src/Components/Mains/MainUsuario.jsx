@@ -3,16 +3,30 @@ import axios from 'axios'
 import {Table} from 'react-bootstrap'
 import {URL_USUARIO, URL_USUARIO_ELIMINAR} from '../../Constats/endpoints'
 import {Link} from 'react-router-dom'
+import Buscador from '../Layouts/Buscador'
 
 const MainUsuario = () => {
 
   const [data,setData] = useState([])
+  const [dataFiltrada, setDataFiltrada] = useState([]);
+
 
   const getData = async () => {
    const response = await axios.get(URL_USUARIO)
    console.log(response.data)
   setData(response.data)
+  setDataFiltrada(response.data);
   }
+
+  const filtrarDatos = (terminoBusqueda) => {
+    const busqueda = data.filter(
+      (datum) =>
+        datum.usuario.toLowerCase().trim().includes(terminoBusqueda) ||
+        datum.rol.toString().toLowerCase().trim().includes(terminoBusqueda) 
+    );
+    setDataFiltrada(busqueda);
+  };
+
 
   const handleChange = async (id_Usuario) => {
 
@@ -30,7 +44,7 @@ useEffect(() => {
   return (
     <div>
       <h1 className="text-center text-white p-5">MODIFICA EL USUARIO</h1>
-
+      <Buscador filtrarDatos={filtrarDatos} />
 
       
       <Link to={`/usuarios/create`} className='btn text-white bg-success m-5'>CREAR USUARIO</Link>
@@ -46,7 +60,7 @@ useEffect(() => {
         </tr>
       </thead>
       <tbody>
-      {data.map((usuario) =>
+      {dataFiltrada.map((usuario) =>
                 <tr key={usuario.id_Usuario}>
                 <td>{usuario.id_Usuario}</td>
                 <td>{usuario.usuario}</td>
