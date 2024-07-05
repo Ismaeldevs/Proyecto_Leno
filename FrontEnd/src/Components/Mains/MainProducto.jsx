@@ -58,7 +58,6 @@ const MainProducto = () => {
             <th>Tipo</th>
             <th>Precio</th>
             <th>Imagen Producto</th>
-            <th>Disponibilidad</th>
             <th>ACCIONES</th>
           </tr>
         </thead>
@@ -77,11 +76,6 @@ const MainProducto = () => {
                   width={200}
                   alt=""
                 />
-              </td>
-              <td>
-                {producto.disponibilidadProducto == 1
-                  ? "Disponible"
-                  : "No Disponible"}
               </td>
               <td>
                 {

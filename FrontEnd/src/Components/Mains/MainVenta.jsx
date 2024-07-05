@@ -35,6 +35,7 @@ const MainVenta = () => {
     const response = await axios.put(`${URL_VENTAS_ELIMINAR}${id_Venta}`)
     if(response) {
       alert("Usuario Eliminado!")
+      getData()
     }
   }
 

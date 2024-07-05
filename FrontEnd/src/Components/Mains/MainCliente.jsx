@@ -56,7 +56,6 @@ const MainCliente = () => {
             <th>DNI</th>
             <th>Telefono</th>
             <th>Direccion</th>
-            <th>Activo</th>
             <th>ACCIONES</th>
           </tr>
         </thead>
@@ -70,7 +69,6 @@ const MainCliente = () => {
               <td>{client.dniCliente}</td>
               <td>{client.telefonoCliente}</td>
               <td>{client.direccionCliente}</td>
-              <td>{client.activoCliente == 1 ? "Si" : "No"}</td>
               <td>
                 {
                   <Link to={`/clientes/view/${client.id_Cliente}`}>
