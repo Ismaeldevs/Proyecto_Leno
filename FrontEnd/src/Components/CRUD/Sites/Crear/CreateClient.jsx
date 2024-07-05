@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import {Button, Form, FormControl, FormGroup} from 'react-bootstrap'
-import {useNavigate} from 'react-router-dom'
+import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
+import { useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
+import { Tooltip } from '@mui/material';
+
 // import { URL_CLIENTE_CREAR } from '../../../../Constats/endpoints'
 
 const CreateClient = () => {
@@ -17,7 +19,7 @@ const CreateClient = () => {
         activoCliente: 0
     }
     const handleChange = (e) => {
-        setClient({...client, [e.target.name] : e.target.value})
+        setClient({ ...client, [e.target.name]: e.target.value })
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -36,17 +38,16 @@ const CreateClient = () => {
                 activoCliente: client.activoCliente
             })
 
-            if(response.status === 200) {
+            if (response.status === 200) {
                 alert("Cliente Creado!")
                 navigate('/clientes')
             }
         } catch (error) {
             console.log(error)
         }
-        
+
     }
 
-    
 
   return (
     <div>
@@ -72,8 +73,8 @@ const CreateClient = () => {
 </div>
 
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default CreateClient

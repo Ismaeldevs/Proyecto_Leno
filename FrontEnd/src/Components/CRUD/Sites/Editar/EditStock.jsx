@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react'
-import {Button, Form, FormControl, FormGroup} from 'react-bootstrap'
-import {useParams,useNavigate} from 'react-router-dom'
+import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
+<<<<<<< HEAD
 import { URL_STOCK,URL_STOCK_EDITAR, URL_SUCURSALES,URL_PRODUCTOS  } from '../../../../Constats/endpoints'
+=======
+import { URL_STOCK, URL_STOCK_EDITAR } from '../../../../Constats/endpoints'
+import { Tooltip } from '@mui/material';
+
+>>>>>>> main
 
 const EditStock = () => {
 
-    const {id} = useParams()
+    const { id } = useParams()
     const navigate = useNavigate()
 
     const initialState = {
@@ -16,8 +22,13 @@ const EditStock = () => {
         id_Sucursal:"",
         fechaRegistroStock: "",
         cantidadStock: "",
+<<<<<<< HEAD
         descripcionStock: "",
         activoStock: 0,
+=======
+        fechaRegistroStock: ""
+
+>>>>>>> main
     }
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
@@ -48,31 +59,51 @@ const EditStock = () => {
                 id_Sucursal:stock.id_Sucursal,
                 fechaRegistroStock: stock.fechaRegistroStock,
                 cantidadStock: stock.cantidadStock,
+<<<<<<< HEAD
                 descripcionStock: stock.descripcionStock,
                 activoStock: stock.activoStock,
             })
         
             if(response.status === 200) {
+=======
+                fechaRegistroStock: date,
+
+            })
+            if (response.status === 200) {
+>>>>>>> main
                 alert("Stock Actualizado!")
                 navigate('/stocks')
             }
         } catch (error) {
             console.log(error)
         }
-        
+
     }
 
     const getData = async () => {
         const response = await axios.get(`${URL_STOCK}/${id}`)
         console.log(response.data)
         setStock(response.data[0])
+<<<<<<< HEAD
        
+=======
+        const date = new Date(response.data[0].fechaRegistroStock).toJSON().slice(0, 10)
+        setDate(date)
+
+
+>>>>>>> main
     }
 
     const handleChange = (e) => {
         setStock({
-            ...stock, [e.target.name] : e.target.value
+            ...stock, [e.target.name]: e.target.value
         })
+<<<<<<< HEAD
+=======
+        setDate({
+            ...date, [e.target.name]: e.target.value
+        })
+>>>>>>> main
     }
 
     useEffect(() => {
@@ -80,9 +111,10 @@ const EditStock = () => {
         getProducts();
         getSuc();  }, [])
 
-  return (
+    return (
 
 
+<<<<<<< HEAD
     <div>
       <h2 className="p-5 text-white text-center">EDITAR STOCK</h2>
       <br />
@@ -127,6 +159,39 @@ const EditStock = () => {
 </div>
     </div>
   )
+=======
+        <div>
+            <h2 className="p-5 text-white text-center">EDITAR STOCK</h2>
+            <br />
+            <div className='d-flex justify-content-center p-5'>
+                <br />
+                <Form onSubmit={handleSubmit}>
+                    <FormGroup>
+                        <Tooltip title="Nombre del Producto">
+                            <FormControl type='text' placeholder='Producto' value={stock.NombreProducto} onChange={handleChange} name="id_Producto" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Nombre Sucursal">
+                            <FormControl type='text' placeholder='Sucursal' value={stock.nombreSucursal} onChange={handleChange} name="id_Sucursal" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Cantidad Stock">
+                            <FormControl type='text' placeholder='Cantidad Stock' value={stock.cantidadStock} onChange={handleChange} name="cantidadStock" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Fecha Registro">
+                            <FormControl type='text' placeholder='FechaRegistro' value={date} onChange={handleChange} name="fechaRegistroStock" />
+                        </Tooltip>
+                        <br />
+
+                    </FormGroup>
+                    <Button type='submit' className='btn btn-danger mx-2'>Actualizar Stock</Button>
+                    <Link to={'/stocks'} className='btn text-white bg-danger '>Volver a Stock</Link>
+                </Form>
+            </div>
+        </div>
+    )
+>>>>>>> main
 }
 
 export default EditStock

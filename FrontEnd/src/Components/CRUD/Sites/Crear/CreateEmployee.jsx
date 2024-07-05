@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import { URL_EMPLEADO_CREAR } from '../../../../Constats/endpoints'
+import { Tooltip } from '@mui/material';
+
 
 const CreateEmployee = () => {
 
@@ -36,6 +38,14 @@ const CreateEmployee = () => {
                 mailEmpleado: employee.mailEmpleado,
                 direccionEmpleado: employee.direccionEmpleado,
                 activoEmpleado:employee.activoEmpleado
+            const response = await axios.post(`${URL_EMPLEADO_CREAR}`, {
+                id_Sucursal: employee.id_Sucursal,
+                nombreEmpleado: employee.nombreCompleto,
+                apellidoEmpleado: employee.apellidoEmpleado,
+                cuilEmpleado: employee.cuilEmpleado,
+                telefonoEmpleado: employee.telefonoEmpleado,
+                mailEmpleado: employee.mailEmpleado,
+                direccionEmpleado: employee.direccionEmpleado
             })
 
             if (response.status === 200) {
@@ -62,23 +72,39 @@ const CreateEmployee = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
+
+                    <Tooltip title="Numero Sucursal">
                         <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_Sucursal" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='text' placeholder='Nombre' onChange={handleChange} name="nombreEmpleado" />
+                        <Tooltip title="Nombre del Cliente">
+                        <FormControl type='text' placeholder='Nombre Empleado' onChange={handleChange} name="nombreEmpleado" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='text' placeholder='Apellido' onChange={handleChange} name="apellidoEmpleado" />
+                        <Tooltip title="Nombre del Cliente">
+                        <FormControl type='text' placeholder='Apellido Empleado' onChange={handleChange} name="apellidoEmpleado" />
+                        </Tooltip>
                         <br />
+                        <Tooltip title="CUIL Empleado">
                         <FormControl type='text' placeholder='CUIL' onChange={handleChange} name="cuilEmpleado" />
+                        </Tooltip>
                         <br />
+                        <Tooltip title="Telefono Empleado">
                         <FormControl type='text' placeholder='TELEFONO' onChange={handleChange} name="telefonoEmpleado" />
+                        </Tooltip>
                         <br />
+                        <Tooltip title="MAIL Empleado">
                         <FormControl type='text' placeholder='MAIL' onChange={handleChange} name="mailEmpleado" />
+                        </Tooltip>
                         <br />
+                        <Tooltip title="Direccion Empleado">
                         <FormControl type='text' placeholder='DIRECCION' onChange={handleChange} name="direccionEmpleado" />
+                        </Tooltip>
                         <br />
                         <Button type='submit'>Crear Empleado</Button>
                     </FormGroup>
-                    
+                    <Button type='submit' className='btn btn-danger mx-2'>Crear Empleado</Button>
+                    <Link to={'/empleados'} className='btn text-white bg-danger '>Volver a Empleados</Link>
                 </Form>
             </div>
         </div>

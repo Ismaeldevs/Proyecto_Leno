@@ -1,58 +1,55 @@
 import { useState, useEffect } from 'react'
-import {useParams, Link} from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import { URL_PEDIDO } from '../../../../Constats/endpoints'
-import {Card} from 'react-bootstrap'
+import "../../../../CSS/Cards/CardView.css"
 
 const ViewPedido = () => {
 
-    const {id} = useParams()
+  const { id } = useParams()
 
-    const initialState = {
-      NombreProducto: "",
-      NombreCliente: "",
-      NombreSucursal: "",
-      NombreEmpleado: "",
-      fecha: ""
-    }
+  const initialState = {
+    NombreProducto: "",
+    NombreCliente: "",
+    NombreSucursal: "",
+    NombreEmpleado: "",
+    fecha: ""
+  }
 
-    // const [nombreCompleto, setNombreCompleto] = useState("")
-    const [pedido, setPedido] = useState(initialState)
+  // const [nombreCompleto, setNombreCompleto] = useState("")
+  const [pedido, setPedido] = useState(initialState)
 
 
-    const getData = async () => {
-        const response = await axios.get(`${URL_PEDIDO}/${id}`)
-        console.log(response.data)
-        setPedido(response.data[0])
-        
-        
-    }
+  const getData = async () => {
+    const response = await axios.get(`${URL_PEDIDO}/${id}`)
+    console.log(response.data)
+    setPedido(response.data[0])
 
-    useEffect(() => {
-        getData()
-    }, [])
+
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <div className='d-flex justify-content-center p-5'>
-          <Card className='bg-dark' style={{ width: '20rem' }}>
-      <Card.Body>
-        <Card.Title className='text-white'>PRODUCTO: {pedido.NombreProducto}</Card.Title>
-        <Card.Text className=' text-white'>
-          CLIENTE: {pedido.NombreCompletoCliente}
-        </Card.Text>
-        <Card.Text className=' text-white'>
-          SUCURSAL: {pedido.NombreSucursal}
-        </Card.Text>
-        <Card.Text className=' text-white'>
-          EMPLEADO: {pedido.NombreCompletoEmpleado}
-        </Card.Text>
-        <Card.Text className=' text-white'>
-        FECHA: {pedido.fechaDetallePedido}
-        </Card.Text>
-      </Card.Body>
-      <Link to={'/pedidos'} className="btn btn-info">Volver a pedidos</Link>
-    </Card>
-    
+
+
+      <div className="card">
+        <div className="content">
+          <p className="heading"> {pedido.NombreProducto} {pedido.apellidoCliente} </p>
+          <p className="para">Cliente: {pedido.NombreCompletoCliente}  </p>
+          <p className="para">Sucursal: {pedido.NombreSucursal} </p>
+          <p className="para">Empleado: {pedido.NombreCompletoEmpleado} </p>
+          <p className="para">Fecha: {pedido.fechaDetallePedido} </p>
+          <Link to={'/pedidos'} className="btn btn-danger">Volver a Pedidos</Link>
+          <Link to={'/select'} className='btn text-white bg-danger '>Volver a Inicio</Link>
+
+        </div>
+
+      </div>
+
     </div>
   )
 }

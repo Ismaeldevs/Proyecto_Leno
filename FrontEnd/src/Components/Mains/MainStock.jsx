@@ -3,16 +3,29 @@ import axios from 'axios'
 import {Table} from 'react-bootstrap'
 import {URL_STOCK, URL_STOCK_ELIMINAR} from '../../Constats/endpoints'
 import {Link} from 'react-router-dom'
+import Buscador from '../Layouts/Buscador'
 
 const MainStock = () => {
 
   const [data,setData] = useState([])
+  const [dataFiltrada, setDataFiltrada] = useState([]);
 
   const getData = async () => {
    const response = await axios.get(URL_STOCK)
    console.log(response.data)
    setData(response.data)
+   setDataFiltrada(response.data);
   }
+
+  const filtrarDatos = (terminoBusqueda) => {
+    const busqueda = data.filter(
+      (datum) =>
+        datum.NombreProducto.toLowerCase().trim().includes(terminoBusqueda) ||
+        datum.nombreSucursal.toLowerCase().trim().includes(terminoBusqueda) ||
+        datum.fechaRegistroStock.toLowerCase().trim().includes(terminoBusqueda)
+    );
+    setDataFiltrada(busqueda);
+  };
 
   const handleChange = async (id) => {
 
@@ -36,6 +49,11 @@ const MainStock = () => {
   return (
     <div>
       <h2 className="text-center text-white p-5">MODIFICA EL STOCK</h2>
+<<<<<<< HEAD
+=======
+      <Buscador filtrarDatos={filtrarDatos} />
+
+>>>>>>> main
       
       <Link to={`/stocks/create`} className='btn text-white bg-success m-5'>CREAR STOCK</Link>
       <Table striped bordered hover variant="dark">
@@ -50,7 +68,7 @@ const MainStock = () => {
         </tr>
       </thead>
       <tbody>
-      {data.map((stock) =>
+      {dataFiltrada.map((stock) =>
                 <tr key={stock.id_Stock}>
                 <td>{stock.id_Stock}</td>
                 <td>{stock.nombreProducto}</td>
@@ -80,6 +98,9 @@ const MainStock = () => {
       )}
       </tbody>
     </Table>
+    <div className='d-flex justify-content-center'>
+    <Link to={'/select'} className= " btn btn-danger w-25 mb-5 mt-3 " >Volver a inicio</Link>
+    </div>
     </div>
   )
 }
