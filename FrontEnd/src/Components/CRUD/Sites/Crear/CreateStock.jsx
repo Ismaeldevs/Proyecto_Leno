@@ -12,11 +12,10 @@ const CreateStock = () => {
 
     const initialState = {
         id_Producto: "",
-        id_Sucursal:"",
-        fechaRegistroStock: "",
         cantidadStock: "",
+        fechaRegistroStock: "",
+        id_Sucursal: "",
         descripcionStock: "",
-        activoStock: 0,
     }
 
 
@@ -28,12 +27,11 @@ const CreateStock = () => {
         try {
 
             const response = await axios.post(`${URL_STOCK_CREAR}`, {
-                id_Producto: stock.id_Producto,
-                id_Sucursal:stock.id_Sucursal,
-                fechaRegistroStock: stock.fechaRegistroStock,
+                id_Producto: stock.id_Poducto,
+                id_Sucursal: stock.id_Sucursal,
                 cantidadStock: stock.cantidadStock,
-                descripcionStock: stock.descripcionStock,
-                activoStock: stock.activoStock,
+                fechaRegistroStock: stock.fechaRegistroStock,
+                descripcionStock: stock.descripcionStock
             })
             if (response.status === 200) {
                 alert("Stock Creado!")

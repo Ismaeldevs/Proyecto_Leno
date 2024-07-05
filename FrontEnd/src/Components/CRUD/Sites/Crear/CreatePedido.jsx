@@ -28,20 +28,11 @@ const CreatePedido = () => {
         try {
 
             const response = await axios.post(`${URL_PEDIDO_CREAR}`, {
-<<<<<<< HEAD
-                     id_Producto: pedido.id_Producto,
-                     id_Cliente: pedido.id_Cliente,
-                     id_Sucursal:pedido.id_Sucursal,
-                     id_Empleado:pedido.id_Empleado,
-                     fechaDetallePedido: pedido.fechaDetallePedido,
-                    activoDetallePedido: pedido.activoDetallePedido
-=======
                 id_Producto: pedido.id_Producto,
                 id_Cliente: pedido.id_Cliente,
                 id_Sucursal: pedido.id_Sucursal,
                 id_Empleado: pedido.id_Empleado,
                 fechaDetallePedido: pedido.fechaDetallePedido,
->>>>>>> main
             })
             if (response.status === 200) {
                 alert("Detalle Creado!")
@@ -67,17 +58,6 @@ const CreatePedido = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-<<<<<<< HEAD
-                        <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_Producto" />
-                        <br />
-                        <FormControl type='number' placeholder='Numero Cliente' onChange={handleChange} name="id_Cliente" />
-                        <br />
-                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_Sucursal" />
-                        <br />
-                        <FormControl type='number' placeholder='Numero Empleado' onChange={handleChange} name="id_Empleado" />
-                        <br />
-                        <FormControl type='text' placeholder='Fecha' onChange={handleChange} name="fechaDetallePedido" />
-=======
                         <Tooltip title="Numero de Producto">
                             <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_Producto" />
                         </Tooltip>
@@ -97,7 +77,6 @@ const CreatePedido = () => {
                         <Tooltip title="Fecha">
                             <FormControl type='date' placeholder='Fecha' onChange={handleChange} name="fechaDetallePedido" />
                         </Tooltip>
->>>>>>> main
                         <br />
                     </FormGroup>
                     <Button type='submit'className='btn btn-danger mx-2'>Crear Detalle</Button>

@@ -11,7 +11,7 @@ const CreateEmployee = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_Sucursal: "",
+        id_Sucursal: null,
         nombreEmpleado: "",
         apellidoEmpleado:"",
         cuilEmpleado: "",
@@ -28,19 +28,9 @@ const CreateEmployee = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-
-            const response = await axios.post('http://localhost:8000/empleados/create', {
-                id_Sucursal: employee.id_Sucursal,
-                nombreEmpleado: employee.nombreEmpleado,
-                apellidoEmpleado: employee.apellidoEmpleado,
-                cuilEmpleado: employee.cuilEmpleado,
-                telefonoEmpleado: employee.telefonoEmpleado,
-                mailEmpleado: employee.mailEmpleado,
-                direccionEmpleado: employee.direccionEmpleado,
-                activoEmpleado:employee.activoEmpleado
             const response = await axios.post(`${URL_EMPLEADO_CREAR}`, {
                 id_Sucursal: employee.id_Sucursal,
-                nombreEmpleado: employee.nombreCompleto,
+                nombreEmpleado: employee.nombreEmpleado,
                 apellidoEmpleado: employee.apellidoEmpleado,
                 cuilEmpleado: employee.cuilEmpleado,
                 telefonoEmpleado: employee.telefonoEmpleado,

@@ -35,33 +35,25 @@ const ViewSale = () => {
     }, [])
 
   return (
+   
     <div className='d-flex justify-content-center p-5'>
-          <Card className='bg-light' style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>Venta Hecha #{sale.id_Venta}</Card.Title>
-        <Card.Text>
-          Producto: <strong>{sale.Producto}</strong>
-        </Card.Text>
-        <Card.Text>
-          Cliente: <strong>{sale.NombreCompletoCliente}</strong>
-        </Card.Text>
-        <Card.Text>
-          Empleado: <strong>{sale.NombreCompletoEmpleado}</strong>
-        </Card.Text>
-        <Card.Text>
-          Fecha de la Venta: <strong>{sale.FechaVenta}</strong>
-        </Card.Text>
-        <Card.Text>
-          Tipo de Pago: <strong>{sale.TipoDePago}</strong>
-        </Card.Text>
-        <Card.Text>
-          Total Facturado: <strong>${sale.TotalFacturado}</strong>
-        </Card.Text>
-      </Card.Body>
-      <Link to={'/ventas'} className="btn btn-info">Volver al inicio</Link>
-    </Card>
-    
-    </div>
+
+<div className="card">
+  <div className="content">
+    <p className="heading">Venta Hecha #{sale.id_Venta}</p>
+    <p className="para">Producto: <strong>{sale.Producto}</strong></p>
+    <p className="para">Cliente: <strong>{sale.NombreCompletoCliente}</strong> </p>
+    <p className="para">Empleado: <strong>{sale.NombreCompletoEmpleado}</strong></p>
+    <p className="para">Fecha de la Venta: <strong>{sale.FechaVenta}</strong> </p>
+    <p className="para">Tipo de Pago: <strong>{sale.TipoDePago}</strong></p>
+    <p className="para">Total Facturado: <strong>${sale.TotalFacturado}</strong></p>
+    <Link to={'/ventas'} className="btn btn-danger">Volver a Ventas</Link>
+    <Link to={'/select'} className='btn text-white bg-danger '>Volver a Inicio</Link>
+
+  </div>
+</div>
+</div>
+
   )
 }
 

@@ -27,21 +27,12 @@ const MainProducto = () => {
     setDataFiltrada(busqueda);
   };
 
-<<<<<<< HEAD
-        const response = await axios.put(`${URL_PRODUCTO_ELIMINAR}${id}`)
-        if(response) {
-          alert("Producto eliminado!")
-          getData()
-        }
-      } catch (error) {
-        console.log(error)
-=======
   const handleChange = async (id) => {
     try {
       const response = await axios.put(`${URL_PRODUCTO_ELIMINAR}${id}`);
       if (response) {
         alert("Producto eliminado!");
->>>>>>> main
+        getData()
       }
     } catch (error) {
       console.log(error);

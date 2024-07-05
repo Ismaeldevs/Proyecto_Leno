@@ -46,13 +46,8 @@ useEffect(() => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <h1 className="text-center text-white p-5">VENTAS</h1>
-
-=======
       <h1 className="text-center text-white p-5">MODIFICA EL USUARIO</h1>
       <Buscador filtrarDatos={filtrarDatos} />
->>>>>>> main
 
       
       <Link to={`/ventas/create`} className='btn text-white bg-success m-5'>CREAR VENTA</Link>

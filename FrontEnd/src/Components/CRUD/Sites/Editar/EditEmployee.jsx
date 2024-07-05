@@ -12,7 +12,7 @@ const EditEmployee = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_Sucursal: "",
+        id_Sucursal:  null,
         nombreEmpledo: "",
         apellidoEmpleado: "",
         cuilEmpleado: "",
@@ -26,14 +26,15 @@ const EditEmployee = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            console.log(employee)
             let response = await axios.put(`${URL_EMPLEADO_EDITAR}${id}`, {
-                id_sucursal: employee.id_Sucursal,
+                id_Sucursal: employee.id_Sucursal,
                 nombreEmpleado: employee.nombreEmpleado,
                 apellidoEmpleado: employee.apellidoEmpleado,
-                cuil: employee.cuilEmpleado,
-                telefono: employee.telefonoEmpleado,
-                mail: employee.mailEmpleado,
-                direccion: employee.direccionEmpleado
+                cuilEmpleado: employee.cuilEmpleado,
+                telefonoEmpleado: employee.telefonoEmpleado,
+                mailEmpleado: employee.mailEmpleado,
+                direccionEmpleado: employee.direccionEmpleado
             })
             if (response.status === 200) {
                 alert("Empleado Actualizado!")

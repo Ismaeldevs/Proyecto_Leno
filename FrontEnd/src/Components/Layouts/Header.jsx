@@ -18,12 +18,8 @@ const Header = (props) => {
     return (
 <Navbar expand="lg" className="navbar">
       <Container className='text-center'>
-<<<<<<< HEAD
-        <Navbar.Brand as={NavLink} to='/select'>
-=======
 
         {isManager? <Navbar.Brand as={NavLink} to='/select'>
->>>>>>> main
           <Image className='logo' src={logo}></Image>
         </Navbar.Brand> :   null}
         {isEmpleado? <Navbar.Brand as={NavLink} to='/home'>

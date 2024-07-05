@@ -5,8 +5,7 @@ const Home = (props) => {
 
   return (
     <>
-      <MainHome />
-      <CrearVenta {...props} />
+      <MainHome />      
     </>
   );
 };

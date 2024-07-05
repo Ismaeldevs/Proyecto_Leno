@@ -49,11 +49,8 @@ const MainStock = () => {
   return (
     <div>
       <h2 className="text-center text-white p-5">MODIFICA EL STOCK</h2>
-<<<<<<< HEAD
-=======
       <Buscador filtrarDatos={filtrarDatos} />
 
->>>>>>> main
       
       <Link to={`/stocks/create`} className='btn text-white bg-success m-5'>CREAR STOCK</Link>
       <Table striped bordered hover variant="dark">

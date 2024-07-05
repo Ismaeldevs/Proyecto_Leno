@@ -28,17 +28,11 @@ const MainCliente = () => {
 
   const handleChange = async (id) => {
     try {
-<<<<<<< HEAD
 
       const response = await axios.put(`${URL_CLIENTE_ELIMINAR}${id}`)
       if(response) {
         alert("Cliente eliminado!")
         getData()
-=======
-      const response = await axios.put(`${URL_CLIENTE_ELIMINAR}${id}`);
-      if (response) {
-        alert("Cliente eliminado!");
->>>>>>> main
       }
     } catch (error) {
       console.log(error);

@@ -21,19 +21,10 @@ const ViewClient = () => {
   const [client, setClient] = useState(initialState)
 
 
-<<<<<<< HEAD
-    const getData = async () => {
-        const response = await axios.get(`${URL_CLIENTES}/${id}`)
-        console.log(response.data)
-        setClient(response.data[0])        
-        
-    }
-=======
   const getData = async () => {
     const response = await axios.get(`${URL_CLIENTES}/${id}`)
     console.log(response.data)
     setClient(response.data[0])
->>>>>>> main
 
 
   }

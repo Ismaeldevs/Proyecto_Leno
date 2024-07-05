@@ -49,28 +49,42 @@ const CreateClient = () => {
     }
 
 
-  return (
-    <div>
-      <h1 className="p-5 text-white text-center">CREAR CLIENTE</h1>
-      <br />
-      <div className='d-flex justify-content-center p-5'>
-        <br />
-        <Form onSubmit={handleSubmit}>
-            <FormGroup>
-                <FormControl type='text' placeholder='Nombre' onChange={handleChange} name="nombreCliente" />
+    return (
+        <div>
+            <h1 className="p-5 text-white text-center">CREAR CLIENTE</h1>
+            <br />
+            <div className='d-flex justify-content-center p-5'>
                 <br />
-                <FormControl type='text' placeholder='Apellido' onChange={handleChange} name="apellidoCliente" />
-                <br />
-                <FormControl type='text' placeholder='DNI' onChange={handleChange} name="dniCliente" />
-                <br />
-                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefonoCliente" />
-                <br />
-                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionCliente" />
-                <br />
-            </FormGroup>
-            <Button type='submit'>Crear Cliente</Button>
-        </Form>
-</div>
+                <Form onSubmit={handleSubmit}>
+                    <FormGroup>
+                        <Tooltip title="Nombre del Cliente">
+                            <FormControl type='text' placeholder='Nombre ' onChange={handleChange} name="nombreCliente" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Apellido del Cliente">
+                            <FormControl type='text' placeholder='Apellido ' onChange={handleChange} name="apellidoCliente" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="DNI del Cliente">
+                            <FormControl type='text' placeholder='DNI' onChange={handleChange} name="dniCliente" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Telefono del Cliente">
+                            <FormControl type='text' placeholder='Telefono' onChange={handleChange} name="telefonoCliente" />
+                        </Tooltip>
+                        <br />
+                        <Tooltip title="Direccion del Cliente">
+                            <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionCliente" />
+                        </Tooltip>
+                        <br />
+
+                    </FormGroup>
+                    <div>
+                        <Button type='submit' className='btn btn-danger mx-2'>Crear Cliente</Button>
+                        <Link to={'/clientes'} className='btn text-white bg-danger '>Volver a Clientes</Link>
+                    </div>
+                </Form>
+            </div>
 
 
         </div>
