@@ -1,0 +1,296 @@
+CREATE DATABASE LENO_PROYECTO;
+use LENO_PROYECTO;
+
+drop database PROYECTO_LENO;
+
+-- TABLA USUARIOS (NO LLEVA RELACIÓN, USO: PARA EL LOGIN)
+create table Usuarios (
+id_Usuario int primary key auto_increment,
+usuario varchar(150) not null, 
+clave varchar(100) not null,
+rol bool not null
+);
+
+-- TABLAS QUE NO LLEVAN FK
+
+create table Sucursales (
+id_Sucursal int primary key auto_increment,
+nombreSucursal varchar(150) not null,
+numeroSucursal int not null,
+direccionSucursal varchar(150) not null,
+zonaAlcance varchar(150) not null,
+imagenSucursal varchar (500),
+telefonoSucursal varchar(50) not null,
+activoSucursal bool not null
+);
+
+create table Productos (
+id_Producto int primary key auto_increment,
+nombreProducto varchar(100) not null,
+descripcionProducto varchar(200) not null,
+tipoProducto varchar(150) not null,
+precioProducto int not null,
+imagenProducto varchar (500),
+disponibilidadProducto bool not null
+);
+
+
+create table Clientes (
+id_Cliente int primary key auto_increment,
+nombreCliente varchar(150) not null,
+apellidoCliente varchar(150) not null,
+dniCliente varchar(50) not null,
+telefonoCliente varchar(50) not null,
+direccionCliente varchar(150) not null,
+activoCliente bool not null
+);
+
+-- TABLAS QUE LLEVAN FK
+
+create table Empleados (
+id_Empleado int primary key auto_increment,
+id_Sucursal int,
+nombreEmpleado varchar(150),
+apellidoEmpleado varchar(150) not null,
+cuilEmpleado varchar(50) not null,
+telefonoEmpleado varchar(50) not null,
+mailEmpleado varchar(150) not null,
+direccionEmpleado varchar(180) not null,
+activoEmpleado bool not null,
+foreign key (id_Sucursal) references Sucursales(id_Sucursal)
+);
+
+create table DetallePedidos (
+id_DetallePedido int primary key auto_increment,
+id_Producto int,
+id_Cliente int,
+id_Sucursal int,
+id_Empleado int,
+fechaDetallePedido varchar(50) not null,
+activoDetallePedido bool not null,
+foreign key (id_Producto) references Productos(id_Producto),
+foreign key (id_Cliente) references Clientes(id_Cliente),
+foreign key (id_Sucursal) references Sucursales(id_Sucursal),
+foreign key (id_Empleado) references Empleados(id_Empleado)
+);
+
+
+create table Ventas (
+id_Venta int primary key auto_increment,
+id_Producto int,
+id_Cliente int,
+id_Empleado int,
+fechaVenta varchar(50) not null,
+cantidadVenta int not null,
+descuentoVenta double not null,
+tipoPagoVenta varchar(150) not null,
+totalVenta int not null,
+activoVenta bool not null,
+foreign key (id_Producto) references Productos(id_Producto),
+foreign key (id_Cliente) references Clientes(id_Cliente),
+foreign key (id_Empleado) references Empleados(id_Empleado)
+);
+
+
+create table Stocks (
+id_Stock int primary key auto_increment,
+id_Producto int,
+id_Sucursal int,
+fechaRegistroStock varchar(80) not null,
+cantidadStock int not null,
+descripcionStock varchar(200) not null,
+activoStock bool not null,
+foreign key (id_Producto) references Productos(id_Producto),
+foreign key (id_Sucursal) references Sucursales(id_Sucursal)
+);
+
+-- INSERT DE PRODUCTOS
+
+insert into Productos values (1,"Bacon", "Medallon 110gr x1, Cheddar x2, Bacon, Mayonesa American Style", " Simple", 4099 , "../../../public/Bacon.png", 1);
+insert into Productos values (2,"Big Leno", "Medallon 110gr x2, Cheddar x2, Salsa Big Leno, Cebolla, Lechuga, Pepinillos ", " Doble", 4999 , "../../../public/Big Leno.png", 1);
+insert into Productos values (3,"Smoked Pepper", "Medallon 110gr x2, Cheddar x2, Salsa Smoked, Bacon, Morrones Ahumados", " Doble", 5299 , "../../../public/Smoked Pepper.png", 1);
+insert into Productos values (4,"Elemmental Crispy", "Medallon 110gr x2, Queso Pategras x2, Salsa Smoked, Barbacoa, Bacon, Cebolla Crispy, Cebolla", " Doble", 5499 , "../../../public/Elemmental Crispy.png", 1);
+insert into Productos values (5,"Triple Q", "Medallon 65gr x3, Cheddar x3, Ketchup, Cebolla", " Triple", 4299 , "../../../public/Triple Q.png", 1);
+insert into Productos values (6,"Leno Melt", "Medallon smasheado 110gr x2, Cheddar x4, Mayonesa, Cebolla a la plancha", " Simple", 4899 , "../../../public/Leno Melt.png", 1  );
+insert into Productos values (7,"Coca Cola 500ml", " Gaseosa sin alcohol 500ml","Gaseosa", 2000, "../../../public/coca 500 ml.webp", 1);
+insert into Productos values (8,"Coca Cola 350ml", " Gaseosa sin alcohol 350ml","Gaseosa", 1500, "../../../public/coca 350 ml.jpg", 1);
+insert into Productos values (9,"Papas Fritas XL", " Papas fritas Americanas","Papas fritas", 1500,"../../../public/Papas Grandes.png", 1);
+insert into Productos values (10,"Papas Fritas Pequeñas", " Papas fritas Americanas","Papas fritas", 1200,"../../../public/Papas Pequeñas.png", 1);
+
+select * from Productos;
+
+select P.nombreProducto, P.precioProducto, S.cantidadStock from Stocks S
+join Productos P on P.id_Producto = S.id_Producto
+
+
+DELETE FROM Productos where id_Producto = 7;
+select * from Productos;
+
+-- Sucursales
+select * from Sucursales;
+
+insert into Sucursales values (1, "Barrio Norte", 1 , "Virgen de la Merced 885", "Dentro de las 4 avenidas", "https://i.imgur.com/MhKgIsT.jpeg", "3815695788", true);
+insert into Sucursales values (2, "Yerba Buena", 2 ,"Av. Aconquija 1336", "Hasta Adolfo de la Vega", "https://i.imgur.com/UvVwPDP.jpeg", "3816309296", true);
+insert into Sucursales values (3, "Tafi Viejo", 3 , "Av.Constitucion 2400", "Lomas de Tafi, Tafi, Los nogales", "https://i.imgur.com/7rVySwH.jpeg", "3815498608", false);
+insert into Sucursales values (4, "Zona Centro", 4 , "24 de Septiembre 468", "Dentro de las 4 avenidas", "https://i.imgur.com/IAf8gJ9.jpeg", "3813966286", true);
+
+
+ -- USUARIOS
+select * from Usuarios;
+
+insert into Usuarios values (1, "admin", "leno", 1);
+insert into Usuarios values (2, "ismael", "leno", 1);
+insert into Usuarios values (3, "luciano", "leno", 1);
+insert into Usuarios values (4, "matias", "leno", 1);
+insert into Usuarios values (5, "rodrigo", "leno", 1);
+insert into Usuarios values (6, "nahuel", "leno", 1);
+insert into Usuarios values (7, "empleado", "leno", 0);
+
+
+-- clientes
+
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (1, 'Guenevere', 'Lopez',45120844, '(381) 5360576', 'San Lorenzo 751', false);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (2, 'Javier', 'Ruiz', 42170243, '(381) 3611821', 'General Paz 501', true);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (3, 'Pedro', 'Balbo', 38970504, '(381) 6343442', 'Las Piedras 900', true);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (4, 'Martin', 'Morales', 301507222, '(381) 9849514', 'San Martin 324', false);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (5, 'Juan', 'Guerrero', 41220991, '(381) 8198149', 'San Lorenzo 1500', false);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (6, 'Luis', 'Godoy', 30579752, '(381) 4167376', '9 de Julio 800', true);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (7, 'Silvio', 'Luna', 20540689, '(381) 8586286', 'Junin 300', true);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (8, 'German', 'Pezella', 44242524, '(381) 1638474', 'Crisostomo 700', false);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (9, 'Cristian', 'Pavon', 41221569, '(381) 3914227', 'Av Independencia 420', false);
+insert into Clientes (id_Cliente, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, direccionCliente, activoCliente) values (10, 'Lionel', 'Messi', 38461790, '(381) 7521964', 'Chiclana 600', false);
+
+select * from Clientes;
+
+-- empleado
+select * from Empleados;
+insert into Empleados values (1, 2, "Ismael", "Chavez", "20-48954678-6", "3816278953", "ismaelotaku@gmail.com", "Lomas de tafi-Sector18-Mza A", true);
+insert into Empleados values (2, 1, "Lucía", "García", "27-54321876-9", "3816547890", "luciagarcia@email.com", "Barrio Norte-Calle 10-Casa 5", true);
+insert into Empleados values (3, 2, "Carlos", "Pérez", "22-33221144-5", "3816234567", "carlosperez@email.com", "Centro-Calle 20-Edif. San Martín", true);
+insert into Empleados values (4, 1, "María", "López", "23-98765432-1", "3816001122", "marialopez@email.com", "Yerba Buena-Av. Aconquija-Casa 15", true);
+insert into Empleados values (5, 2, "Pedro", "Martínez", "20-12345678-0", "3816333444", "pedromartinez@email.com", "San Miguel-Sector C-Block 7", true);
+insert into Empleados values (6, 1, "Ana", "Fernández", "25-11112222-3", "3816777888", "anafernandez@email.com", "Villa Carmela-Calle 5-Mza B", true);
+insert into Empleados values (7, 2, "Juan", "Gómez", "21-87654321-4", "3816999000", "juangomez@email.com", "Tafí Viejo-Calle 30-Casa 10", true);
+insert into Empleados values (8, 1, "Laura", "Ramírez", "26-44445555-2", "3816888999", "lauraramirez@email.com", "Alderetes-Ruta 9-Km 13", true);
+insert into Empleados values (9, 2, "Diego", "Hernández", "24-99998888-7", "3816777666", "diegohernandez@email.com", "Banda del Río Salí-Av. América-Mza D", true);
+insert into Empleados values (10, 1, "Paula", "Torres", "28-77776666-8", "3816000666", "paulatorres@email.com", "Concepción-Calle 25-Casa 3", false);
+insert into Empleados values (11, 2, "Santiago", "Díaz", "29-55554444-5", "3816444333", "santiagodiaz@email.com", "Yerba Buena-Av. Perú-Mza A", false);
+
+-- detallePedidos
+
+
+insert into DetallePedidos values (1,1, 1, 3, 1, '2024-06-30', true);
+insert into DetallePedidos values (2,2, 3, 3, 3, '2024-04-10', true);
+insert into DetallePedidos values (3,3, 4, 4, 6, '2024-06-21', true);
+insert into DetallePedidos values (4,4, 5, 2, 7, '2024-04-10', true);
+insert into DetallePedidos values (5,5, 5, 4, 9, '2024-06-22', true);
+insert into DetallePedidos values (6,6, 6, 2, 3, '2024-01-02', true);
+insert into DetallePedidos values (7,7, 7, 4, 1, '2024-06-30', true);
+insert into DetallePedidos values (8,8, 9, 2, 6, '2024-02-15', true);
+insert into DetallePedidos values (9,9, 2, 3, 5, '2024-06-18', false);
+insert into DetallePedidos values (10,4, 8, 1, 1, '2024-03-25', false);
+
+SELECT * FROM DetallePedidos;
+
+-- ventas
+
+select * from ventas where activoVenta=1
+
+insert into ventas values (1,3,1,5, "2024-05-10", 2, 0.1, "efectivo", 5299, true);
+insert into ventas values (2,1,5,2, "2024-05-20", 5, 0.1, "efectivo", 4099, true);
+insert into ventas values (3,2,6,1, "2024-05-15", 1, 0.1, "efectivo", 4999, false);
+
+
+-- stock
+select * from Stocks;
+
+insert into Stocks values(1, 1, 1, '2024-06-25', 100, "Palet 1", true);
+insert into Stocks values(2, 2, 1, '2024-06-25', 150, "Palet 2", true );
+insert into Stocks values(3, 3, 1, '2024-06-25', 50, "Palet 3", true);
+insert into Stocks values(4, 4, 1, '2024-06-25', 80, "Palet 4", true);
+insert into Stocks values(5, 5, 1, '2024-06-25', 200, "Palet 5", true);
+insert into Stocks values(6, 6, 1, '2024-06-25', 100, "Palet 6", true);
+insert into Stocks values(7, 7, 1, '2024-06-25', 200, "Palet 7", true);
+insert into Stocks values(8, 8, 1, '2024-06-25', 50, "Palet 8", true);
+insert into Stocks values(9, 9, 1, '2024-06-25', 500, "Palet 9", false);
+insert into Stocks values(10, 10, 1, '2024-06-25', 300, "Palet 10", false);
+
+insert into Stocks values(11, 1, 2, '2024-06-10', 100, "Palet 1", true);
+insert into Stocks values(12, 2, 2, '2024-06-10', 150, "Palet 2", true);
+insert into Stocks values(13, 3, 2, '2024-06-10', 50, "Palet 3", true);
+insert into Stocks values(14, 4, 2, '2024-06-10', 80, "Palet 4", true);
+insert into Stocks values(15, 5, 2, '2024-06-10', 200, "Palet 5", false);
+insert into Stocks values(16, 6, 2, '2024-06-10', 100, "Palet 6", false);
+insert into Stocks values(17, 7, 2, '2024-06-10', 200, "Palet 7", false);
+insert into Stocks values(18, 8, 2, '2024-06-10', 50, "Palet 8", false);
+insert into Stocks values(19, 9, 2, '2024-06-10', 500, "Palet 9", false);
+insert into Stocks values(20, 10, 2, '2024-06-10', 300, "Palet 10", false);
+
+insert into Stocks values(21, 1, 3, '2024-06-20', 100, "Palet 1", true);
+insert into Stocks values(22, 2, 3, '2024-06-20', 150, "Palet 2", true);
+insert into Stocks values(23, 3, 3, '2024-06-20', 50, "Palet 3", true);
+insert into Stocks values(24, 4, 3, '2024-06-20', 80, "Palet 4", true);
+insert into Stocks values(25, 5, 3, '2024-06-20', 200, "Palet 5", true);
+insert into Stocks values(26, 6, 3, '2024-06-20', 100, "Palet 6", true);
+insert into Stocks values(27, 7, 3, '2024-06-20', 200, "Palet 7", true);
+insert into Stocks values(28, 8, 3, '2024-06-20', 50, "Palet 8", false);
+insert into Stocks values(29, 9, 3, '2024-06-20', 500, "Palet 9", false);
+insert into Stocks values(30, 10, 3, '2024-06-20', 300, "Palet 10", false);
+
+
+insert into Stocks values(31, 1, 4, '2024-06-05', 100, "Palet 1", false);
+insert into Stocks values(32, 2, 4, '2024-06-05', 150, "Palet 2", false);
+insert into Stocks values(33, 3, 4, '2024-06-05', 50, "Palet 3", false);
+insert into Stocks values(34, 4, 4, '2024-06-05', 80, "Palet 4", true);
+insert into Stocks values(35, 5, 4, '2024-06-05', 200, "Palet 5", true);
+insert into Stocks values(36, 6, 4, '2024-06-05', 100, "Palet 6", true);
+insert into Stocks values(37, 7, 4, '2024-06-05', 200, "Palet 7", true);
+insert into Stocks values(38, 8, 4, '2024-06-05', 50, "Palet 8", true);
+insert into Stocks values(39, 9, 4, '2024-06-05', 500, "Palet 9", true);
+insert into Stocks values(40, 10, 4, '2024-06-05', 300, "Palet 10", false);
+
+
+-- CONSULTAS (QUERY)
+
+INSERT INTO Empleados (id_Sucursal, nombreEmpleado, apellidoEmpleado ,cuilEmpleado,telefonoEmpleado,mailEmpleado,direccionEmpleado) values (1,"Harry" "Topper","123123123","3814565987","asd@asd.com","nada 123");
+
+update DetallePedidos set id_Producto=11 ,id_Cliente=1, id_Sucursal=4,id_Empleado=1, fechaDetallePedido ="2024-06-10 13:30:00" where id_DetallePedido= 7;
+
+UPDATE DetallePedidos
+SET id_Producto = 1,
+    id_Cliente = 1,
+    id_Sucursal = 1,
+    id_Empleado = 1,
+    fechaDetallePedido = '2024-06-10 13:30:00'
+WHERE id_DetallePedido = 7;
+
+
+
+select E.id_Empleado, S.nombreSucursal as NombreSucursal, E.nombreEmpleado, E.cuilEmpleado, E.telefonoEmpleado, E.mailEmpleado, E.direccionEmpleado from Empleados E 
+join Sucursales S 
+on E.id_Sucursal = S.id_Sucursal;
+
+select id_DetallePedido, P.nombreProducto as NombreProducto, C.apellidoCliente as ApellidoCliente, S.nombreSucursal as NombreSucursal, E.nombreEmpleado as NombreEmpleado, D.fechaDetallePedido from DetallePedidos D 
+join Productos P 
+on D.id_Producto = P.id_Producto 
+join Clientes C 
+on C.id_Cliente = D.id_Cliente 
+join Sucursales S 
+on S.id_Sucursal = D.id_Sucursal 
+join Empleados E 
+on E.id_Empleado = D.id_Empleado;
+
+drop table ventas
+
+-- BORRADO LOGICO
+
+update Clientes set activoCliente=1 where id_Cliente=3
+select * from Clientes where activoCliente=1
+select * from Clientes
+
+SELECT v.id_Venta, p.nombreProducto as NombreProducto, e.nombreEmpleado AS NombreEmpleado, CONCAT(c.nombreCliente, ' ', c.apellidoCliente) AS NombreCliente, v.fechaVenta AS FechaVenta, v.tipoPagoVenta AS TipoDePago, v.totalVenta AS Total  FROM Ventas v JOIN DetallePedidos dp ON v.id_DetallePedido = dp.id_DetallePedido JOIN Clientes c  ON dp.id_Cliente = c.id_Cliente JOIN Empleados e ON dp.id_Empleado = e.id_Empleado JOIN Productos p ON p.id_Producto = dp.id_DetallePedido WHERE activoVenta = 1;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '154653856';
+FLUSH PRIVILEGES;
+
+
