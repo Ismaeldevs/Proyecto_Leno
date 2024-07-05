@@ -4,6 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import { URL_CLIENTES, URL_CLIENTE_EDITAR } from '../../../../Constats/endpoints'
 import { Tooltip } from '@mui/material';
+import '../../../../CSS/CRUD/Form.css'
 
 
 const EditClient = () => {
@@ -64,36 +65,38 @@ const EditClient = () => {
 
 
         <div>
-            <h2 className="p-5 text-white text-center">EDITAR CLIENTE</h2>
             <br />
-            <div className='d-flex justify-content-center p-5'>
+            <div className='container-CRUD'>
                 <br />
-                <Form onSubmit={handleSubmit}>
+                <Form className='formCRUD' onSubmit={handleSubmit}>
+                <p className="titleCRUD">EDITAR UN CLIENTE</p>
                     <FormGroup>
                         <Tooltip title="Nombre del Cliente">
-                            <FormControl type='text' placeholder='Nombre Cliente' value={client.nombreCliente} onChange={handleChange} name="nombreCliente" />
+                            <FormControl type='text' placeholder='Nombre Cliente' className="crud input" value={client.nombreCliente} onChange={handleChange} name="nombreCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Apellido del Cliente">
-                            <FormControl type='text' placeholder='Apellido Cliente' value={client.apellidoCliente} onChange={handleChange} name="apellidoCliente" />
+                            <FormControl type='text' placeholder='Apellido Cliente' className="crud input" value={client.apellidoCliente} onChange={handleChange} name="apellidoCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="DNI del Cliente">
-                            <FormControl type='text' placeholder='DNI' value={client.dniCliente} onChange={handleChange} name="dniCliente" />
+                            <FormControl type='text' placeholder='DNI' className="crud input" value={client.dniCliente} onChange={handleChange} name="dniCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Telefono del Cliente">
-                            <FormControl type='text' placeholder='Telefono' value={client.telefonoCliente} onChange={handleChange} name="telefonoCliente" />
+                            <FormControl type='text' placeholder='Telefono' className="crud input" value={client.telefonoCliente} onChange={handleChange} name="telefonoCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Direccion del Cliente">
-                            <FormControl type='text' placeholder='Direccion' value={client.direccionCliente} onChange={handleChange} name="direccionCliente" />
+                            <FormControl type='text' placeholder='Direccion' className="crud input" value={client.direccionCliente} onChange={handleChange} name="direccionCliente" required />
                         </Tooltip>
                         <br />
                     </FormGroup>
                     <div> 
-                    <Button type='submit' className='btn btn-danger mx-2'>Actualizar Cliente</Button>
-                    <Link to={'/clientes'} className='btn text-white bg-danger '>Volver a Clientes</Link>
+                    <Button type='submit' className="btnCRUD">Actualizar Cliente</Button>
+                    </div>
+                    <div>
+                    <button className="btnBack"><Link to={'/clientes'} className='text-decoration-none text-white'>Volver a Clientes</Link></button>
                     </div>
                 </Form>
             </div>

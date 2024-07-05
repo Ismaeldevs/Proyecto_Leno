@@ -61,30 +61,36 @@ const EditUser = () => {
 
 
         <div>
-            <h2 className="p-5 text-white text-center">EDITAR USUARIO</h2>
-            <br />
-            <div className='d-flex justify-content-center p-5'>
+      <br />
+      <div className="container-CRUD">
+        <br />
                 <br />
-                <Form onSubmit={handleSubmit}>
+                <Form className='formCRUD' onSubmit={handleSubmit}>
+                    <p className="titleCRUD">EDITA UN USUARIO</p>
                     <FormGroup>
                         <Tooltip title="Nombre del Usuario">
-                            <FormControl type='text' placeholder='Usuario' value={usuario.usuario} onChange={handleChange} name="usuario" />
+                            <FormControl type='text' placeholder='Usuario' value={usuario.usuario} className="crud input" onChange={handleChange} name="usuario" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Clave">
-                            <FormControl type='text' placeholder='Clave' value={usuario.clave} onChange={handleChange} name="clave" />
+                            <FormControl type='text' placeholder='Clave' value={usuario.clave} className="crud input" onChange={handleChange} name="clave" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="ROL">
-                            <FormControl type='number' placeholder='Rol' value={usuario.rol == 1 ? "Admin" : "Empleado"} onChange={handleChange} name="rol" />
+                            <FormControl type='text' placeholder='Rol' value={usuario.rol == 1 ? "Admin" : "Empleado"} className="crud input" onChange={handleChange} name="rol" required />
                         </Tooltip>
                         <br />
 
 
                     </FormGroup>
-                    <Button type='submit' className='btn btn-danger mx-2'>Actualizar Usuario</Button>
-                    <Link to={'/usuarios'} className='btn text-white bg-danger '>Volver a Usuarios</Link>
-
+                    <div>
+          <Button type="submit" className="btnCRUD">
+            Actualizar Usuario
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/usuarios'} className='text-decoration-none text-white'>Volver a Usuarios</Link></button>
+          </div>
                 </Form>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
 import { useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import { Tooltip } from '@mui/material';
+import '../../../../CSS/CRUD/Form.css'
 
 // import { URL_CLIENTE_CREAR } from '../../../../Constats/endpoints'
 
@@ -51,37 +52,40 @@ const CreateClient = () => {
 
     return (
         <div>
-            <h1 className="p-5 text-white text-center">CREAR CLIENTE</h1>
             <br />
-            <div className='d-flex justify-content-center p-5'>
+            <div className='container-CRUD'>
                 <br />
-                <Form onSubmit={handleSubmit}>
+                <Form className='formCRUD' onSubmit={handleSubmit}>
+                    <p className="titleCRUD">CREAR UN CLIENTE</p>
                     <FormGroup>
                         <Tooltip title="Nombre del Cliente">
-                            <FormControl type='text' placeholder='Nombre ' onChange={handleChange} name="nombreCliente" />
+                            <FormControl type='text' placeholder='Nombre' className="crud input" onChange={handleChange} name="nombreCliente" required/>
                         </Tooltip>
                         <br />
                         <Tooltip title="Apellido del Cliente">
-                            <FormControl type='text' placeholder='Apellido ' onChange={handleChange} name="apellidoCliente" />
+                            <FormControl type='text' placeholder='Apellido' className="crud input" onChange={handleChange} name="apellidoCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="DNI del Cliente">
-                            <FormControl type='text' placeholder='DNI' onChange={handleChange} name="dniCliente" />
+                            <FormControl type='text' placeholder='DNI' className="crud input" onChange={handleChange} name="dniCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Telefono del Cliente">
-                            <FormControl type='text' placeholder='Telefono' onChange={handleChange} name="telefonoCliente" />
+                            <FormControl type='text' placeholder='Telefono' className="crud input" onChange={handleChange} name="telefonoCliente" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Direccion del Cliente">
-                            <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionCliente" />
+                            <FormControl type='text' placeholder='Direccion' className="crud input" onChange={handleChange} name="direccionCliente" required />
                         </Tooltip>
                         <br />
 
                     </FormGroup>
                     <div>
-                        <Button type='submit' className='btn btn-danger mx-2'>Crear Cliente</Button>
-                        <Link to={'/clientes'} className='btn text-white bg-danger '>Volver a Clientes</Link>
+                        <Button type='submit' className="btnCRUD">Crear Cliente</Button>
+                    </div>
+                    <div>
+                        <br />
+                        <button className="btnBack"><Link to={'/clientes'} className='text-decoration-none text-white'>Volver a Clientes</Link></button>
                     </div>
                 </Form>
             </div>

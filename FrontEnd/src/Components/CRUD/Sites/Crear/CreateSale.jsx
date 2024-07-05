@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Form, FormControl, FormGroup } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
   URL_CLIENTES,
@@ -31,19 +31,16 @@ const CreateSale = () => {
 
   const getProducts = async () => {
     const response = await axios.get(`${URL_PRODUCTOS}`);
-    console.log(response.data);
     setProducts(response.data);
   };
 
   const getClients = async () => {
     const response = await axios.get(`${URL_CLIENTES}`);
-    console.log(response.data);
     setClients(response.data);
   };
 
   const getEmployees = async () => {
     const response = await axios.get(`${URL_EMPLEADO}`);
-    console.log(response.data);
     setEmployees(response.data);
   };
 
@@ -91,17 +88,20 @@ const CreateSale = () => {
 
   return (
     <div>
-      <h1 className="p-5 text-white text-center">CREAR VENTA</h1>
       <br />
-      <div className="d-flex justify-content-center p-5">
+      <div className='container-CRUD'>
+      <br />
         <br />
-        <Form onSubmit={handleSubmit}>
+        <Form className='formCRUD' onSubmit={handleSubmit}>
+        <p className="titleCRUD">CREAR UNA VENTA</p>
           <FormGroup>
             <Form.Control
               as="select"
               name="id_Producto"
+              className="crud input"
               onChange={handleChange}
             >
+              <option hidden>Selecciona el Producto</option>
               {products.map((product) => (
                 <option
                   key={product.id_Producto}
@@ -113,7 +113,8 @@ const CreateSale = () => {
               ))}
             </Form.Control>
             <br />
-            <Form.Control as="select" onChange={handleChange} name="id_Cliente">
+            <Form.Control as="select" className="crud input" onChange={handleChange} name="id_Cliente">
+            <option hidden>Selecciona al Cliente</option>
               {clients.map((client) => (
                 <option
                   key={client.id_Cliente}
@@ -128,8 +129,10 @@ const CreateSale = () => {
             <Form.Control
               as="select"
               name="id_Empleado"
+              className="crud input"
               onChange={handleChange}
             >
+              <option hidden>Selecciona el Empleado</option>
               {employees.map((employee) => (
                 <option
                   key={employee.id_Empleado}
@@ -144,6 +147,7 @@ const CreateSale = () => {
             <FormControl
               type="date"
               placeholder="Fecha de Hoy"
+              className="crud input"
               onChange={handleChange}
               name="fechaVenta"
               required
@@ -152,6 +156,7 @@ const CreateSale = () => {
             <FormControl
               type="number"
               placeholder="Cantidad"
+              className="crud input"
               onChange={handleChange}
               name="cantidadVenta"
               required
@@ -160,6 +165,7 @@ const CreateSale = () => {
             <FormControl
               as="select"
               placeholder="Descuento"
+              className="crud input"
               onChange={handleChange}
               name="descuentoVenta"              
             >
@@ -173,6 +179,7 @@ const CreateSale = () => {
             <FormControl
               as="select"
               placeholder="Tipo de Pago"
+              className="crud input"
               onChange={handleChange}
               name="tipoPagoVenta"
               required
@@ -188,13 +195,21 @@ const CreateSale = () => {
             <FormControl
               type="number"
               placeholder="Total Facturado"
+              className="crud input"
               onChange={handleChange}
               name="totalVenta"
               required
             />
             <br />
           </FormGroup>
-          <Button type="submit">Completar Venta</Button>
+          <div>
+          <Button type="submit" className="btnCRUD">
+            Completar Venta
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/ventas'} className='text-decoration-none text-white'>Volver a Ventas</Link></button>
+          </div>
         </Form>
       </div>
     </div>

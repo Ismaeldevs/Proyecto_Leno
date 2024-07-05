@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import {Button, Form, FormControl, FormGroup} from 'react-bootstrap'
-import {useParams,useNavigate} from 'react-router-dom'
+import {useParams,useNavigate,Link} from 'react-router-dom'
 import axios from 'axios'
 import { URL_VENTAS, URL_PRODUCTOS, URL_CLIENTES, URL_EMPLEADO, URL_VENTAS_EDITAR } from '../../../../Constats/endpoints'
 
@@ -25,26 +25,31 @@ const EditSale = () => {
 
     const getProducts = async () => {
         const response = await axios.get(`${URL_PRODUCTOS}`);
-        console.log(response.data);
         setProducts(response.data);
       };
     
       const getClients = async () => {
         const response = await axios.get(`${URL_CLIENTES}`);
-        console.log(response.data);
         setClients(response.data);
       };
     
       const getEmployees = async () => {
         const response = await axios.get(`${URL_EMPLEADO}`);
-        console.log(response.data);
         setEmployees(response.data);
       };
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        try {
+  
+        let total = sale.totalVenta * sale.cantidadVenta
+        let totalDescuento = 0
+    
+    
+        try {     
+    
+            totalDescuento = total * sale.descuentoVenta / 100;
+            sale.totalVenta = total - totalDescuento    
 
             const response = await axios.put(`${URL_VENTAS_EDITAR}${id}`, {
                 id_Producto: sale.id_Producto,
@@ -89,13 +94,14 @@ const EditSale = () => {
 
 
     <div>
-      <h2 className="p-5 text-white text-center">EDITAR CLIENTE</h2>
       <br />
-      <div className='d-flex justify-content-center p-5'>
+      <div className="container-CRUD">
         <br />
-        <Form onSubmit={handleSubmit}>
+        <br />
+        <Form className='formCRUD' onSubmit={handleSubmit}>
+        <p className="titleCRUD">EDITA UNA VENTA</p>
         <FormGroup>
-            <FormControl as="select" value={sale.id_Producto} name="id_Producto" onChange={handleChange}>
+            <FormControl as="select" value={sale.id_Producto} name="id_Producto" className="crud input" onChange={handleChange} required>
             <option hidden>Selecciona el Producto</option>
               {
                 products.map((product) => (
@@ -104,7 +110,7 @@ const EditSale = () => {
               }
             </FormControl>
             <br />
-            <FormControl as="select" value={sale.id_Cliente} onChange={handleChange} name="id_Cliente">
+            <FormControl as="select" value={sale.id_Cliente} className="crud input" onChange={handleChange} name="id_Cliente" required>
             <option hidden>Selecciona el Cliente</option>
               {
                 clients.map((client) => (
@@ -113,7 +119,7 @@ const EditSale = () => {
               }
             </FormControl>
             <br />
-            <FormControl as="select" value={sale.id_Empleado} name="id_Empleado" onChange={handleChange}>
+            <FormControl as="select" value={sale.id_Empleado} name="id_Empleado" className="crud input" onChange={handleChange} required>
             <option hidden>Selecciona el Empleado</option>
               {
                 employees.map((employee) => (
@@ -125,6 +131,7 @@ const EditSale = () => {
             <FormControl
               type="date"
               placeholder="Fecha de Hoy"
+              className="crud input"
               onChange={handleChange}
               name="fechaVenta"
               defaultValue={sale.FechaVenta}
@@ -132,17 +139,49 @@ const EditSale = () => {
             />
             <br />
             <FormControl
-              type="text"
-              placeholder={sale.TipoDePago}
+              type="number"
+              placeholder="Cantidad"
+              className="crud input"
               onChange={handleChange}
-              name="tipoPagoVenta"
-              defaultValue={sale.TipoDePago}
+              name="cantidadVenta"
+              defaultValue={sale.Cantidad}
               required
             />
             <br />
             <FormControl
+              as="select"
+              placeholder="Descuento"
+              className="crud input"
+              onChange={handleChange}
+              name="descuentoVenta"              
+            >
+              <option value={10}>10%</option>
+              <option value={20}>20%</option>
+              <option value={30}>30%</option>
+              <option value={40}>40%</option>
+              <option value={100}>Gratis</option>
+              </FormControl>
+            <br />
+            <FormControl
+              as="select"
+              placeholder="Tipo de Pago"
+              className="crud input"
+              onChange={handleChange}
+              name="tipoPagoVenta"
+              required
+           >
+
+              <option value={'Efectivo'}>Efectivo</option>
+              <option value={'Transferencia'}>Transferencia</option>
+              <option value={'Debito'}>Debito</option>
+              <option value={'Credito'}>Credito</option>
+           
+              </FormControl>
+            <br />
+            <FormControl
               type="number"
               placeholder={sale.TotalFacturado}
+              className="crud input"
               onChange={handleChange}
               name="totalVenta"
               defaultValue={sale.TotalFacturado}
@@ -150,7 +189,14 @@ const EditSale = () => {
             />
             <br />
             </FormGroup>
-            <Button type='submit'>Actualizar Venta</Button>
+            <div>
+          <Button type="submit" className="btnCRUD">
+            Actualizar Venta
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/ventas'} className='text-decoration-none text-white'>Volver a Ventas</Link></button>
+          </div>
         </Form>
 </div>
     </div>

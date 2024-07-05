@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
-import { URL_PEDIDO, URL_PEDIDO_EDITAR } from '../../../../Constats/endpoints'
+import { URL_PRODUCTOS, URL_CLIENTES, URL_SUCURSALES, URL_EMPLEADO, URL_PEDIDO, URL_PEDIDO_EDITAR } from '../../../../Constats/endpoints'
 import { Tooltip } from '@mui/material';
 
 
@@ -20,6 +20,30 @@ const EditPedido = () => {
     }
 
     const [pedido, setPedido] = useState(initialState)
+    const [products, setProducts] = useState([]);
+    const [clients,setClients] = useState([])
+    const [local, setLocal] = useState([]);
+    const [employees, setEmployees] = useState([]);
+
+    const getProducts = async () => {
+        const response = await axios.get(URL_PRODUCTOS);
+        setProducts(response.data);
+      };
+
+    const getClients = async () => {
+        const response = await axios.get(URL_CLIENTES)
+        setClients(response.data)
+      }
+
+    const getLocal = async () => {
+        const response = await axios.get(URL_SUCURSALES);
+        setLocal(response.data);
+      };
+
+    const getEmployees = async () => {
+        const response = await axios.get(`${URL_EMPLEADO}`);
+        setEmployees(response.data);
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -57,43 +81,114 @@ const EditPedido = () => {
 
     useEffect(() => {
         getData()
+        getProducts()
+        getClients()
+        getLocal()
+        getEmployees()
     }, [])
 
     return (
 
 
         <div>
-            <h2 className="p-5 text-white text-center">EDITAR PEDIDO</h2>
-            <br />
-            <div className='d-flex justify-content-center p-5'>
+      <br />
+      <div className="container-CRUD">
+        <br />
                 <br />
-                <Form onSubmit={handleSubmit}>
+                <Form className='formCRUD' onSubmit={handleSubmit}>
+                <p className="titleCRUD">EDITA UN PEDIDO</p>
                     <FormGroup>
-                    <Tooltip title="Numero del Producto">
-                        <FormControl type='text' placeholder='Numero Producto' value={pedido.NombreProducto} onChange={handleChange} name="id_Producto" />
+                    <Tooltip title="Nombre del Producto">
+                    <FormControl
+                as="select"
+                className="crud input"
+                onChange={handleChange}
+                name="id_Producto"
+                required
+              >
+                <option hidden>Selecciona el Producto</option>
+                {products.map((product) => (
+                  <option
+                    key={product.id_Producto}
+                    name="id_Producto"
+                    value={product.id_Producto}
+                  >
+                    {product.nombreProducto}
+                  </option>
+                ))}
+              </FormControl>
                         </Tooltip>
                         <br />
-                        <Tooltip title="Numero del Cliente">
-                        <FormControl type='text' placeholder='Numero Cliente' value={pedido.NombreCompletoCliente} onChange={handleChange} name="id_Cliente" />
+                        <Tooltip title="Nombre del Cliente">
+                        <Form.Control as="select" className="crud input" onChange={handleChange} name="id_Cliente">
+            <option hidden>Selecciona al Cliente</option>
+              {clients.map((client) => (
+                <option
+                  key={client.id_Cliente}
+                  name="id_Cliente"
+                  value={client.id_Cliente}
+                >
+                  {client.nombreCliente} {client.apellidoCliente}
+                </option>
+              ))}
+            </Form.Control>
                         </Tooltip>
                         <br />
-                        <Tooltip title="Numero de Sucusal">
-                        <FormControl type='text' placeholder='Numero Sucursal' value={pedido.NombreSucursal} onChange={handleChange} name="id_Sucursal" />
+                        <Tooltip title="Nombre de Sucursal">
+                        <FormControl
+                as="select"
+                className="crud input"
+                onChange={handleChange}
+                name="id_Sucursal"
+                required
+              >
+                <option hidden>Selecciona la Sucursal</option>
+                {local.map((sucursal) => (
+                  <option
+                    key={sucursal.id_Sucursal}
+                    name="id_Sucursal"
+                    value={sucursal.id_Sucursal}
+                  >
+                    {sucursal.nombreSucursal}
+                  </option>
+                ))}
+              </FormControl>
                         </Tooltip>
                         <br />
                         <Tooltip title="Numero de Empleado">
-                        <FormControl type='text' placeholder='Numero Empleado' value={pedido.NombreCompletoEmpleado} onChange={handleChange} name="id_Empleado" />
+                        <Form.Control
+              as="select"
+              name="id_Empleado"
+              className="crud input"
+              onChange={handleChange}
+            >
+              <option hidden>Selecciona el Empleado</option>
+              {employees.map((employee) => (
+                <option
+                  key={employee.id_Empleado}
+                  name="id_Empleado"
+                  value={employee.id_Empleado}
+                >
+                  {employee.nombreEmpleado} {employee.apellidoEmpleado}
+                </option>
+              ))}
+            </Form.Control>
                         </Tooltip>
                         <br />
                         <Tooltip title="Fecha">
-                        <FormControl type='text' placeholder='Fecha' value={pedido.fechaDetallePedido} onChange={handleChange} name="fechaDetallePedido" />
+                        <FormControl type='text' placeholder='Fecha' value={pedido.fechaDetallePedido} className="crud input" onChange={handleChange} name="fechaDetallePedido" required />
                         </Tooltip>
                         <br />
                       
                     </FormGroup>
-                    <Button type='submit'className='btn btn-danger mx-2'>Actualizar Pedido</Button>
-                    <Link to={'/pedidos'} className='btn text-white bg-danger '>Volver a Pedidos</Link>
-
+                    <div>
+          <Button type="submit" className="btnCRUD">
+            Actualizar Pedido
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/pedidos'} className='text-decoration-none text-white'>Volver a Pedidos</Link></button>
+          </div>
                 </Form>
             </div>
         </div>
