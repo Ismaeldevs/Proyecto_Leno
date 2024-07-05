@@ -21,7 +21,8 @@ const MainCliente = () => {
       const response = await axios.put(`${URL_CLIENTE_ELIMINAR}${id}`)
       if(response) {
         alert("Cliente eliminado!")
-        
+
+
       }
     } catch (error) {
       console.log(error)
@@ -34,7 +35,7 @@ useEffect(() => {
 }, [])
 
   return (
-    <div>
+    <>
       <h2 className="text-center text-white p-5">MODIFICA TUS CLIENTES</h2>
       <Link to={`/clientes/create`} className='btn text-white bg-success m-5'>CREAR CLIENTE</Link>
       <Table striped bordered hover variant="dark">
@@ -67,7 +68,12 @@ useEffect(() => {
       )}
       </tbody>
     </Table>
+    <div className='d-flex justify-content-center'>
+    <Link to={'/select'} className= " btn btn-danger w-25 mb-5 mt-3 " >Volver a inicio</Link>
     </div>
+
+
+    </>
   )
 }
 

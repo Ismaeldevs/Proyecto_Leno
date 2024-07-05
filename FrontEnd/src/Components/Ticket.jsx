@@ -115,6 +115,7 @@ const handleMin = () => {
   </div>
 </div>
 </div>
+
 </>
   )
 }

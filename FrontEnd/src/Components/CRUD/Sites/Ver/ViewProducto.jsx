@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 import { URL_PRODUCTOS } from '../../../../Constats/endpoints'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import "../../../../CSS/Cards/CardView.css"
 
 
 // import {Card} from 'react-bootstrap'
@@ -33,21 +37,30 @@ const ViewProducto = () => {
 
   return (
     <div className='p-5 m-5'>
-        <br /><br /><br /><br /><br /><br />
-      <div className="card m-5">
-    <div className="card-img"><div>
-      <img className='image' src={productos.imagenProducto} width={200} alt="" />
-      </div></div>
-    <div className="card-title">{productos.nombreProducto}</div>
-    <div className="card-title">{productos.tipoProducto}</div>
-    <div className="card-subtitle">{productos.descripcionProducto}</div>
-    <div className="card-subtitle"> {productos.disponibilidadProducto == 1 ? "Disponible":"No Disponible"}</div>
-    <hr className="card-divider" />
-    <div className="card-footer">
-        <div className="card-price me-3"><span>$</span>{productos.precioProducto}</div>
-    </div>
-    <Link to={'/productos'} className="btn btn-info">Volver al inicio</Link>
-</div>
+
+
+<Container>
+      <Row>
+        <Col>
+        
+      <div className="card">
+        <div className="content">
+          <p className="heading"> {productos.nombreProducto} </p>
+          <p className="para">Tipo: {productos.tipoProducto}  </p>
+          <p className="para">Descripcion: {productos.descripcionProducto} </p>
+          <p className="para">ACTIVO: {productos.disponibilidadProducto == 1 ? "Disponible":"No Disponible"} </p>
+          <Link to={'/productos'} className="btn btn-danger">Volver a Productos</Link>
+          <Link to={'/select'} className='btn text-white bg-danger '>Volver a Inicio</Link>
+
+        </div>
+      </div>
+        
+        </Col>
+        <Col>
+        <img className='image' src={productos.imagenProducto} width={550} height={550} alt="" />        </Col>
+      </Row>
+    </Container>
+
 
     </div>
    

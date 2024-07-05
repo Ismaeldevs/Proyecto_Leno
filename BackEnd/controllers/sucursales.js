@@ -24,9 +24,9 @@ const singleSucursales = (req,res) => {
 }
 // funcion para crear un empleado
 const createSucursales = (req,res) =>{
-const {nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursale,telefonoSucursal} = req.body
+const {nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursal,telefonoSucursal} = req.body
 
-    const query = `INSERT INTO Sucursales (nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursale,telefonoSucursal,activoSucursal) values ("${nombreSucursal}",${numeroSucursal},"${direccionSucursal}","${zonaAlcance}","${imagenSucursale}","${telefonoSucursal}",1)`
+    const query = `INSERT INTO Sucursales (nombreSucursal,numeroSucursal,direccionSucursal,zonaAlcance,imagenSucursal,telefonoSucursal,activoSucursal) values ("${nombreSucursal}",${numeroSucursal},"${direccionSucursal}","${zonaAlcance}","${imagenSucursal}","${telefonoSucursal}",1)`
     conection.query(query,(err,results)=>{
         if(err) throw err
         res.send(results)

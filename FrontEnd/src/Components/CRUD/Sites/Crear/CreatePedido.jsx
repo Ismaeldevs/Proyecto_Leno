@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import { URL_PEDIDO_CREAR } from '../../../../Constats/endpoints'
+import { Tooltip } from '@mui/material';
+
 
 const CreatePedido = () => {
 
@@ -25,11 +27,11 @@ const CreatePedido = () => {
         try {
 
             const response = await axios.post(`${URL_PEDIDO_CREAR}`, {
-                id_producto: pedido.id_producto,
-                id_cliente: pedido.id_cliente,
-                id_sucursal: pedido.id_sucursal,
-                id_empleado: pedido.id_empleado,
-                fecha: pedido.fecha,
+                id_Producto: pedido.id_Producto,
+                id_Cliente: pedido.id_Cliente,
+                id_Sucursal: pedido.id_Sucursal,
+                id_Empleado: pedido.id_Empleado,
+                fechaDetallePedido: pedido.fechaDetallePedido,
             })
             if (response.status === 200) {
                 alert("Detalle Creado!")
@@ -55,18 +57,29 @@ const CreatePedido = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_producto" />
+                        <Tooltip title="Numero de Producto">
+                            <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_Producto" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='number' placeholder='Numero Cliente' onChange={handleChange} name="id_cliente" />
+                        <Tooltip title="Numero del Cliente">
+                            <FormControl type='number' placeholder='Numero Cliente' onChange={handleChange} name="id_Cliente" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_sucursal" />
+                        <Tooltip title="Numero de Sucursal">
+                            <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_Sucursal" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='number' placeholder='Numero Empleado' onChange={handleChange} name="id_empleado" />
+                        <Tooltip title="Numero del Empleado">
+                            <FormControl type='number' placeholder='Numero Empleado' onChange={handleChange} name="id_Empleado" />
+                        </Tooltip>
                         <br />
-                        <FormControl type='text' placeholder='Fecha' onChange={handleChange} name="fecha" />
+                        <Tooltip title="Fecha">
+                            <FormControl type='date' placeholder='Fecha' onChange={handleChange} name="fechaDetallePedido" />
+                        </Tooltip>
                         <br />
                     </FormGroup>
-                    <Button type='submit'>Crear Detalle</Button>
+                    <Button type='submit'className='btn btn-danger mx-2'>Crear Detalle</Button>
+                    <Link to={'/pedidos'} className='btn text-white bg-danger '>Volver a Pedidos</Link>
                 </Form>
             </div>
         </div>
