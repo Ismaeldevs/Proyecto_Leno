@@ -32,6 +32,7 @@ const MainProducto = () => {
       const response = await axios.put(`${URL_PRODUCTO_ELIMINAR}${id}`);
       if (response) {
         alert("Producto eliminado!");
+        getData()
       }
     } catch (error) {
       console.log(error);

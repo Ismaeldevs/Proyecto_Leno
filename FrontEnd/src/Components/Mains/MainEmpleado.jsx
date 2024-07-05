@@ -27,9 +27,11 @@ const MainEmpleado = () => {
 
   const handleChange = async (id) => {
     try {
-      const response = await axios.put(`${URL_EMPLEADO_ELIMINAR}${id}`);
-      if (response) {
-        alert("Empleado eliminado!");
+
+      const response = await axios.put(`${URL_EMPLEADO_ELIMINAR}${id}`)
+      if(response) {
+        alert("Empleado eliminado!")
+        getData()
       }
     } catch (error) {
       console.log(error);

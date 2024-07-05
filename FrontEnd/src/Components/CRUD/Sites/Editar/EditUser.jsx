@@ -76,7 +76,7 @@ const EditUser = () => {
                         </Tooltip>
                         <br />
                         <Tooltip title="ROL">
-                            <FormControl type='text' placeholder='Rol' value={usuario.rol == 1 ? "Admin" : "Empleado"} onChange={handleChange} name="rol" />
+                            <FormControl type='number' placeholder='Rol' value={usuario.rol == 1 ? "Admin" : "Empleado"} onChange={handleChange} name="rol" />
                         </Tooltip>
                         <br />
 

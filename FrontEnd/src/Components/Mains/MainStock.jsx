@@ -34,14 +34,14 @@ const MainStock = () => {
       const response = await axios.delete(`${URL_STOCK_ELIMINAR}${id}`)
       if(response) {
         alert("Stock eliminado!")
-        
+        getData()
       }
     } catch (error) {
       console.log(error)
     }
   }
 
-useEffect(() => {
+        useEffect(() => {
   getData()
 }, [])
 
@@ -68,9 +68,9 @@ useEffect(() => {
       {dataFiltrada.map((stock) =>
                 <tr key={stock.id_Stock}>
                 <td>{stock.id_Stock}</td>
-                <td>{stock.NombreProducto}</td>
+                <td>{stock.nombreProducto}</td>
                 <td>{stock.cantidadStock}</td>
-                <td>{new Date(stock.fechaRegistroStock).toJSON().slice(0, 10)}</td>
+                <td>{stock.fechaRegistroStock}</td>
                 <td>{stock.nombreSucursal}</td>
                 
                 <td>

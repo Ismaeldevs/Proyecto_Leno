@@ -11,11 +11,12 @@ const CreateClient = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombreCompleto: "",
-        dni: "",
-        telefono: "",
-        direccion: "",
-        activo: 0
+        nombreCliente: "",
+        apellidoCliente:"",
+        dniCliente: "",
+        telefonoCliente: "",
+        direccionCliente: "",
+        activoCliente: 0
     }
     const handleChange = (e) => {
         setClient({ ...client, [e.target.name]: e.target.value })
@@ -31,9 +32,10 @@ const CreateClient = () => {
             let response = await axios.post("http://localhost:8000/clientes/create", {
                 nombreCliente: client.nombreCliente,
                 apellidoCliente: client.apellidoCliente,
-                dni: client.dniCliente,
-                telefono: client.telefonoCliente,
-                direccion: client.direccionCliente
+                dniCliente: client.dniCliente,
+                telefonoCliente: client.telefonoCliente,
+                direccionCliente: client.direccionCliente,
+                activoCliente: client.activoCliente
             })
 
             if (response.status === 200) {

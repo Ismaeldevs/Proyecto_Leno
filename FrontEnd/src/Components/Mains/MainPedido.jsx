@@ -36,7 +36,7 @@ const MainPedido = () => {
       const response = await axios.put(`${URL_PEDIDO_ELIMINAR}${id}`)
       if(response) {
         alert("Pedido eliminado!")
-        
+        getData()
       }
     } catch (error) {
       console.log(error)

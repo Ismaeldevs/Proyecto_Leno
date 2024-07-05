@@ -58,13 +58,10 @@ const CreateSale = () => {
     let totalDescuento = 0
 
 
-    try {
-      if(sale.descuentoVenta === "10" ) {
+    try {     
 
         totalDescuento = total * sale.descuentoVenta / 100;
-        sale.totalVenta = total - totalDescuento
-
-       }
+        sale.totalVenta = total - totalDescuento     
 
       let response = await axios.post(`${URL_VENTAS_CREAR}`, {
         id_Producto: sale.id_Producto,
@@ -149,6 +146,7 @@ const CreateSale = () => {
               placeholder="Fecha de Hoy"
               onChange={handleChange}
               name="fechaVenta"
+              required
             />
             <br />
             <FormControl
@@ -156,27 +154,43 @@ const CreateSale = () => {
               placeholder="Cantidad"
               onChange={handleChange}
               name="cantidadVenta"
+              required
             />
             <br />
             <FormControl
-              type="number"
+              as="select"
               placeholder="Descuento"
               onChange={handleChange}
-              name="descuentoVenta"
-            />
+              name="descuentoVenta"              
+            >
+              <option value={10}>10%</option>
+              <option value={20}>20%</option>
+              <option value={30}>30%</option>
+              <option value={40}>40%</option>
+              <option value={100}>Gratis</option>
+              </FormControl>
             <br />
             <FormControl
-              type="text"
+              as="select"
               placeholder="Tipo de Pago"
               onChange={handleChange}
               name="tipoPagoVenta"
-            />
+              required
+           >
+
+              <option value={'Efectivo'}>Efectivo</option>
+              <option value={'Transferencia'}>Transferencia</option>
+              <option value={'Debito'}>Debito</option>
+              <option value={'Credito'}>Credito</option>
+           
+              </FormControl>
             <br />
             <FormControl
               type="number"
               placeholder="Total Facturado"
               onChange={handleChange}
               name="totalVenta"
+              required
             />
             <br />
           </FormGroup>

@@ -11,11 +11,12 @@ const CreatePedido = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_producto: "",
-        id_cliente: "",
-        id_sucursal: "",
-        id_empleado: "",
-        fecha: ""
+           id_Producto: "",
+           id_Cliente: "",
+           id_Sucursal:"",
+           id_Empleado:"",
+           fechaDetallePedido: "",
+           activoDetallePedido: 0
     }
 
 

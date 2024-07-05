@@ -11,12 +11,12 @@ const CreateProduct = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombre: "",
-        descripcion: "",
-        tipo: "",
-        precio: 0,
-        imagenProductos: "",
-        disponibilidad: 0
+        nombreProducto: "",
+        descripcionProducto: "",
+        tipoProducto: "",
+        precioProducto: 0,
+        imagenProducto:"",
+        disponibilidadProducto: 0
     }
     const [product, setProduct] = useState(initialState)
 
@@ -35,7 +35,7 @@ const CreateProduct = () => {
                 tipoProducto: product.tipoProducto,
                 precioProducto: product.precioProducto,
                 imagenProducto: product.imagenProducto,
-                dispondisponibilidadProductoibilidad: product.disponibilidadProducto
+                disponibilidadProducto: product.disponibilidadProducto
             })
 
             if (response.status === 200) {

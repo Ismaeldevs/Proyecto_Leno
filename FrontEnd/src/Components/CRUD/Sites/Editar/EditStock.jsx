@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
-import { URL_STOCK, URL_STOCK_EDITAR } from '../../../../Constats/endpoints'
+import { URL_STOCK,URL_STOCK_EDITAR, URL_SUCURSALES,URL_PRODUCTOS  } from '../../../../Constats/endpoints'
 import { Tooltip } from '@mui/material';
 
 
@@ -12,8 +12,11 @@ const EditStock = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_Producto: "",
-        id_Sucursal: "",
+        // nombreProducto:"",
+        // nombreSucursal:"",
+        id_Producto: 0,
+        id_Sucursal:"",
+        fechaRegistroStock: "",
         cantidadStock: "",
         fechaRegistroStock: ""
 
@@ -21,20 +24,37 @@ const EditStock = () => {
 
     // const [nombreCompleto, setNombreCompleto] = useState("")
     const [stock, setStock] = useState(initialState)
-    const [date, setDate] = useState("")
+    const [products, setProducts] = useState([]);
+    const [suc, setSuc] = useState([]);
+
+    const getProducts = async () => {
+        const response = await axios.get(`${URL_PRODUCTOS}`);
+        console.log(response.data);
+        setProducts(response.data);
+      };
+    
+      const getSuc = async () => {
+        const response = await axios.get(`${URL_SUCURSALES}`);
+        console.log(response.data);
+        setSuc(response.data);
+      };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
         try {
-
+            
             const response = await axios.put(`${URL_STOCK_EDITAR}${id}`, {
                 id_Producto: stock.id_Producto,
-                id_Sucursal: stock.id_Sucursal,
+                id_Sucursal:stock.id_Sucursal,
+                fechaRegistroStock: stock.fechaRegistroStock,
                 cantidadStock: stock.cantidadStock,
-                fechaRegistroStock: date,
-
+                descripcionStock: stock.descripcionStock,
+                activoStock: stock.activoStock,
             })
-            if (response.status === 200) {
+        
+            if(response.status === 200) {
                 alert("Stock Actualizado!")
                 navigate('/stocks')
             }
@@ -48,24 +68,19 @@ const EditStock = () => {
         const response = await axios.get(`${URL_STOCK}/${id}`)
         console.log(response.data)
         setStock(response.data[0])
-        const date = new Date(response.data[0].fechaRegistroStock).toJSON().slice(0, 10)
-        setDate(date)
-
-
+       
     }
 
     const handleChange = (e) => {
         setStock({
             ...stock, [e.target.name]: e.target.value
         })
-        setDate({
-            ...date, [e.target.name]: e.target.value
-        })
     }
 
     useEffect(() => {
-        getData()
-    }, [])
+        getData()  
+        getProducts();
+        getSuc();  }, [])
 
     return (
 
