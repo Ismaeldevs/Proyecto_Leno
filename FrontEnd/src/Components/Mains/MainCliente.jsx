@@ -90,7 +90,11 @@ const MainCliente = () => {
           ))}
         </tbody>
       </Table>
+      <div className='d-flex justify-content-center'>
+    <Link to={'/select'} className= " btn btn-danger w-25 mb-5 mt-3 " >Volver a inicio</Link>
     </div>
+    </>
+    
   );
 };
 
