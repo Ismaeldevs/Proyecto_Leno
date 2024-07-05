@@ -1,13 +1,14 @@
-import MainHome from '../Components/Mains/MainHome'
+import MainHome from "../Components/Mains/MainHome";
+import CrearVenta from "./Ventas/CrearVenta";
 
+const Home = (props) => {
 
-
-const Home = () => {
   return (
     <>
-     <MainHome /> 
+      <MainHome />
+      <CrearVenta {...props} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

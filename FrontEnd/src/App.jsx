@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import {LOGIN, SELECT, ERROR, CLIENTES, HOME, TICKET, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK,CREAR_PRODUCTO, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO} from './Routes/routes'
+import {LOGIN, SELECT, ERROR, CLIENTES, HOME, EDITAR_CLIENTE, CREAR_CLIENTE, VER_CLIENTE, STOCK, EDITAR_STOCK,CREAR_PRODUCTO, VER_STOCK,CREAR_STOCK, EMPLEADO,CREAR_EMPLEADO, EDITAR_EMPLEADO, VER_EMPLEADO, CREAR_SUCURSAL, SUCURSALES, VER_SUCURSAL,EDITAR_SUCURSAL, PEDIDO, VER_PEDIDO, CREAR_PEDIDO, EDITAR_PEDIDO,NOSOTROS,USUARIO,VER_USUARIO,EDITAR_USUARIO,CREAR_USUARIO, PRODUCTOS,VER_PRODUCTO, EDITAR_PRODUCTO, VENTAS, CREAR_VENTA, EDITAR_VENTAS, VER_VENTAS} from './Routes/routes'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import Login from './Pages/Login'
@@ -37,8 +37,11 @@ import HomePedido from './Pages/Pedido/HomePedido'
 import CrearPedido from './Pages/Pedido/CrearPedido'
 import EditarPedido from './Pages/Pedido/EditarPedido'
 import VerPedido from './Pages/Pedido/VerPedido'
-import HomeTicket from './Pages/HomeTicket'
+import HomeVenta from './Pages/Ventas/HomeVenta'
+import CrearVenta from './Pages/Ventas/CrearVenta'
+import EditarVenta from './Pages/Ventas/EditarVenta'
 import './App.css'
+import VerVenta from './Pages/Ventas/VerVenta'
 
 
 
@@ -88,7 +91,10 @@ function App() {
       <Route path={VER_PEDIDO} element={<VerPedido/>} />
       <Route path={ERROR} element={<Home />} />
       <Route path={NOSOTROS} element={<Nosotros/>} />
-      <Route path={TICKET} element={<HomeTicket />} />
+      <Route path={VENTAS} element={<HomeVenta />} />
+      <Route path={CREAR_VENTA} element={<CrearVenta />} />
+      <Route path={EDITAR_VENTAS} element={<EditarVenta/>} />
+      <Route path={VER_VENTAS} element={<VerVenta />} />
     </Routes>
     </BrowserRouter>
     <Footer/>
