@@ -50,40 +50,46 @@ const CreateSucursal = () => {
 
   return (
     <div>
-      <h1 className="p-5 text-white text-center">CREAR SUCURSAL</h1>
       <br />
-      <div className='d-flex justify-content-center p-5'>
+      <div className='container-CRUD'>
+      <br />
         <br />
-        <Form onSubmit={handleSubmit}>
+        <Form className='formCRUD' onSubmit={handleSubmit}>
+        <p className="titleCRUD">CREAR UNA SUCURSAL</p>
             <FormGroup>
             <Tooltip title="Nombre Sucursal">
-                <FormControl type='text' placeholder='Nombre Sucursal' onChange={handleChange} name="nombreSucursal" />
+                <FormControl type='text' placeholder='Nombre Sucursal' className="crud input" onChange={handleChange} name="nombreSucursal" required />
                         </Tooltip>
                 <br />
                 <Tooltip title="Numero Sucursal">
-                <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="numeroSucursal" />
+                <FormControl type='number' placeholder='Numero Sucursal' className="crud input" onChange={handleChange} name="numeroSucursal" required />
                 </Tooltip>
                 <br />
                 <Tooltip title="Direccion Sucursal">
-                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionSucursal" />
+                <FormControl type='text' placeholder='Direccion' className="crud input" onChange={handleChange} name="direccionSucursal" required />
                 </Tooltip>
                 <br />
                 <Tooltip title="Zona de Alcance">
-                <FormControl type='text' placeholder='Zona de alcance' onChange={handleChange}  name="zonaAlcance" />
+                <FormControl type='text' placeholder='Zona de alcance' className="crud input" onChange={handleChange}  name="zonaAlcance" required />
                 </Tooltip>
                 <br />
                 <Tooltip title="URL Imagen">
-                <FormControl type='text' placeholder='URL imagen' onChange={handleChange} name="imagenSucursal" />
+                <FormControl type='text' placeholder='URL imagen' className="crud input" onChange={handleChange} name="imagenSucursal" required />
                 </Tooltip>
                 <br />
                 <Tooltip title="Telefono Sucursal">
-                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefonoSucursal" />
+                <FormControl type='text' placeholder='Telefono' className="crud input" onChange={handleChange}  name="telefonoSucursal" />
                 </Tooltip>
                 <br />
             </FormGroup>
-            <Button type='submit' className='btn btn-danger mx-2'>Crear Sucursal</Button>
-            <Link to={'/sucursales'} className='btn text-white bg-danger '>Volver a Sucursales</Link>
-
+            <div>
+          <Button type="submit" className="btnCRUD">
+            Crear Sucursal
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/sucursales'} className='text-decoration-none text-white'>Volver a Sucursales</Link></button>
+          </div>
         </Form>
 </div>
     </div>

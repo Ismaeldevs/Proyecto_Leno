@@ -31,7 +31,7 @@ const MainStock = () => {
 
     try {
 
-      const response = await axios.delete(`${URL_STOCK_ELIMINAR}${id}`)
+      const response = await axios.put(`${URL_STOCK_ELIMINAR}${id}`)
       if(response) {
         alert("Stock eliminado!")
         getData()

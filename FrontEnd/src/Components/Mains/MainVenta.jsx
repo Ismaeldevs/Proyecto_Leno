@@ -59,6 +59,8 @@ useEffect(() => {
           <th>Cliente</th>
           <th>Empleado</th>
           <th>Fecha</th>
+          <th>Cantidad</th>
+          <th>Descuento</th>
           <th>Tipo de Pago</th>
           <th>Total Facturado</th>
           <th>ACCIONES</th>
@@ -73,6 +75,8 @@ useEffect(() => {
                 <td>{venta.NombreCompletoCliente}</td>
                 <td>{venta.NombreCompletoEmpleado}</td>
                 <td>{venta.FechaVenta}</td>
+                <td>{venta.Cantidad}</td>
+                <td>{venta.Descuento}%</td>
                 <td>{venta.TipoDePago}</td>
                 <td>${venta.TotalFacturado}</td>
                

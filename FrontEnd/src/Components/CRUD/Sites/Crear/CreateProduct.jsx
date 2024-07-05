@@ -49,40 +49,42 @@ const CreateProduct = () => {
     }
     return (
         <div>
-            <h1 className="p-5 text-white text-center">CREAR PRODUCTO</h1>
-            <br />
-            <div className='d-flex justify-content-center p-5'>
+      <br />
+      <div className='container-CRUD'>
+      <br />
                 <br />
-                <Form onSubmit={handleSubmit}>
+                <Form className='formCRUD' onSubmit={handleSubmit}>
+                <p className="titleCRUD">CREAR UN PRODUCTO</p>
                     <FormGroup>
                         <Tooltip title="Nombre del Producto">
-                            <FormControl type='text' placeholder='Nombre Producto' onChange={handleChange} name="nombreProducto" />
+                            <FormControl type='text' placeholder='Nombre Producto' className="crud input" onChange={handleChange} name="nombreProducto" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Descripcion del Producto">
-                            <FormControl type='text' placeholder='Descripcion' onChange={handleChange} name="descripcionProducto" />
+                            <FormControl type='text' placeholder='Descripcion' className="crud input" onChange={handleChange} name="descripcionProducto" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Tipo Prodcuto">
-                            <FormControl type='text' placeholder='Tipo' onChange={handleChange} name="tipoProducto" />
+                            <FormControl type='text' placeholder='Tipo' className="crud input" onChange={handleChange} name="tipoProducto" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="Precio Producto">
-                            <FormControl type='number' placeholder='Precio' onChange={handleChange} name="precioProducto" />
+                            <FormControl type='number' placeholder='Precio' className="crud input" onChange={handleChange} name="precioProducto" required />
                         </Tooltip>
                         <br />
                         <Tooltip title="URL Imagen">
-                            <FormControl type='text' placeholder='Url de la Imagen' onChange={handleChange} name="imagenProducto" />
-                        </Tooltip>
-                        <br />
-                        <Tooltip title="Disponible (0 / 1)">
-                            <FormControl type='number' placeholder='Disponible ó No (0 / 1)' onChange={handleChange} name="disponibilidadProducto" />
+                            <FormControl type='text' placeholder='Url de la Imagen' className="crud input" onChange={handleChange} name="imagenProducto" required />
                         </Tooltip>
                         <br />
                     </FormGroup>
-                    <Button type='submit' className='btn btn-danger mx-2'>Crear Producto</Button>
-                    <Link to={'/productos'} className='btn text-white bg-danger '>Volver a Productos</Link>
-
+                    <div>
+          <Button type="submit" className="btnCRUD">
+            Crear Producto
+          </Button>
+          </div>
+          <div>
+          <button className="btnBack"><Link to={'/productos'} className='text-decoration-none text-white'>Volver a Productos</Link></button>
+          </div>
                 </Form>
             </div>
 
