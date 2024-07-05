@@ -18,6 +18,7 @@ const Header = (props) => {
     return (
 <Navbar expand="lg" className="navbar">
       <Container className='text-center'>
+
         {isManager? <Navbar.Brand as={NavLink} to='/select'>
           <Image className='logo' src={logo}></Image>
         </Navbar.Brand> :   null}
