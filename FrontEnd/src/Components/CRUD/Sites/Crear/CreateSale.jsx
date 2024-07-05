@@ -13,9 +13,9 @@ const CreateSale = () => {
   const navigate = useNavigate();
 
   const initialState = {
-    id_Producto: "",
-    id_Cliente: "",
-    id_Empleado: "",
+    id_Producto: 1,
+    id_Cliente: 1,
+    id_Empleado: 1,
     fechaVenta: "",
     cantidadVenta: 0,
     descuentoVenta: 0,
@@ -50,13 +50,13 @@ const CreateSale = () => {
   const handleChange = (e) => {
     setSale({ ...sale, [e.target.name]: e.target.value });
   };
-  console.log(sale);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
   
     let total = sale.totalVenta * sale.cantidadVenta
     let totalDescuento = 0
+
 
     try {
       if(sale.descuentoVenta === "10" ) {
