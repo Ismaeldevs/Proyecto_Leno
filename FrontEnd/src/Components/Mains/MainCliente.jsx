@@ -21,7 +21,7 @@ const MainCliente = () => {
       const response = await axios.put(`${URL_CLIENTE_ELIMINAR}${id}`)
       if(response) {
         alert("Cliente eliminado!")
-        
+        getData()
       }
     } catch (error) {
       console.log(error)

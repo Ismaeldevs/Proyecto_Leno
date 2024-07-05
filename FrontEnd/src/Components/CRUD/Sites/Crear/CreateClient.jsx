@@ -9,11 +9,12 @@ const CreateClient = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombreCompleto: "",
-        dni: "",
-        telefono: "",
-        direccion: "",
-        activo: 0
+        nombreCliente: "",
+        apellidoCliente:"",
+        dniCliente: "",
+        telefonoCliente: "",
+        direccionCliente: "",
+        activoCliente: 0
     }
     const handleChange = (e) => {
         setClient({...client, [e.target.name] : e.target.value})
@@ -27,11 +28,12 @@ const CreateClient = () => {
         try {
 
             let response = await axios.post("http://localhost:8000/clientes/create", {
-                nombreCompleto: client.nombreCompleto,
-                dni: client.dni,
-                telefono: client.telefono,
-                direccion: client.direccion,
-                activo: client.activo
+                nombreCliente: client.nombreCliente,
+                apellidoCliente: client.apellidoCliente,
+                dniCliente: client.dniCliente,
+                telefonoCliente: client.telefonoCliente,
+                direccionCliente: client.direccionCliente,
+                activoCliente: client.activoCliente
             })
 
             if(response.status === 200) {
@@ -54,13 +56,15 @@ const CreateClient = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <FormControl type='text' placeholder='Nombre Completo' onChange={handleChange} name="nombreCompleto" />
+                <FormControl type='text' placeholder='Nombre' onChange={handleChange} name="nombreCliente" />
                 <br />
-                <FormControl type='text' placeholder='DNI' onChange={handleChange} name="dni" />
+                <FormControl type='text' placeholder='Apellido' onChange={handleChange} name="apellidoCliente" />
                 <br />
-                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefono" />
+                <FormControl type='text' placeholder='DNI' onChange={handleChange} name="dniCliente" />
                 <br />
-                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccion" />
+                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefonoCliente" />
+                <br />
+                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionCliente" />
                 <br />
             </FormGroup>
             <Button type='submit'>Crear Cliente</Button>

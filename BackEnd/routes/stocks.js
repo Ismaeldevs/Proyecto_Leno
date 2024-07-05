@@ -9,6 +9,6 @@ router.get("/stocks",allStock)//muestra todo
 router.get("/stocks/:id", singleStock)//para ver uno
 router.post("/stocks/create",createStock)
 router.put("/stocks/edit/:id",editStock)
-router.put("/stocks/delete/:id",deleteStock)
+router.delete("/stocks/delete/:id",deleteStock)
 
 module.exports = router

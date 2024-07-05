@@ -20,6 +20,7 @@ const MainVenta = () => {
     const response = await axios.put(`${URL_VENTAS_ELIMINAR}${id_Venta}`)
     if(response) {
       alert("Usuario Eliminado!")
+      getData()
     }
   }
 
@@ -30,7 +31,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h1 className="text-center text-white p-5">MODIFICA EL USUARIO</h1>
+      <h1 className="text-center text-white p-5">VENTAS</h1>
 
 
       

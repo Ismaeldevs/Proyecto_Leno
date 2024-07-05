@@ -9,12 +9,12 @@ const CreateProduct = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombre: "",
-        descripcion: "",
-        tipo: "",
-        precio: 0,
-        imagenProductos:"",
-        disponibilidad: 0
+        nombreProducto: "",
+        descripcionProducto: "",
+        tipoProducto: "",
+        precioProducto: 0,
+        imagenProducto:"",
+        disponibilidadProducto: 0
     }
     const [product, setProduct] = useState(initialState)
 
@@ -28,12 +28,12 @@ const CreateProduct = () => {
         try {
 
             let response = await axios.post(URL_PRODUCTO_CREAR, {
-                nombre: product.nombre,
-                descripcion: product.descripcion,
-                tipo: product.tipo,
-                precio: product.precio,
-                imagenProductos: product.imagenProductos,
-                disponibilidad: product.disponibilidad
+                nombreProducto: product.nombreProducto,
+                descripcionProducto: product.descripcionProducto,
+                tipoProducto: product.tipoProducto,
+                precioProducto: product.precioProducto,
+                imagenProducto: product.imagenProducto,
+                disponibilidadProducto: product.disponibilidadProducto
             })
 
             if(response.status === 200) {
@@ -53,17 +53,17 @@ const CreateProduct = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <FormControl type='text' placeholder='Nombre Producto' onChange={handleChange} name="nombre" />
+                <FormControl type='text' placeholder='Nombre Producto' onChange={handleChange} name="nombreProducto" />
                 <br />
-                <FormControl type='text' placeholder='Descripcion' onChange={handleChange} name="descripcion" />
+                <FormControl type='text' placeholder='Descripcion' onChange={handleChange} name="descripcionProducto" />
                 <br />
-                <FormControl type='text' placeholder='Tipo' onChange={handleChange}  name="tipo" />
+                <FormControl type='text' placeholder='Tipo' onChange={handleChange}  name="tipoProducto" />
                 <br />
-                <FormControl type='number' placeholder='Precio' onChange={handleChange} name="precio" />
+                <FormControl type='number' placeholder='Precio' onChange={handleChange} name="precioProducto" />
                 <br />
-                <FormControl type='text' placeholder='Url de la Imagen' onChange={handleChange} name="imagenProductos" />
+                <FormControl type='text' placeholder='Url de la Imagen' onChange={handleChange} name="imagenProducto" />
                 <br />
-                <FormControl type='number' placeholder='Disponible ó No (0 / 1)' onChange={handleChange} name="disponibilidad" />
+                <FormControl type='number' placeholder='Disponible ó No (0 / 1)' onChange={handleChange} name="disponibilidadProducto" />
                 <br />
             </FormGroup>
             <Button type='submit'>Crear Producto</Button>

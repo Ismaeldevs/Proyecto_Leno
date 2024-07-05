@@ -17,10 +17,10 @@ const MainSucursal = () => {
   
       try {
 
-        const response = await axios.put(`${URL_SUCURSAL_ELIMINAR}${id}`)
+        const response = await axios.delete(`${URL_SUCURSAL_ELIMINAR}${id}`)
         if(response) {
           alert("Sucursal eliminado!")
-          
+          getData()
         }
       } catch (error) {
         console.log(error)

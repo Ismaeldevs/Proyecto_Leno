@@ -9,12 +9,14 @@ const CreateEmployee = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_sucursal: "",
-        nombreCompleto: "",
-        cuil: "",
-        telefono: "",
-        mail: "",
-        direccion: ""
+        id_Sucursal: "",
+        nombreEmpleado: "",
+        apellidoEmpleado:"",
+        cuilEmpleado: "",
+        telefonoEmpleado: "",
+        mailEmpleado: "",
+        direccionEmpleado: "",
+        activoEmpleado:0
     }
 
 
@@ -25,14 +27,17 @@ const CreateEmployee = () => {
         e.preventDefault()
         try {
 
-            const response = await axios.post(`${URL_EMPLEADO_CREAR}`, {
-                id_sucursal: employee.id_sucursal,
-                nombreCompleto: employee.nombreCompleto,
-                cuil: employee.cuil,
-                telefono: employee.telefono,
-                mail: employee.mail,
-                direccion: employee.direccion
+            const response = await axios.post('http://localhost:8000/empleados/create', {
+                id_Sucursal: employee.id_Sucursal,
+                nombreEmpleado: employee.nombreEmpleado,
+                apellidoEmpleado: employee.apellidoEmpleado,
+                cuilEmpleado: employee.cuilEmpleado,
+                telefonoEmpleado: employee.telefonoEmpleado,
+                mailEmpleado: employee.mailEmpleado,
+                direccionEmpleado: employee.direccionEmpleado,
+                activoEmpleado:employee.activoEmpleado
             })
+
             if (response.status === 200) {
                 alert("Empleado Creado!")
                 navigate('/empleados')
@@ -57,20 +62,23 @@ const CreateEmployee = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_sucursal" />
+                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_Sucursal" />
                         <br />
-                        <FormControl type='text' placeholder='Nombre Completo' onChange={handleChange} name="nombreCompleto" />
+                        <FormControl type='text' placeholder='Nombre' onChange={handleChange} name="nombreEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='CUIL' onChange={handleChange} name="cuil" />
+                        <FormControl type='text' placeholder='Apellido' onChange={handleChange} name="apellidoEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='TELEFONO' onChange={handleChange} name="telefono" />
+                        <FormControl type='text' placeholder='CUIL' onChange={handleChange} name="cuilEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='MAIL' onChange={handleChange} name="mail" />
+                        <FormControl type='text' placeholder='TELEFONO' onChange={handleChange} name="telefonoEmpleado" />
                         <br />
-                        <FormControl type='text' placeholder='DIRECCION' onChange={handleChange} name="direccion" />
+                        <FormControl type='text' placeholder='MAIL' onChange={handleChange} name="mailEmpleado" />
                         <br />
+                        <FormControl type='text' placeholder='DIRECCION' onChange={handleChange} name="direccionEmpleado" />
+                        <br />
+                        <Button type='submit'>Crear Empleado</Button>
                     </FormGroup>
-                    <Button type='submit'>Crear Empleado</Button>
+                    
                 </Form>
             </div>
         </div>

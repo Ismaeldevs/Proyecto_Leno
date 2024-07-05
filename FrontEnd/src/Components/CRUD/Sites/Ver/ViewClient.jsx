@@ -24,8 +24,7 @@ const ViewClient = () => {
     const getData = async () => {
         const response = await axios.get(`${URL_CLIENTES}/${id}`)
         console.log(response.data)
-        setClient(response.data[0])
-        
+        setClient(response.data[0])        
         
     }
 

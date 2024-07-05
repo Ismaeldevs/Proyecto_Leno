@@ -17,7 +17,7 @@ const Header = (props) => {
     return (
 <Navbar expand="lg" className="navbar">
       <Container className='text-center'>
-        <Navbar.Brand as={NavLink} to='/'>
+        <Navbar.Brand as={NavLink} to='/select'>
           <Image className='logo' src={logo}></Image>
         </Navbar.Brand>
 

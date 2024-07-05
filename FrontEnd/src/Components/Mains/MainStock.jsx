@@ -18,17 +18,17 @@ const MainStock = () => {
 
     try {
 
-      const response = await axios.put(`${URL_STOCK_ELIMINAR}${id}`)
+      const response = await axios.delete(`${URL_STOCK_ELIMINAR}${id}`)
       if(response) {
         alert("Stock eliminado!")
-        
+        getData()
       }
     } catch (error) {
       console.log(error)
     }
   }
 
-useEffect(() => {
+        useEffect(() => {
   getData()
 }, [])
 
@@ -36,8 +36,6 @@ useEffect(() => {
   return (
     <div>
       <h2 className="text-center text-white p-5">MODIFICA EL STOCK</h2>
-
-
       
       <Link to={`/stocks/create`} className='btn text-white bg-success m-5'>CREAR STOCK</Link>
       <Table striped bordered hover variant="dark">
@@ -55,9 +53,9 @@ useEffect(() => {
       {data.map((stock) =>
                 <tr key={stock.id_Stock}>
                 <td>{stock.id_Stock}</td>
-                <td>{stock.NombreProducto}</td>
+                <td>{stock.nombreProducto}</td>
                 <td>{stock.cantidadStock}</td>
-                <td>{new Date(stock.fechaRegistroStock).toJSON().slice(0, 10)}</td>
+                <td>{stock.fechaRegistroStock}</td>
                 <td>{stock.nombreSucursal}</td>
                 
                 <td>

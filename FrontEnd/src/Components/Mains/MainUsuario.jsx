@@ -19,6 +19,7 @@ const MainUsuario = () => {
     const response = await axios.delete(`${URL_USUARIO_ELIMINAR}${id_Usuario}`)
     if(response) {
       alert("Usuario Eliminado!")
+      getData()
     }
   }
 

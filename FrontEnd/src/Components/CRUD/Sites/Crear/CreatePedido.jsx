@@ -9,11 +9,12 @@ const CreatePedido = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        id_producto: "",
-        id_cliente: "",
-        id_sucursal: "",
-        id_empleado: "",
-        fecha: ""
+           id_Producto: "",
+           id_Cliente: "",
+           id_Sucursal:"",
+           id_Empleado:"",
+           fechaDetallePedido: "",
+           activoDetallePedido: 0
     }
 
 
@@ -25,11 +26,12 @@ const CreatePedido = () => {
         try {
 
             const response = await axios.post(`${URL_PEDIDO_CREAR}`, {
-                id_producto: pedido.id_producto,
-                id_cliente: pedido.id_cliente,
-                id_sucursal: pedido.id_sucursal,
-                id_empleado: pedido.id_empleado,
-                fecha: pedido.fecha,
+                     id_Producto: pedido.id_Producto,
+                     id_Cliente: pedido.id_Cliente,
+                     id_Sucursal:pedido.id_Sucursal,
+                     id_Empleado:pedido.id_Empleado,
+                     fechaDetallePedido: pedido.fechaDetallePedido,
+                    activoDetallePedido: pedido.activoDetallePedido
             })
             if (response.status === 200) {
                 alert("Detalle Creado!")
@@ -55,15 +57,15 @@ const CreatePedido = () => {
                 <br />
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_producto" />
+                        <FormControl type='number' placeholder='Numero Producto' onChange={handleChange} name="id_Producto" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Cliente' onChange={handleChange} name="id_cliente" />
+                        <FormControl type='number' placeholder='Numero Cliente' onChange={handleChange} name="id_Cliente" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_sucursal" />
+                        <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="id_Sucursal" />
                         <br />
-                        <FormControl type='number' placeholder='Numero Empleado' onChange={handleChange} name="id_empleado" />
+                        <FormControl type='number' placeholder='Numero Empleado' onChange={handleChange} name="id_Empleado" />
                         <br />
-                        <FormControl type='text' placeholder='Fecha' onChange={handleChange} name="fecha" />
+                        <FormControl type='text' placeholder='Fecha' onChange={handleChange} name="fechaDetallePedido" />
                         <br />
                     </FormGroup>
                     <Button type='submit'>Crear Detalle</Button>

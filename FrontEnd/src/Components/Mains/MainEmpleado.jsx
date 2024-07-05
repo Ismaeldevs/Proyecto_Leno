@@ -21,7 +21,7 @@ const MainEmpleado = () => {
       const response = await axios.put(`${URL_EMPLEADO_ELIMINAR}${id}`)
       if(response) {
         alert("Empleado eliminado!")
-        
+        getData()
       }
     } catch (error) {
       console.log(error)
