@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import {Button, Form, FormControl, FormGroup} from 'react-bootstrap'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import { URL_SUCURSAL_CREAR } from '../../../../Constats/endpoints'
+import { Tooltip } from '@mui/material';
 
 const CreateSucursal = () => {
     const navigate = useNavigate()
 
     const initialState = {
-        nombre: "",
+        nombreSucursal: "",
         numeroSucursal: 0,
-        direccion: "",
+        direccionSucursal: "",
         zonaAlcance: "",
         imagenSucursales: "",
-        telefono: ""
+        telefonoSucursal: ""
     }
 
 
@@ -24,12 +25,12 @@ const CreateSucursal = () => {
         try {
 
             const response = await axios.post(`${URL_SUCURSAL_CREAR}`, {
-                nombre: sucursal.nombre,
+                nombreSucursal: sucursal.nombreSucursal,
                 numeroSucursal: sucursal.numeroSucursal,
-                direccion: sucursal.direccion,
+                direccionSucursal: sucursal.direccionSucursal,
                 zonaAlcance: sucursal.zonaAlcance,
-                imagenSucursales: sucursal.imagenSucursales,
-                telefono: sucursal.telefono
+                imagenSucursal: sucursal.imagenSucursal,
+                telefonoSucursal: sucursal.telefonoSucursal
             })
             if(response.status === 200) {
                 alert("Sucursal Creada!")
@@ -55,20 +56,34 @@ const CreateSucursal = () => {
         <br />
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <FormControl type='text' placeholder='Nombre Sucursal' onChange={handleChange} name="nombre" />
+            <Tooltip title="Nombre Sucursal">
+                <FormControl type='text' placeholder='Nombre Sucursal' onChange={handleChange} name="nombreSucursal" />
+                        </Tooltip>
                 <br />
+                <Tooltip title="Numero Sucursal">
                 <FormControl type='number' placeholder='Numero Sucursal' onChange={handleChange} name="numeroSucursal" />
+                </Tooltip>
                 <br />
-                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccion" />
+                <Tooltip title="Direccion Sucursal">
+                <FormControl type='text' placeholder='Direccion' onChange={handleChange} name="direccionSucursal" />
+                </Tooltip>
                 <br />
+                <Tooltip title="Zona de Alcance">
                 <FormControl type='text' placeholder='Zona de alcance' onChange={handleChange}  name="zonaAlcance" />
+                </Tooltip>
                 <br />
-                <FormControl type='text' placeholder='URL imagen' onChange={handleChange} name="imagenSucursales" />
+                <Tooltip title="URL Imagen">
+                <FormControl type='text' placeholder='URL imagen' onChange={handleChange} name="imagenSucursal" />
+                </Tooltip>
                 <br />
-                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefono" />
+                <Tooltip title="Telefono Sucursal">
+                <FormControl type='text' placeholder='Telefono' onChange={handleChange}  name="telefonoSucursal" />
+                </Tooltip>
                 <br />
             </FormGroup>
-            <Button type='submit'>Crear Sucursal</Button>
+            <Button type='submit' className='btn btn-danger mx-2'>Crear Sucursal</Button>
+            <Link to={'/sucursales'} className='btn text-white bg-danger '>Volver a Sucursales</Link>
+
         </Form>
 </div>
     </div>

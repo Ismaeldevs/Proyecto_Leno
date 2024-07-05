@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 import { URL_USUARIO } from '../../../../Constats/endpoints'
-import {Card} from 'react-bootstrap'
+import  "../../../../CSS/Cards/CardView.css"
 
 const ViewUser = () => {
 
@@ -32,7 +32,19 @@ const ViewUser = () => {
 
   return (
     <div className='d-flex justify-content-center p-5'>
-          <Card className='bg-dark' style={{ width: '20rem' }}>
+      <div className="card">
+        <div className="content">
+          <p className="heading"> Usuario: {usuario.usuario} </p>
+          <p className="para">Clave: {usuario.clave}  </p>
+          <p className="para">ROL: {usuario.rol == 1 ? "Admin" : "Empleado"} </p>
+          <Link to={'/usuarios'} className="btn btn-danger">Volver a Usuarios</Link>
+          <Link to={'/select'} className='btn text-white bg-danger '>Volver a Inicio</Link>
+
+        </div>
+        </div>
+
+
+          {/* <Card className='bg-dark' style={{ width: '20rem' }}>
       <Card.Body>
         <Card.Title className='text-white'>{usuario.usuario}</Card.Title>
         <Card.Text className='text-white'>
@@ -45,7 +57,7 @@ const ViewUser = () => {
       
       </Card.Body>
       <Link to={'/usuarios'} className="btn btn-info">Volver al inicio</Link>
-    </Card>
+    </Card> */}
     
     </div>
   )
